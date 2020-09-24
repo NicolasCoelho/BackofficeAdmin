@@ -20,9 +20,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={LoginPage} />
+      <Route path="/" component={LoginPage} />
       <Route exact path="/home" component={LoginPage} />
-      <PrivateRoute path="/dashboard" component={DashboardPage} />
+      <PrivateRoute exact path="/dashboard" component={DashboardPage} />
     </Switch>
   </BrowserRouter>
 );

@@ -43,6 +43,8 @@ export const Right = styled.div`
         border: solid 2px #c2c2c2;
         padding: 0 0 0 30px;
         font-size: 27px;
+        transition: 0.3s;
+        color: grey;
       }
 
       input:focus {
@@ -63,6 +65,25 @@ export const Right = styled.div`
         border: none;
         margin-top: 45px;
         border-radius: 4px;
+        transition: 0.4s;
+        font-size: 27px;
+        font-weight: bold;
+
+        &:focus {
+          outline: none;
+          background: #007828;
+          /* background: #fe7f4a; */
+        }
+      }
+    }
+    .BoxCenterEcomLogo {
+      display: flex;
+      justify-content: center;
+
+      img {
+        margin-top: 50%;
+        height: auto;
+        width: 58%;
       }
     }
   }
