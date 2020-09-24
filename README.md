@@ -15,4 +15,4 @@ Main Administrative Painel
 
 ## PAGES
 
-![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/Page_Login_Idea.png?token=AIOFMUY6FJR5HHKA4QPVR7C7NTKWC)
+![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/Page_Login_Idea.png?token=AIOFMUYAYE7E5IR3Q62RTV27NTMEI)
