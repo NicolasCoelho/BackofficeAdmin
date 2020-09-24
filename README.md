@@ -7,7 +7,7 @@ Main Administrative Painel
 - LOGIN PAGE
 - DASHBOARD PAGE
 
-## TECNOLOGY
+## TECHNOLOGIES
 
 - React-js _Front-end_
 - Styled-Components _Front-end_
