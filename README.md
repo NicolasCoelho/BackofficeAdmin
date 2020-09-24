@@ -2,6 +2,8 @@
 
 Main Administrative Painel
 
+to configure the project type **yarn** or **npm install**
+
 ## PAGES
 
 - LOGIN PAGE
@@ -15,4 +17,5 @@ Main Administrative Painel
 
 ## PAGES
 
-![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/Page_Login_Idea.png?token=AIOFMUYAYE7E5IR3Q62RTV27NTMEI)
+_LoginPage_
+![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/bgLogin.png?token=AIOFMU6U7G34SCKZIZ5KM3K7NTXUM)
