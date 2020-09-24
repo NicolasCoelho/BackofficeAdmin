@@ -1,7 +1,8 @@
 import React from "react";
 import { isAuthenticated } from "./auth";
-
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import LoginPage from "../pages/login";
+import DashboardPage from "../pages/dashboard";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -19,8 +20,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={() => <h1>Hello World</h1>} />
-      <PrivateRoute path="/login" component={() => <h1>Você está logado</h1>} />
+      <Route exact path="/" component={LoginPage} />
+      <Route exact path="/home" component={LoginPage} />
+      <PrivateRoute path="/dashboard" component={DashboardPage} />
     </Switch>
   </BrowserRouter>
 );
