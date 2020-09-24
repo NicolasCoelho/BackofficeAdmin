@@ -18,4 +18,4 @@ to configure the project type **yarn** or **npm install**
 ## PAGES
 
 _LoginPage_
-![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/bgLogin.png?token=AIOFMU6U7G34SCKZIZ5KM3K7NTXUM)
+![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/Page_Login_Idea.png?token=AIOFMU4V5O5ZCUBQ6ZAPJDK7NTXZA)
