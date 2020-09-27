@@ -10,15 +10,17 @@ const Login = () => {
       <S.Left />
       <S.Right>
         <div className="FatherBoxRight">
-          <img src={LogoDivulgadores} alt="Divulgadores Logo" />
-          <p>Informe seus dados de acesso</p>
-          <div id="ChildrenBoxInputRight">
-            <input type="text" placeholder="login do usuário" />
-            <input type="password" placeholder="senha do usuário" />
-            <button type="submit">ENTRAR</button>
-          </div>
-          <div className="BoxCenterEcomLogo">
-            <img src={LogoEcomLab} alt="Logo EcomLab" id="LogoEcomLab" />
+          <div>
+            <img src={LogoDivulgadores} alt="Divulgadores Logo" />
+            <p>Informe seus dados de acesso</p>
+            <div id="ChildrenBoxInputRight">
+              <input type="text" placeholder="login do usuário" />
+              <input type="password" placeholder="senha do usuário" />
+              <button type="submit">ENTRAR</button>
+            </div>
+            <div className="BoxCenterEcomLogo">
+              <img src={LogoEcomLab} alt="Logo EcomLab" id="LogoEcomLab" />
+            </div>
           </div>
         </div>
       </S.Right>

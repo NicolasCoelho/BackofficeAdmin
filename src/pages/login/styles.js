@@ -4,13 +4,37 @@ import BgImg from "../../Assets/bgLogin.png";
 export const Container = styled.div`
   display: flex;
   background: #f8f8f8;
+
+  /* Notebooks */
+  @media only screen and (max-width: 1440px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const Left = styled.div`
   /* INITIAL CONFIG 1920X1080 BASED */
-  width: 1206px;
+  width: 100vw;
   background: url("${BgImg}");
-  height: 100vh;
+  background-repeat: no-repeat;
+
+  @media only screen and (max-width: 2560px) {
+    width: 60vw;
+    background: url("${BgImg}");
+    background-repeat: no-repeat;
+  }
+
+  /* Desktops */
+  @media only screen and (min-width: 1920px) {
+    width: 66vw;
+    background: url("${BgImg}");
+    background-repeat: no-repeat;
+  }
+
+  /* Notebooks */
+  @media only screen and (max-width: 1800px) {
+    display: none;
+  }
 `;
 
 export const Right = styled.div`
@@ -48,7 +72,7 @@ export const Right = styled.div`
       }
 
       input:focus {
-        outline: 2px solid #2aff71; /* oranges! yey */
+        outline: 2px solid #2aff71;
         border-radius: 4px;
       }
 
@@ -72,10 +96,10 @@ export const Right = styled.div`
         &:focus {
           outline: none;
           background: #007828;
-          /* background: #fe7f4a; */
         }
       }
     }
+
     .BoxCenterEcomLogo {
       display: flex;
       justify-content: center;
@@ -85,6 +109,35 @@ export const Right = styled.div`
         height: auto;
         width: 58%;
       }
+    }
+
+    /* Ultrawides */
+    @media only screen and (min-width: 2550px) {
+    }
+
+    /* Desktops */
+    @media only screen and (min-width: 1920px) {
+    }
+
+    /* Notebooks */
+    @media only screen and (max-width: 1440px) {
+      .BoxCenterEcomLogo {
+        display: flex;
+        justify-content: center;
+
+        img {
+          margin-top: 20%;
+          height: auto;
+          width: 58%;
+        }
+      }
+    }
+
+    /* Ipads */
+    @media only screen and (min-width: 1024px) {
+    }
+    /* Disp Mobiles */
+    @media only screen and (min-width: 768px) {
     }
   }
 `;
