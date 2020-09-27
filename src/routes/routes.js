@@ -3,6 +3,7 @@ import { isAuthenticated } from "./auth";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import LoginPage from "../pages/login";
 import DashboardPage from "../pages/dashboard";
+import TestPage from "../pages/test";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -20,7 +21,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={LoginPage} />
+      <Route exact path="/" component={LoginPage} />
       <Route exact path="/home" component={LoginPage} />
       <PrivateRoute exact path="/dashboard" component={DashboardPage} />
     </Switch>
