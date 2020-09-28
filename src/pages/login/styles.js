@@ -69,6 +69,7 @@ export const Right = styled.div`
       color: white;
       background: #00ab39;
       height: 66px;
+      width: 100%;
       border: none;
       margin-top: 45px;
       border-radius: 4px;
@@ -85,6 +86,7 @@ export const Right = styled.div`
 
   /* Disp 4K */
   @media only screen and (max-width: 2560px) {
+    width: 66vw;
     form {
       display: flex;
       flex-direction: column;
@@ -158,7 +160,7 @@ export const Right = styled.div`
     }
   }
 
-  /* Disp Notebooks */
+  /* Disp Notebooks 1440px */
   @media only screen and (max-width: 1440px) {
     width: 37vw;
     form {
@@ -196,7 +198,7 @@ export const Right = styled.div`
     }
   }
 
-  /* Disp Desktop 1920px */
+  /* Disp Desktop 1680px */
   @media only screen and (max-width: 1680px) {
     width: 37vw;
     form {
@@ -278,7 +280,7 @@ export const Right = styled.div`
     justify-content: center;
   }
 
-  /* Disp CELULARES */
+  /* Disp CELULARES 375px- */
   @media only screen and (max-width: 375px) {
     width: 35vw;
     form {

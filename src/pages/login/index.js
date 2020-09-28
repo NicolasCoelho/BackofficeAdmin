@@ -3,13 +3,23 @@ import * as S from "./styles";
 import LogoDivulgadores from "../../Assets/LogoDivulgadores.png";
 import LogoEcomLab from "../../Assets/LogoEcomLab.png";
 import { useForm } from "react-hook-form";
-import { Redirect } from "react-router-dom";
+import { Redirect, Router } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { isAuthenticated } from "../../routes/auth";
+import { sign } from "jsonwebtoken";
 
 const Login = () => {
+  const history = useHistory();
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
+
+    if (data.email === "moises" && data.password === "123") {
+      const Token = sign(data.email, "ECOMTEST");
+      localStorage.setItem("Token", Token);
+    }
+    history.push("/dashboard");
   };
 
   return (
@@ -34,7 +44,12 @@ const Login = () => {
               ref={register}
               required={true}
             />
-            <input type="submit" value="Entrar" id="buttonSubmit" />
+            <button type="submit" id="buttonSubmit">
+              Entrar
+            </button>
+            {/* <Link to="/dashboard">
+              <input type="submit" value="Entrar" id="buttonSubmit" />
+            </Link> */}
           </form>
         </div>
       </S.Right>

@@ -3,7 +3,6 @@ import { isAuthenticated } from "./auth";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import LoginPage from "../pages/login";
 import DashboardPage from "../pages/dashboard";
-import TestPage from "../pages/test";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -12,8 +11,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-      )
+          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+        )
     }
   />
 );
