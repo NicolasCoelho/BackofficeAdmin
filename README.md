@@ -19,3 +19,8 @@ to configure the project type **yarn** or **npm install**
 
 _LoginPage_
 ![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/Page_Login_Idea.png?token=AIOFMU4V5O5ZCUBQ6ZAPJDK7NTXZA)
+
+## Deploy
+AWS Amplify
+Production
+- https://master.dp0evu5kfuz2v.amplifyapp.com/
