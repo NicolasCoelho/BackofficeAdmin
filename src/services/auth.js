@@ -6,6 +6,10 @@ class Auth {
     this.token = localStorage.getItem('token')
   }
 
+  getToken() {
+    return localStorage.getItem('Token')
+  }
+
   setToken(token) {
     this.token = token
     localStorage.setItem('Token', token)

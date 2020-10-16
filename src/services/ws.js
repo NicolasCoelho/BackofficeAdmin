@@ -59,7 +59,7 @@ class Ws {
   }
 
   getHeaders() {
-    return { headers: { authorization: localStorage.getItem('Token') } }
+    return { headers: { authorization: auth.getToken() } }
   }
 }
 
