@@ -1,26 +1,27 @@
 # BackofficeAdmin
 
-Main Administrative Painel
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
-to configure the project type **yarn** or **npm install**
+## Development server
 
-## PAGES
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-- LOGIN PAGE
-- DASHBOARD PAGE
+## Code scaffolding
 
-## TECHNOLOGIES
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-- React-js _Front-end_
-- Styled-Components _Front-end_
-- React-Router-Dom _Front-end_
+## Build
 
-## PAGES
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-_LoginPage_
-![alt](https://raw.githubusercontent.com/NicolasCoelho/BackofficeAdmin/master/src/Assets/Page_Login_Idea.png?token=AIOFMU4V5O5ZCUBQ6ZAPJDK7NTXZA)
+## Running unit tests
 
-## Deploy
-AWS Amplify
-Production
-- https://master.dp0evu5kfuz2v.amplifyapp.com/
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
