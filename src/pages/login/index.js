@@ -5,7 +5,8 @@ import LogoEcomLab from "../../Assets/LogoEcomLab.png";
 import { useForm } from "react-hook-form";
 import { Redirect, Router } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
-import { isAuthenticated } from "../../routes/auth";
+import auth from "../../services/auth";
+import ws from '../../services/ws';
 import { sign } from "jsonwebtoken";
 
 const Login = () => {
@@ -13,13 +14,13 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-
+    // TODO: Implements api call
+    // ws.authenticate(data.email, data.password).then(response => {}).catch(err => {})
     if (data.email === "moises" && data.password === "123") {
-      const Token = sign(data.email, "ECOMTEST");
-      localStorage.setItem("Token", Token);
+      const token = sign(JSON.stringify({name: data.email, t: 2, exp: Date.now()+100000}), "ECOMTEST");
+      auth.setToken(token)
+      history.push("/dashboard");
     }
-    history.push("/dashboard");
   };
 
   return (
