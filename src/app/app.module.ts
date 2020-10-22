@@ -11,13 +11,19 @@ import { AuthGuard } from './_guards/authentication/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginCardComponent } from './login-card/login-card.component';
+import { LeftComponent } from './login-card/left/left.component';
+import { RightComponent } from './login-card/right/right.component';
+import { FormComponent } from './login-card/right/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    LoginCardComponent
+    LoginCardComponent,
+    LeftComponent,
+    RightComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
