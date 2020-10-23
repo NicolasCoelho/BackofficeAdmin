@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { Authentication } from './_services/authentication';
+import { Ws } from './_services/ws';
 
 import { AuthGuard } from './_guards/authentication/auth.guard';
 
@@ -27,11 +29,13 @@ import { FormComponent } from './login-card/right/form/form.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     AuthGuard,
-    Authentication
+    Authentication,
+    Ws
   ],
   bootstrap: [AppComponent]
 })
