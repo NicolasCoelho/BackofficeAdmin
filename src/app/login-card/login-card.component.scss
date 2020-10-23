@@ -1,3 +1,58 @@
+// a class responsible for father contain
 .loginContainer {
   display: flex;
+}
+
+// a class responsible for children contain left
+.loginContainer .left {
+  height: 100vh;
+  width: 70%;
+  background-image: url("./../../assets/bgLogin.png");
+  background-size: contain;
+  background-repeat: inherit;
+
+  //the media query activate on screen is larger 2559px
+  @media (min-width: 2559px) {
+    height: 100vh;
+    width: 70%;
+    background-image: url("./../../assets/bgLogin2560.png");
+    background-size: contain;
+    background-repeat: inherit;
+  }
+
+  //the media query is active when the screen is up to 1920px
+  @media (max-width: 1920px) {
+    height: 100vh;
+    width: 70%;
+    background-image: url("./../../assets/bgLogin1920.png");
+    background-size: contain;
+    background-repeat: inherit;
+  }
+
+  //the media query is active when the screen is up to 1440px
+  @media (max-width: 1440px) {
+    height: 100vh;
+    width: 60%;
+    background-image: url("./../../assets/bgLogin1440.png");
+    background-size: contain;
+    background-repeat: inherit;
+  }
+
+  //the media query is active when the screen is up to 1024px
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}
+
+//a class responsible for chidlren contain right
+.loginContainer .right {
+  height: 100vh;
+  width: 30%;
+  background: purple;
+
+  @media (max-width: 1024px) {
+    height: 100vh;
+    width: 100vw;
+    background: purple;
+  }
 }

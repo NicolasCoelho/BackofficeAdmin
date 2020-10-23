@@ -13,9 +13,7 @@ import { AuthGuard } from './_guards/authentication/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginCardComponent } from './login-card/login-card.component';
-import { LeftComponent } from './login-card/left/left.component';
-import { RightComponent } from './login-card/right/right.component';
-import { FormComponent } from './login-card/right/form/form.component';
+import { LoginFormComponent } from './login-card/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -23,20 +21,10 @@ import { FormComponent } from './login-card/right/form/form.component';
     LoginComponent,
     DashboardComponent,
     LoginCardComponent,
-    LeftComponent,
-    RightComponent,
-    FormComponent
+    LoginFormComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [
-    AuthGuard,
-    Authentication,
-    Ws
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [AuthGuard, Authentication, Ws],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
