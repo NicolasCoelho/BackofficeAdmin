@@ -42,7 +42,7 @@ export class Authentication {
     const data = this.getTokenData()
     try {
       const expDate = new Date(data.exp)
-      return ( Date.now() > expDate.getTime() )
+      return ( expDate.getTime() > Date.now() )
     } catch {
       return true
     }

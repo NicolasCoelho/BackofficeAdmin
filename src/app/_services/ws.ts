@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Authentication } from './authentication';
 
 @Injectable()
 export class Ws {
 
-  //public base_url = 'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
-  public base_url = 'http://localhost:3000';
+  public base_url = 'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
+  //public base_url = 'http://localhost:3000';
   public store_id = '6c6455ece193d4d2';
 
-  public headers = { headers: { authorization: null } }
+  public headers: HttpHeaders;
+  public options: Object;
 
   constructor(private http: HttpClient, private auth: Authentication) {
-    this.headers.headers.authorization = this.auth.getToken()
+  }
+
+  setHeaders(token=null) {
+    this.headers = new HttpHeaders({'Content-Type': 'application/json', 'authorization': token===null?'':token})
+    this.options = {headers: this.headers}
   }
 
   /**
@@ -35,6 +40,7 @@ export class Ws {
       .then(
         (response:any) => {
           this.auth.setToken(response.token)
+          this.setHeaders(response.token)
           return response
         }
       )
@@ -43,12 +49,13 @@ export class Ws {
   /**
    * Authenticate user
    */
-  authenticate(username, password): Promise<any> {
-    // TODO: Implemets axios interceptor to add headers automaticaly
-    return this.http.post(`${this.base_url}/auth`, { username, password }, this.headers).toPromise()
+  authenticate(user, pass): Promise<any> {
+    return this.http.post(`${this.base_url}/auth`, { username: user, password: pass }, this.options).toPromise()
       .then(
-        response => {
-          console.log(response)
+        (response:any) => {
+          this.setHeaders(response.token)
+          this.auth.setToken(response.token)
+          return response
         }
       )
   }

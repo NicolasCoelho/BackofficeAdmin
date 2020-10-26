@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { Authentication } from './_services/authentication';
 import { Ws } from './_services/ws';
@@ -21,7 +22,13 @@ import { LoginCardComponent } from './login-card/login-card.component';
     DashboardComponent,
     LoginCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [AuthGuard, Authentication, Ws],
   bootstrap: [AppComponent],
 })
