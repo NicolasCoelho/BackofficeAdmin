@@ -13,7 +13,6 @@ import { AuthGuard } from './_guards/authentication/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginCardComponent } from './login-card/login-card.component';
-import { LoginFormComponent } from './login-card/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { LoginFormComponent } from './login-card/login-form/login-form.component
     LoginComponent,
     DashboardComponent,
     LoginCardComponent,
-    LoginFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [AuthGuard, Authentication, Ws],
