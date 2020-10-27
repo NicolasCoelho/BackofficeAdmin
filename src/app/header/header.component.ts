@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Ws } from '../_services/ws';
 import {
   faList,
   faUsers,
@@ -26,12 +27,23 @@ export class HeaderComponent implements OnInit {
   public faExclamation = faExclamation;
 
   public name: string;
+  public obj = { version: '' };
+  public Amb = 'Mondial';
+  public systemStatus = 'Running';
 
-  constructor(private router: Router, private auth: Authentication) {
+  constructor(
+    private router: Router,
+    private auth: Authentication,
+    private ws: Ws
+  ) {
     this.name = this.auth.getTokenData().n;
+    //test
+    console.log(this.auth.getTokenData().s);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.ws.getHealth().then((r) => (this.obj.version = r.version));
+  }
 
   goTo(target) {
     this.router.navigate(['dashboard', target]);

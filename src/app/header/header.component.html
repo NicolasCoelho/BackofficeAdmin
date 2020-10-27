@@ -19,16 +19,16 @@
 
         <div class="msgBox btnInfoDispNone" id="btnInfo">
           <div class="oneLine">
-            <span class="systemInfoAtt">!</span>
-            o sistema está atualizado
+            <span class="systemInfoAtt">S</span>
+            <p>O sistema está {{ systemStatus }}</p>
           </div>
           <div class="twoLine">
             <span class="systemVersion">V</span>
-            Versão do Sistema:
+            <p>Versão do Sistema: {{ obj.version }}</p>
           </div>
           <div class="threeLine">
             <span class="systemAmbient">A</span>
-            Ambiente Sistema
+            <p>Ambiente Info: {{ Amb }}</p>
           </div>
         </div>
       </button>
