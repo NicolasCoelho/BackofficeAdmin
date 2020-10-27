@@ -6,7 +6,7 @@ export class Authentication {
   private token: string;
 
   constructor() {
-    this.token = localStorage.getItem('token')
+    this.token = localStorage.getItem('Token')
   }
 
   getToken() {
@@ -40,12 +40,7 @@ export class Authentication {
 
   isTokenExpired() {
     const data = this.getTokenData()
-    try {
-      const expDate = new Date(data.exp)
-      return ( expDate.getTime() > Date.now() )
-    } catch {
-      return true
-    }
+    return (Date.now().valueOf() / 1000) > data.exp
   }
 
   isEmptyTokenValid() {
@@ -56,5 +51,10 @@ export class Authentication {
   decode(token: string) {
     const data = JSON.parse(atob(token.split('.')[1]))
     return data
+  }
+
+  deleteToken() {
+    this.token = null
+    localStorage.removeItem('Token')
   }
 }

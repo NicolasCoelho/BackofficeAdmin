@@ -14,6 +14,7 @@ export class Ws {
   public options: Object;
 
   constructor(private http: HttpClient, private auth: Authentication) {
+    this.setHeaders(this.auth.getToken())
   }
 
   setHeaders(token=null) {

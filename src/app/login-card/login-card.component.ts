@@ -22,14 +22,18 @@ export class LoginCardComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    let getToken = !this.auth.hasToken()
+  }
 
+  ngAfterViewInit() {
     if (this.auth.hasToken()) {
       if(this.auth.isTokenExpired()) {
-        getToken = true
+        this.ws.getToken().then().catch(err => console.log(err))
+      } else {
+        this.router.navigate(['dashboard'])
       }
+    } else {
+      this.ws.getToken().then().catch(err => console.log(err))
     }
-    if(getToken) this.ws.getToken().then().catch(err => console.log(err))
   }
 
   login() {
