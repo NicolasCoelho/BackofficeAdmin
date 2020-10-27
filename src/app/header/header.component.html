@@ -2,13 +2,41 @@
   <nav class="row">
     <div class="col-6 menu">
       <button (click)="goTo('')"><fa-icon [icon]="faHome"></fa-icon></button>
-      <button (click)="goTo('enviroments')"><fa-icon [icon]="faCopy"></fa-icon>&nbsp; <span>Ambientes</span></button>
-      <button (click)="goTo('stores')"><fa-icon [icon]="faStore"></fa-icon>&nbsp; <span>Lojas</span> </button>
-      <button (click)="goTo('users')"><fa-icon [icon]="faUsers"></fa-icon>&nbsp; <span>Usuários</span> </button>
+      <button (click)="goTo('enviroments')">
+        <fa-icon [icon]="faCopy"></fa-icon>&nbsp; <span>Ambientes</span>
+      </button>
+      <button (click)="goTo('stores')">
+        <fa-icon [icon]="faStore"></fa-icon>&nbsp; <span>Lojas</span>
+      </button>
+      <button (click)="goTo('users')">
+        <fa-icon [icon]="faUsers"></fa-icon>&nbsp; <span>Usuários</span>
+      </button>
     </div>
+
     <div class="col-6 profile">
-      <span>{{ name }}</span>&nbsp;
-      <button (click)="logOut()" title="Sair"><fa-icon [icon]="faSingOut"></fa-icon></button>
+      <button (click)="callCard()" style="margin-right: 2%; position: relative">
+        <fa-icon [icon]="faExclamation"></fa-icon>
+
+        <div class="msgBox btnInfoDispNone" id="btnInfo">
+          <div class="oneLine">
+            <span class="systemInfoAtt">!</span>
+            o sistema está atualizado
+          </div>
+          <div class="twoLine">
+            <span class="systemVersion">V</span>
+            Versão do Sistema:
+          </div>
+          <div class="threeLine">
+            <span class="systemAmbient">A</span>
+            Ambiente Sistema
+          </div>
+        </div>
+      </button>
+      <span>{{ name }}</span
+      >&nbsp;
+      <button (click)="logOut()" title="Sair">
+        <fa-icon [icon]="faSingOut"></fa-icon>
+      </button>
     </div>
   </nav>
 </header>

@@ -4,6 +4,59 @@ header {
 
   button {
     margin: 0px 5px;
+    outline: none;
+  }
+
+  .msgBox {
+    top: 60px;
+    left: -110px;
+    width: 257px;
+    height: 122px;
+    display: flex;
+    position: absolute;
+    border-radius: 4px;
+    background: #ededed;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 0px 20px;
+
+    .oneLine,
+    .twoLine,
+    .threeLine {
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 10px;
+    }
+
+    .systemInfoAtt {
+      background: red;
+      padding: 0 10px;
+      border-radius: 4px;
+    }
+
+    .systemVersion {
+      background: yellow;
+      padding: 0 10px;
+      border-radius: 4px;
+    }
+
+    .systemAmbient {
+      background: blue;
+      padding: 0 10px;
+      border-radius: 4px;
+    }
+  }
+
+  .msgBox::hover {
+    color: black;
+  }
+
+  .btnInfoDispNone {
+    display: none;
   }
 
   nav {
