@@ -30,6 +30,7 @@ export class HeaderComponent implements OnInit {
   public obj = { version: '' };
   public Amb = 'Mondial';
   public systemStatus = 'Running';
+  public ValueCallApi = null;
 
   constructor(
     private router: Router,
@@ -40,9 +41,9 @@ export class HeaderComponent implements OnInit {
     //test
     // console.log(this.auth.getTokenData().s);
 
-    this.XlHz = this.ws.getHealth().then(function (data) {
+    this.ValueCallApi = this.ws.getHealth().then(function (data) {
       Promise.resolve(data);
-      console.log('Fazer a logica de alterar a cor do Btn aqui', data.status);
+      console.log('Fazer a logica de alterar a cor do Btn', data.status);
     });
     console.log(this.ws.getHealth());
   }
