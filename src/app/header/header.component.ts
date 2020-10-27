@@ -38,7 +38,13 @@ export class HeaderComponent implements OnInit {
   ) {
     this.name = this.auth.getTokenData().n;
     //test
-    console.log(this.auth.getTokenData().s);
+    // console.log(this.auth.getTokenData().s);
+
+    this.XlHz = this.ws.getHealth().then(function (data) {
+      Promise.resolve(data);
+      console.log('Fazer a logica de alterar a cor do Btn aqui', data.status);
+    });
+    console.log(this.ws.getHealth());
   }
 
   ngOnInit(): void {
