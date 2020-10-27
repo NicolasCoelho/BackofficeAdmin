@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Ws } from '../../_services/ws'
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public obj = {version: ''}
+
+  constructor(private ws: Ws) { }
 
   ngOnInit(): void {
+    //
+    this.ws.getHealth().then(r=> this.obj.version = r.version)
   }
 
 }
