@@ -21,6 +21,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginCardComponent } from './login-card/login-card.component';
 import { HeaderComponent } from './header/header.component';
+import { EnviromentsComponent } from './dashboard/enviroments/enviroments.component';
+import { StoresComponent } from './dashboard/stores/stores.component';
+import { UsersComponent } from './dashboard/users/users.component';
+import { HomeComponent } from './dashboard/home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { HeaderComponent } from './header/header.component';
     DashboardComponent,
     LoginCardComponent,
     HeaderComponent,
+    EnviromentsComponent,
+    StoresComponent,
+    UsersComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

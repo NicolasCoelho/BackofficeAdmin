@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goTo(target) {
-    this.router.navigate([target])
+    this.router.navigate(['dashboard', target])
   }
 
   logOut() {

@@ -1,13 +1,13 @@
 <header class="container-fluid">
   <nav class="row">
     <div class="col-6 menu">
-      <button (click)="goTo('dashboard')"><fa-icon [icon]="faHome"></fa-icon></button>
-      <button><fa-icon [icon]="faCopy"></fa-icon>&nbsp;&nbsp; <span>Ambientes</span></button>
-      <button><fa-icon [icon]="faStore"></fa-icon>&nbsp;&nbsp; <span>Lojas</span> </button>
-      <button><fa-icon [icon]="faUsers"></fa-icon>&nbsp;&nbsp; <span>Usuários</span> </button>
+      <button (click)="goTo('')"><fa-icon [icon]="faHome"></fa-icon></button>
+      <button (click)="goTo('enviroments')"><fa-icon [icon]="faCopy"></fa-icon>&nbsp; <span>Ambientes</span></button>
+      <button (click)="goTo('stores')"><fa-icon [icon]="faStore"></fa-icon>&nbsp; <span>Lojas</span> </button>
+      <button (click)="goTo('users')"><fa-icon [icon]="faUsers"></fa-icon>&nbsp; <span>Usuários</span> </button>
     </div>
     <div class="col-6 profile">
-      <span>{{ name }}</span>&nbsp;&nbsp;
+      <span>{{ name }}</span>&nbsp;
       <button (click)="logOut()" title="Sair"><fa-icon [icon]="faSingOut"></fa-icon></button>
     </div>
   </nav>
