@@ -11,6 +11,9 @@ import {
   faExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { Authentication } from '../_services/authentication';
+import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/template';
+
+import { Health } from '../_models/health';
 
 @Component({
   selector: 'app-header',
@@ -27,9 +30,7 @@ export class HeaderComponent implements OnInit {
   public faExclamation = faExclamation;
 
   public name: string;
-  public obj = { version: '' };
-  public Amb = 'Mondial';
-  public systemStatus = 'Running';
+  public health: Health = new Health();
   public ValueCallApi = null;
 
   constructor(
@@ -38,18 +39,13 @@ export class HeaderComponent implements OnInit {
     private ws: Ws
   ) {
     this.name = this.auth.getTokenData().n;
-    //test
-    // console.log(this.auth.getTokenData().s);
-
-    this.ValueCallApi = this.ws.getHealth().then(function (data) {
-      Promise.resolve(data);
-      console.log('Fazer a logica de alterar a cor do Btn', data.status);
-    });
-    console.log(this.ws.getHealth());
   }
 
   ngOnInit(): void {
-    this.ws.getHealth().then((r) => (this.obj.version = r.version));
+    this.ws.getHealth().then(
+      (response) => {
+        Object.assign(this.health, response);
+      });
   }
 
   goTo(target) {

@@ -16,19 +16,18 @@
     <div class="col-6 profile">
       <button (click)="callCard()" style="margin-right: 2%; position: relative">
         <fa-icon [icon]="faExclamation"></fa-icon>
-
         <div class="msgBox btnInfoDispNone" id="btnInfo">
           <div class="oneLine">
             <span class="systemInfoAtt">S</span>
-            <p>O sistema está {{ systemStatus }}</p>
+            <p>O sistema está {{ health.status }}</p>
           </div>
           <div class="twoLine">
             <span class="systemVersion">V</span>
-            <p>Versão do Sistema: {{ obj.version }}</p>
+            <p>Versão do Sistema: {{ health.version }}</p>
           </div>
           <div class="threeLine">
             <span class="systemAmbient">A</span>
-            <p>Ambiente Info: {{ Amb }}</p>
+            <p>Ambiente Info: {{ health.node_env }}</p>
           </div>
         </div>
       </button>

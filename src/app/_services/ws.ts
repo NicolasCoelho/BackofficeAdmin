@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Authentication } from './authentication';
 
+import { Health } from '../_models/health';
+import { Enviroment } from '../_models/enviroments';
+
 @Injectable()
 export class Ws {
 
@@ -25,10 +28,10 @@ export class Ws {
   /**
    * Get infos about system health
    */
-  getHealth(): Promise<any> {
+  getHealth(): Promise<Health> {
     return this.http.get(`${this.base_url}/systemhealth`).toPromise()
       .then(
-        response => response
+        (response:Health) => response
       )
   }
 
@@ -59,6 +62,18 @@ export class Ws {
           return response
         }
       )
+  }
+
+  /**
+   * Get Enviroments
+   */
+  getEnviroments(): Promise<Enviroment[]> {
+    return this.http.get(`${this.base_url}/enviroments`, this.options).toPromise()
+    .then(
+      (response: Enviroment[]) => {
+        return response
+      }
+    )
   }
 
 }
