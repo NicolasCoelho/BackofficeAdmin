@@ -6,6 +6,7 @@ import { Authentication } from './authentication';
 import { Health } from '../_models/health';
 import { Enviroment } from '../_models/enviroments';
 import { Store } from '../_models/stores';
+import { User } from '../_models/users';
 
 @Injectable()
 export class Ws {
@@ -92,6 +93,21 @@ export class Ws {
       .get(`${this.base_url}/stores`, this.options)
       .toPromise()
       .then((response: Store[]) => {
+        return response;
+      });
+  }
+
+  /**
+   * Get Users
+   *
+   * é uma função tipada que retorna uma Promise no escopo de User em forma de Array
+   * e se retornar algo ele pega o then e retorna
+   */
+  getUsers(): Promise<User[]> {
+    return this.http
+      .get(`${this.base_url}/users`, this.options)
+      .toPromise()
+      .then((response: User[]) => {
         return response;
       });
   }

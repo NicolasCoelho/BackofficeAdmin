@@ -1,1 +1,15 @@
-<p>users works!</p>
+<p>home works!</p>
+<table>
+  <thead>
+    <th>Id:</th>
+    <th>Name:</th>
+    <th>Status:</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of users">
+      <td>{{ item.name }}</td>
+      <td>{{ item.id }}</td>
+      <td>{{ item.status }}</td>
+    </tr>
+  </tbody>
+</table>
