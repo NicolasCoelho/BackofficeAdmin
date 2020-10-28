@@ -1,1 +1,21 @@
-<p>sotres works!</p>
+<p>home works!</p>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Id</th>
+    <th>Status</th>
+    <th>Enviroment ID</th>
+    <th>url</th>
+    <th>updatedAt</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of stores">
+      <td>{{ item.name }}</td>
+      <td>{{ item.id }}</td>
+      <td>{{ item.status }}</td>
+      <td>{{ item.enviroment_id }}</td>
+      <td>{{ item.url }}</td>
+      <td>{{ item.updatedAt }}</td>
+    </tr>
+  </tbody>
+</table>
