@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ws } from '../../_services/ws';
 
 import { Enviroment } from '../../_models/enviroments';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enviroments',
@@ -11,7 +12,7 @@ import { Enviroment } from '../../_models/enviroments';
 export class EnviromentsComponent implements OnInit {
   public enviroments: Array<Enviroment> = [];
 
-  constructor(private ws: Ws) {}
+  constructor(private ws: Ws, private router: Router) {}
 
   ngOnInit(): void {
     this.ws.getEnviroments().then((response) => {
@@ -26,5 +27,9 @@ export class EnviromentsComponent implements OnInit {
       teste.created_at = '2020-10-20T16:56:33.000Z';
       this.enviroments.push(teste);
     });
+  }
+
+  goTo(target) {
+    this.router.navigate(['dashboard','enviroments',target])
   }
 }

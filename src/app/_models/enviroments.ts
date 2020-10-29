@@ -6,5 +6,5 @@ export class Enviroment {
   public url: string;
   public password: string;
   public created_at: string;
-  public deleted_at: string;
+  public updated_at: string;
 }

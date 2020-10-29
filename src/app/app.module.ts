@@ -25,6 +25,7 @@ import { EnviromentsComponent } from './dashboard/enviroments/enviroments.compon
 import { StoresComponent } from './dashboard/stores/stores.component';
 import { UsersComponent } from './dashboard/users/users.component';
 import { HomeComponent } from './dashboard/home/home.component';
+import { RegisterEnviromentComponent } from './dashboard/register-enviroment/register-enviroment.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HomeComponent } from './dashboard/home/home.component';
     StoresComponent,
     UsersComponent,
     HomeComponent,
+    RegisterEnviromentComponent,
   ],
   imports: [
     BrowserModule,
