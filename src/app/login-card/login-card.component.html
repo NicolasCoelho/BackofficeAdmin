@@ -1,13 +1,21 @@
 <div class="loginCardWrapper">
-  <form [formGroup]="loginFormGroup" (ngSubmit)="login();">
+  <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
     <img src="./../../assets/LogoDivulgadores.png" alt="Divulgadores Mondial" />
     <h2>Informe seus dados de Acesso</h2>
-    <input type="text" name="username" formControlName="username" placeholder="Digite seu Email" required="true" />
-    <input formControlName="password"
+    <input
+      type="text"
+      name="username"
+      formControlName="username"
+      placeholder="Digite seu Email"
+      required="true"
+    />
+    <input
+      formControlName="password"
       type="password"
       name="password"
       placeholder="Digite sua Senha"
       required="true"
+      id="inputPassword"
     />
     <button type="submit">Enviar</button>
   </form>

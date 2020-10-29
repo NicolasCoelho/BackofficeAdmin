@@ -20,7 +20,6 @@ export class UsersComponent implements OnInit {
       teste.name = 'Moisés Vilas Boas';
       teste.status = 1;
       teste.created_at = '2020-10-20T16:56:33.000Z';
-
       this.users.push(teste);
     });
   }
