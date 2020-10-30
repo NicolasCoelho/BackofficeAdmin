@@ -10,7 +10,7 @@ export class UserRequirements {
   public birt_location: true;
   public marital_status: true;
   public gender: true;
-  public literacy: string;
+  public literacy: true;
   public cep: true;
   public adress: true;
   public adress_number: true;
