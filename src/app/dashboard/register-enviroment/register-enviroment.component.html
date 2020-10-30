@@ -1,16 +1,22 @@
-<div class="container">
-  <form [formGroup]="enviromentForm" (ngSubmit)="register()">
-    <input placeholder="Nome"  type="text" formControlName="name">
-    <select formControlName="type">
-      <option value="" disabled selected>Tipo</option>
-      <option *ngFor="let opt of types" value="{{ opt.value }}">{{ opt.viewValue }}</option>
-    </select>
-    <select formControlName="status">
-      <option value="" disabled selected>Status</option>
-      <option *ngFor="let opt of status" value="{{ opt.value }}">{{ opt.viewValue }}</option>
-    </select>
-    <input placeholder="Url" type="text" formControlName="url">
-    <input placeholder="Password" type="text" formControlName="password">
-    <button type="submit">Salvar</button>
-  </form>
+<div class="registerEnviromentContainer">
+  <div class="container">
+    <form [formGroup]="enviromentForm" (ngSubmit)="register()">
+      <input placeholder="Nome" type="text" formControlName="name" />
+      <select formControlName="type">
+        <option value="" disabled selected>Tipo</option>
+        <option *ngFor="let opt of types" value="{{ opt.value }}">
+          {{ opt.viewValue }}
+        </option>
+      </select>
+      <select formControlName="status">
+        <option value="" disabled selected>Status</option>
+        <option *ngFor="let opt of status" value="{{ opt.value }}">
+          {{ opt.viewValue }}
+        </option>
+      </select>
+      <input placeholder="Url" type="text" formControlName="url" />
+      <input placeholder="Password" type="text" formControlName="password" />
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
 </div>
