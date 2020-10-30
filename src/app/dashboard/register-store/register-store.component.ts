@@ -19,7 +19,6 @@ import { Enviroment } from 'src/app/_models/enviroments';
   styleUrls: ['./register-store.component.scss'],
 })
 export class RegisterStoreComponent implements OnInit {
-
   public storeForm: FormGroup;
   public status = [
     { value: 1, viewValue: 'Ativo' },
@@ -35,10 +34,10 @@ export class RegisterStoreComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    this.ws.getEnviroments().then(
-      r => Object.assign(this.enviroments, r)
-    ).catch(e=> console.log(e))
+    this.ws
+      .getEnviroments()
+      .then((r) => Object.assign(this.enviroments, r))
+      .catch((e) => console.log(e));
 
     this.storeForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -50,7 +49,37 @@ export class RegisterStoreComponent implements OnInit {
       protected_register: ['', Validators.required],
       comission_type: ['', Validators.required],
       comission_value: ['', Validators.required],
-      phone_1: ['', Validators.required]
+      phone_1: ['', Validators.required],
+      phone_2: ['', Validators.required],
+      cpf_cnpj: ['', Validators.required],
+      pis: ['', Validators.required],
+      rg: ['', Validators.required],
+      birthdate: ['', Validators.required],
+      nationality: ['', Validators.required],
+      birt_location: ['', Validators.required],
+      marital_status: ['', Validators.required],
+      gender: ['', Validators.required],
+      literacy: ['', Validators.required],
+      cep: ['', Validators.required],
+      adress: ['', Validators.required],
+      adress_number: ['', Validators.required],
+      neighborhood: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      bank: ['', Validators.required],
+      agency: ['', Validators.required],
+      account: ['', Validators.required],
+      account_owner: ['', Validators.required],
+      account_ownerCpf: ['', Validators.required],
+      received: ['', Validators.required],
+      completed: ['', Validators.required],
+      canceled: ['', Validators.required],
+      content: ['', Validators.required],
+      number: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      // name: ['', Validators.required],
+      // status: ['', Validators.required],
     });
   }
 

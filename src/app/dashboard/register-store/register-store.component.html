@@ -203,10 +203,29 @@
     </select>
 
     <h3>Status de venda</h3>
+    <input type="number" placeholder="recebido" formControlName="received" />
+    <input type="number" placeholder="completed" formControlName="completed" />
+    <input type="number" placeholder="canceled" formControlName="canceled" />
 
     <h3>Contrato</h3>
+    <input type="text" placeholder="conteúdo" formControlName="content" />
+    <input type="number" placeholder="status" formControlName="status" />
 
     <h3>Usuário padrão</h3>
+
+    <input type="text" placeholder="nome do usuário" formControlName="name" />
+    <input type="text" placeholder="email do usuário" formControlName="email" />
+    <input
+      type="text"
+      placeholder="senha do usuário"
+      formControlName="password"
+    />
+    <input
+      type="number"
+      placeholder="status do usuário"
+      formControlName="status"
+    />
+    <input type="number" placeholder="Tipo" formControlName="type" />
 
     <button type="submit">Salvar</button>
   </form>
