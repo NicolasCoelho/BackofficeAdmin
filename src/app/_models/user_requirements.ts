@@ -1,4 +1,5 @@
-export class user_requirements {
+export class UserRequirements {
+  public id: number;
   public phone_1: true;
   public phone_2: false;
   public cpf_cnpj: true;
@@ -21,7 +22,6 @@ export class user_requirements {
   public account: true;
   public account_owner: true;
   public account_ownerCpf: true;
-
   public createdAt: string;
   public updatedAt: string;
 }

@@ -6,7 +6,7 @@ import { Authentication } from './authentication';
 import { Health } from '../_models/health';
 import { Enviroment } from '../_models/enviroments';
 import { Store } from '../_models/stores';
-import { User } from '../_models/users';
+import { User } from '../_models/user';
 
 @Injectable()
 export class Ws {

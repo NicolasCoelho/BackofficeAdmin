@@ -1,8 +1,8 @@
-export class sale_Status {
-  public received: 12;
-  public complete: 13;
-  public canceled: 20;
-
+export class SaleStatus {
+  public id: number;
+  public received: number;
+  public complete: number;
+  public canceled: number;
   public createdAt: string;
   public updatedAt: string;
 }

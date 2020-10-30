@@ -2,14 +2,59 @@
   <h2>Preencha o Formulário e clique em Salvar!</h2>
   <form [formGroup]="storeForm" (ngSubmit)="register()">
     <input placeholder="Nome" type="text" formControlName="name" />
-    <input placeholder="Id" type="text" formControlName="id" />
+
+    <input placeholder="Url" type="text" formControlName="url" />
+
+    <input placeholder="ID do Site" type="text" formControlName="website_id" />
+
+    <select formControlName="enviroment_id">
+      <option value="" disabled selected>Ambiente</option>
+      <option *ngFor="let opt of enviroments" value="{{ opt.id }}">
+        {{ opt.name }}
+      </option>
+    </select>
+
     <select formControlName="status">
       <option value="" disabled selected>Status</option>
       <option *ngFor="let opt of status" value="{{ opt.value }}">
         {{ opt.viewValue }}
       </option>
     </select>
-    <input placeholder="Url" type="text" formControlName="url" />
+
+    <select name="" id="" formControlName="allow_register">
+      <option value="" disabled selected>Permitir Registro</option>
+      <option value="true">Sim</option>
+      <option value="false">Não</option>
+    </select>
+
+    <select name="" id="" formControlName="protected_register">
+      <option value="" disabled selected>Registro protegido</option>
+      <option value="true">Sim</option>
+      <option value="false">Não</option>
+    </select>
+
+    <select name="" id="" formControlName="comission_type">
+      <option value="" disabled selected>Tipo de comissão</option>
+      <option value=1>Procentagem</option>
+      <option value=2>Valor Fixo</option>
+    </select>
+
+    <input placeholder="Valor da comissão" type="text" formControlName="comission_type" />
+
+    <h3>Requisitos de usuários</h3>
+
+    <label for="">Telefone 1</label>
+    <select name="" id="" formControlName="phone_1">
+      <option value="" disabled selected>Selecione a opçao</option>
+      <option value=true></option>
+      <option value=false></option>
+    </select>
+
+    <h3>Status de venda</h3>
+
+    <h3>Contrato</h3>
+
+    <h3>Usuário padrão</h3>
 
     <button type="submit">Salvar</button>
   </form>

@@ -1,7 +1,7 @@
-export class contract {
-  public content: 'Usuário teste admin';
-  public status: 1;
-
+export class Contract {
+  public id: number;
+  public content: string;
+  public status: number;
   public createdAt: string;
   public updatedAt: string;
 }

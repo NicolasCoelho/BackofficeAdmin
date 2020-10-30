@@ -1,9 +1,10 @@
-export class users {
-  public name: 'Usuário teste admin';
-  public email: 'teste.teste@gmail.com';
-  public password: 'TesteDeSenha';
-  public status: 1;
-  public type: 3;
+export class User {
+  public id: number;
+  public name: string;
+  public email: string;
+  public password: string;
+  public status: number;
+  public type: number;
   public createdAt: string;
   public updatedAt: string;
 }
