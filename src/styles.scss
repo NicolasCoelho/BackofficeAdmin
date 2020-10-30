@@ -18,9 +18,12 @@ body {
   .enviromentsContainer,
   .homeContainer,
   .userContainer,
-  .storesContainer {
+  .storesContainer,
+  .registerEnviromentContainer,
+  .registerStoreContainer {
     height: 91vh;
-    background: #f5f6fa;
+    // background: #f5f6fa;
+    background: #e3e3e3;
     padding: 0px 2%;
   }
 
@@ -49,8 +52,14 @@ body {
 
   .dashboardBtnCreate {
     margin: 1% 0;
+    background: #d91676;
+    transition: 0.9s;
+
+    color: white;
     &:hover {
       color: white;
+      background: #ae00b4;
+      // border: solid 3px #d91676;
     }
   }
 }
