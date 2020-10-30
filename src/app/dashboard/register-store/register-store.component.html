@@ -1,0 +1,21 @@
+<div class="container">
+  <form [formGroup]="storeForm" (ngSubmit)="register()">
+    <input placeholder="Nome" type="text" formControlName="name" />
+    <input placeholder="Id" type="text" formControlName="id" />
+    <!-- <select formControlName="type">
+      <option value="" disabled selected>Tipo</option>
+      <option *ngFor="let opt of types" value="{{ opt.value }}">
+        {{ opt.viewValue }}
+      </option>
+    </select> -->
+    <select formControlName="status">
+      <option value="" disabled selected>Status</option>
+      <option *ngFor="let opt of status" value="{{ opt.value }}">
+        {{ opt.viewValue }}
+      </option>
+    </select>
+    <input placeholder="Url" type="text" formControlName="url" />
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>

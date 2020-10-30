@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ws } from '../../_services/ws';
 import { Store } from '../../_models/stores';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stores',
@@ -9,7 +10,7 @@ import { Store } from '../../_models/stores';
 })
 export class StoresComponent implements OnInit {
   public stores: Array<Store> = [];
-  constructor(private ws: Ws) {}
+  constructor(private ws: Ws, private router: Router) {}
 
   ngOnInit(): void {
     this.ws.getStores().then((data) => {
@@ -24,5 +25,9 @@ export class StoresComponent implements OnInit {
       teste.updatedAt = '2020-10-20T16:56:33.000Z';
       this.stores.push(teste);
     });
+  }
+
+  goTo(target) {
+    this.router.navigate(['dashboard', 'stores', target]);
   }
 }

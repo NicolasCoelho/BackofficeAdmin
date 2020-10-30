@@ -10,8 +10,9 @@ import { User } from '../_models/users';
 
 @Injectable()
 export class Ws {
-  //public base_url = 'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
-  public base_url = 'http://localhost:3000';
+  public base_url =
+    'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
+  // public base_url = 'http://localhost:3000';
   public store_id = '6c6455ece193d4d2';
 
   public headers: HttpHeaders;
@@ -86,9 +87,9 @@ export class Ws {
 
   createEnviroment(payload): Promise<Enviroment> {
     return this.http
-    .post(`${this.base_url}/enviroment`, payload, this.options)
-    .toPromise()
-    .then( (response: Enviroment) => response )
+      .post(`${this.base_url}/enviroment`, payload, this.options)
+      .toPromise()
+      .then((response: Enviroment) => response);
   }
 
   /**
@@ -101,6 +102,13 @@ export class Ws {
       .then((response: Store[]) => {
         return response;
       });
+  }
+
+  createStore(payload): Promise<Store> {
+    return this.http
+      .post(`${this.base_url}/store`, payload, this.options)
+      .toPromise()
+      .then((response: Store) => response);
   }
 
   /**

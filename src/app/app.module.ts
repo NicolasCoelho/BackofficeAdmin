@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Comunity Modules
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Services
 import { Authentication } from './_services/authentication';
@@ -26,6 +26,7 @@ import { StoresComponent } from './dashboard/stores/stores.component';
 import { UsersComponent } from './dashboard/users/users.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { RegisterEnviromentComponent } from './dashboard/register-enviroment/register-enviroment.component';
+import { RegisterStoreComponent } from './dashboard/register-store/register-store.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { RegisterEnviromentComponent } from './dashboard/register-enviroment/reg
     UsersComponent,
     HomeComponent,
     RegisterEnviromentComponent,
+    RegisterStoreComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ import { RegisterEnviromentComponent } from './dashboard/register-enviroment/reg
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [AuthGuard, Authentication, Ws],
   bootstrap: [AppComponent],
