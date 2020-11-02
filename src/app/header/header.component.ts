@@ -59,6 +59,6 @@ export class HeaderComponent implements OnInit {
 
   callCard() {
     let btn = document.querySelector('#btnInfo');
-    btn.classList.remove('btnInfoDispNone');
+    btn.classList.toggle('btnInfoDispNone');
   }
 }

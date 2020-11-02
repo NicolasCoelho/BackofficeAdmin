@@ -14,27 +14,21 @@
     </div>
 
     <div class="col-6 profile">
-      <button (click)="callCard()" style="margin-right: 2%; position: relative">
+      <button (mouseover)="callCard()" (mouseout)="callCard()" class="circlebutton" style="margin-right: 2%; position: relative">
         <fa-icon [icon]="faExclamation"></fa-icon>
         <div class="msgBox btnInfoDispNone" id="btnInfo">
           <div class="oneLine">
-            <span class="systemInfoAtt">S</span>
-            <p>O sistema está {{ health.status }}</p>
+            <p>Status {{ health.status }}</p>
           </div>
           <div class="twoLine">
-            <span class="systemVersion">V</span>
-            <p>Versão do Sistema: {{ health.version }}</p>
+            <p>Versão: {{ health.version }}</p>
           </div>
           <div class="threeLine">
-            <span class="systemAmbient">A</span>
-            <p>Ambiente Info: {{ health.node_env }}</p>
+            <p>Ambiente: {{ health.node_env }}</p>
           </div>
         </div>
       </button>
-      <span>
-        <span style="font-weight: bold">Bem vindo de volta</span>
-        {{ name }} </span
-      >&nbsp;
+      <span>{{ name }}</span>&nbsp;
       <button (click)="logOut()" title="Sair">
         <fa-icon [icon]="faSingOut"></fa-icon>
       </button>

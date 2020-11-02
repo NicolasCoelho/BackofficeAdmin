@@ -111,6 +111,12 @@ export class Ws {
       .then((response: Store) => response);
   }
 
+  createStoreFull(payload): Promise<any> {
+    return this.http
+      .post(`${this.base_url}/store/full`, payload, this.options)
+      .toPromise()
+  }
+
   /**
    * Get Users
    *

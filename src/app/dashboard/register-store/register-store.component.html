@@ -1,232 +1,189 @@
-<div class="registerStoreContainer">
-  <h2>Preencha o Formulário e clique em Salvar!</h2>
-  <form [formGroup]="storeForm" (ngSubmit)="register()">
-    <input placeholder="Nome" type="text" formControlName="name" />
+<form [formGroup]="storeForm" (ngSubmit)="register()">
+  <div class="submit-container">
+    <button type="submit" class="btnCreate">Salvar</button>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="input-section store">
+        <h3>Loja</h3>
+        <input placeholder="Nome" type="text" formControlName="storeName" />
 
-    <input placeholder="Url" type="text" formControlName="url" />
+        <input placeholder="Url" type="text" formControlName="storeUrl" />
 
-    <input placeholder="ID do Site" type="text" formControlName="website_id" />
+        <input placeholder="ID do Site" type="text" formControlName="storeWebsite" />
 
-    <select formControlName="enviroment_id">
-      <option value="" disabled selected>Ambiente</option>
-      <option *ngFor="let opt of enviroments" value="{{ opt.id }}">
-        {{ opt.name }}
-      </option>
-    </select>
+        <select formControlName="storeEnv">
+          <option value="" disabled selected>Ambiente</option>
+          <option *ngFor="let opt of enviroments" value="{{ opt.id }}">
+            {{ opt.name }}
+          </option>
+        </select>
 
-    <select formControlName="status">
-      <option value="" disabled selected>Status</option>
-      <option *ngFor="let opt of status" value="{{ opt.value }}">
-        {{ opt.viewValue }}
-      </option>
-    </select>
+        <select formControlName="storeStatus">
+          <option value="" disabled selected>Status</option>
+          <option *ngFor="let opt of status" value="{{ opt.value }}">
+            {{ opt.viewValue }}
+          </option>
+        </select>
 
-    <select name="" id="" formControlName="allow_register">
-      <option value="" disabled selected>Permitir Registro</option>
-      <option value="true">Sim</option>
-      <option value="false">Não</option>
-    </select>
+        <select name="" id="" formControlName="storeAllowRegister">
+          <option value="" disabled selected>Permitir Registro</option>
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
 
-    <select name="" id="" formControlName="protected_register">
-      <option value="" disabled selected>Registro protegido</option>
-      <option value="true">Sim</option>
-      <option value="false">Não</option>
-    </select>
+        <select name="" id="" formControlName="storeProtectedRegister">
+          <option value="" disabled selected>Registro protegido</option>
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
 
-    <select name="" id="" formControlName="comission_type">
-      <option value="" disabled selected>Tipo de comissão</option>
-      <option value="1">Procentagem</option>
-      <option value="2">Valor Fixo</option>
-    </select>
+        <select name="" id="" formControlName="storeComissionType">
+          <option value="" disabled selected>Tipo de comissão</option>
+          <option value="1">Procentagem</option>
+          <option value="2">Valor Fixo</option>
+        </select>
 
-    <input
-      placeholder="Valor da comissão"
-      type="text"
-      formControlName="comission_type"
-    />
+        <input placeholder="Valor da comissão" type="text" formControlName="storeComissionValue"/>
+      </div>
+      <div class="input-section status">
+        <h3>Status de venda</h3>
+        <input type="number" placeholder="recebido" formControlName="saleReceived" />
+        <input type="number" placeholder="completed" formControlName="saleCompleted" />
+        <input type="number" placeholder="canceled" formControlName="saleCanceled" />
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="input-section requirements">
+        <h3>Requisitos de usuários</h3>
+        <div class="row">
+          <div class="col-6">
+            <label for="reqPhone1">
+              <input type="checkbox" id="reqPhone1" formControlName="reqPhone1" value="true">
+              Telefone 1
+            </label>
 
-    <h3>Requisitos de usuários</h3>
+            <label for="reqPhone2">
+              <input type="checkbox" id="reqPhone2" formControlName="reqPhone2" value="true">
+              Telefone 2
+            </label>
 
-    <label for="">Telefone 1</label>
+            <label for="reqCpfCnpj">
+              <input type="checkbox" id="reqCpfCnpj" formControlName="reqCpfCnpj" value="true">
+              CPF OU CPNJ
+            </label>
 
-    <select name="" id="" formControlName="phone_1">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqPis">
+              <input type="checkbox" id="reqPis" formControlName="reqPis" value="true">
+              Pis
+            </label>
 
-    <label for="">Telefone 2</label>
-    <select name="" id="" formControlName="phone_2">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqRg">
+              <input type="checkbox" id="reqRg" formControlName="reqRg" value="true">
+              Rg
+            </label>
+            <label for="reqBirthDate">
+              <input type="checkbox" id="reqBirthDate" formControlName="reqBirthDate" value="true">
+              Data de Aniversário
+            </label>
 
-    <label for="">CPF OU CPNJ</label>
-    <select name="" id="" formControlName="cpf_cnpj">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqNationality">
+              <input type="checkbox" id="reqNationality" formControlName="reqNationality" value="true">
+              Nacionalidade
+            </label>
 
-    <label for="">Pis</label>
-    <select name="" id="" formControlName="pis">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqBirthLocation">
+              <input type="checkbox" id="reqBirthLocation" formControlName="reqBirthLocation" value="true">
+              Local de Nascimento
+            </label>
+            <label for="reqMaritalStatus">
+              <input type="checkbox" id="reqMaritalStatus" formControlName="reqMaritalStatus" value="true">
+              Estado civil
+            </label>
 
-    <label for="">Rg</label>
-    <select name="" id="" formControlName="rg">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqGender">
+              <input type="checkbox" id="reqGender" formControlName="reqGender" value="true">
+              Gênero
+            </label>
 
-    <label for="">Data de Aniversário</label>
-    <select name="" id="" formControlName="birthdate">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqLiteracy">
+              <input type="checkbox" id="reqLiteracy" formControlName="reqLiteracy" value="true">
+              Literacy
+            </label>
+          </div>
+          <div class="col-6">
+            <label for="reqCep">
+              <input type="checkbox" id="reqCep" formControlName="reqCep" value="true">
+              Cep
+            </label>
 
-    <label for="">Nacionalidade</label>
-    <select name="" id="" formControlName="nationality">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqAdress">
+              <input type="checkbox" id="reqAdress" formControlName="reqAdress" value="true">
+              Endereço
+            </label>
 
-    <label for="">Local de Nascimento</label>
-    <select name="" id="" formControlName="birt_location">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqAdressNumber">
+              <input type="checkbox" id="reqAdressNumber" formControlName="reqAdressNumber" value="true">
+              Número da residencia
+            </label>
 
-    <label for="">Status de Marital</label>
-    <select name="" id="" formControlName="marital_status">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqNeighborhood">
+              <input type="checkbox" id="reqNeighborhood" formControlName="reqNeighborhood" value="true">
+              Bairro
+            </label>
 
-    <label for="">Gender</label>
-    <select name="" id="" formControlName="gender">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqCity">
+              <input type="checkbox" id="reqCity" formControlName="reqCity" value="true">
+              Cidade
+            </label>
 
-    <label for="">literacy</label>
-    <select name="" id="" formControlName="literacy">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqState">
+              <input type="checkbox" id="reqState" formControlName="reqState" value="true">
+              Estado
+            </label>
 
-    <label for="">Cep</label>
-    <select name="" id="" formControlName="cep">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqBank">
+              <input type="checkbox" id="reqBank" formControlName="reqBank" value="true">
+              Banco
+            </label>
 
-    <label for="">Endereço</label>
-    <select name="" id="" formControlName="adress">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqAgency">
+              <input type="checkbox" id="reqAgency" formControlName="reqAgency" value="true">
+              Agência
+            </label>
 
-    <label for="">Numero do Endereço</label>
-    <select name="" id="" formControlName="adress_number">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqAccount">
+              <input type="checkbox" id="reqAccount" formControlName="reqAccount" value="true">
+              Conta
+            </label>
 
-    <label for="">Bairro</label>
-    <select name="" id="" formControlName="neighborhood">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqAccountOwner">
+              <input type="checkbox" id="reqAccountOwner" formControlName="reqAccountOwner" value="true">
+              Titular da Conta
+            </label>
 
-    <label for="">Cidade</label>
-    <select name="" id="" formControlName="city">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+            <label for="reqAccountOwnerCpf">
+              <input type="checkbox" id="reqAccountOwnerCpf" formControlName="reqAccountOwnerCpf" value="true">
+              CPF do Titular da Conta
+            </label>
+          </div>
+        </div>
+      </div>
 
-    <label for="">Estado</label>
-    <select name="" id="" formControlName="state">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
 
-    <label for="">Banco</label>
-    <select name="" id="" formControlName="bank">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
+      <div class="input-section user">
+        <h3>Usuário padrão</h3>
+        <input type="text" placeholder="nome do usuário" formControlName="userName" />
+        <input type="text" placeholder="email do usuário" formControlName="userEmail" />
+        <input type="text" placeholder="senha do usuário" formControlName="userPassword"/>
+      </div>
 
-    <label for="">agency</label>
-    <select name="" id="" formControlName="agency">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
-
-    <label for="">Conta</label>
-    <select name="" id="" formControlName="account">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
-
-    <label for="">Titular da Conta</label>
-    <select name="" id="" formControlName="account_owner">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
-
-    <label for="">CPF do Titular da Conta</label>
-    <select name="" id="" formControlName="account_ownerCpf">
-      <option value="" disabled selected>Selecione a opçao</option>
-      <option value="true"></option>
-      <option value="false"></option>
-    </select>
-
-    <h3>Status de venda</h3>
-    <input type="number" placeholder="recebido" formControlName="received" />
-    <input type="number" placeholder="completed" formControlName="completed" />
-    <input type="number" placeholder="canceled" formControlName="canceled" />
-
-    <h3>Contrato</h3>
-    <input type="text" placeholder="conteúdo" formControlName="content" />
-    <input type="number" placeholder="status" formControlName="status" />
-
-    <h3>Usuário padrão</h3>
-
-    <input type="text" placeholder="nome do usuário" formControlName="name" />
-    <input type="text" placeholder="email do usuário" formControlName="email" />
-    <input
-      type="text"
-      placeholder="senha do usuário"
-      formControlName="password"
-    />
-    <input
-      type="number"
-      placeholder="status do usuário"
-      formControlName="status"
-    />
-    <input type="number" placeholder="Tipo" formControlName="type" />
-
-    <button type="submit">Salvar</button>
-  </form>
-</div>
+    </div>
+    <div class="col-4">
+      <div class="input-section contract">
+        <h3>Contrato</h3>
+        <textarea type="text" placeholder="conteúdo" formControlName="contract"></textarea>
+      </div>
+    </div>
+  </div>
+</form>

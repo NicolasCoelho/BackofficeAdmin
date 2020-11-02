@@ -15,22 +15,9 @@ body {
   font-size: 14px;
   text-decoration: none;
 
-  //Global Styles Header Pages
-  .enviromentsContainer,
-  .homeContainer,
-  .userContainer,
-  .storesContainer,
-  .registerEnviromentContainer,
-  .registerStoreContainer {
-    height: 91vh;
-    // background: #f5f6fa;
-    background: #e3e3e3;
-    padding: 0px 2%;
-  }
-
   button {
     border: none;
-    background: #ededed;
+    background: $buttonBg;
     padding: 10px;
     border-radius: 5px;
     font-weight: 600;
@@ -43,7 +30,7 @@ body {
       }
     }
     &:active {
-      background: #d91676;
+      background: $primaryActive;
       cursor: pointer;
       * {
         color: #fff;
@@ -51,16 +38,19 @@ body {
     }
   }
 
-  .dashboardBtnCreate {
-    margin: 1% 0;
-    background: #d91676;
-    transition: 0.9s;
-
+  .btnCreate {
+    background: $primary;
     color: white;
     &:hover {
-      color: white;
-      background: #ae00b4;
+      cursor: pointer;
+      background: $primaryActive;
     }
+  }
+
+  .circlebutton {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
   }
 
   table {
@@ -82,12 +72,33 @@ body {
         cursor: pointer;
       }
     }
-
-
     td, th {
       padding: 10px;
       border: none;
       text-align: center;
     }
+  }
+
+  form {
+    outline: none;
+
+    input:not([type=checkbox]), textarea {
+      width: 100%;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+    }
+
+    select {
+      padding: 5px;
+      border: none;
+      margin-top: 10px;
+    }
+
+  }
+
+  .submit-container {
+    width: 100%;
+    text-align: right;
   }
 }
