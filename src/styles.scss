@@ -90,7 +90,7 @@ body {
     }
 
     select {
-      padding: 5px;
+      padding: 15px;
       border: none;
       margin-top: 10px;
     }
@@ -100,5 +100,9 @@ body {
   .submit-container {
     width: 100%;
     text-align: right;
+  }
+
+  .center {
+    text-align: center;
   }
 }

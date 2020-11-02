@@ -6,51 +6,50 @@
     <div class="col-4">
       <div class="input-section store">
         <h3>Loja</h3>
-        <input placeholder="Nome" type="text" formControlName="storeName" />
+        <input placeholder="Nome" [(ngModel)]="store.name" type="text" formControlName="storeName"/>
 
-        <input placeholder="Url" type="text" formControlName="storeUrl" />
+        <input placeholder="Url" [(ngModel)]="store.url" type="text" formControlName="storeUrl" />
 
-        <input placeholder="ID do Site" type="text" formControlName="storeWebsite" />
+        <input placeholder="ID do Site" [(ngModel)]="store.website_id" type="text" formControlName="storeWebsite" />
 
-        <select formControlName="storeEnv">
-          <option value="" disabled selected>Ambiente</option>
-          <option *ngFor="let opt of enviroments" value="{{ opt.id }}">
-            {{ opt.name }}
-          </option>
-        </select>
-
-        <select formControlName="storeStatus">
-          <option value="" disabled selected>Status</option>
-          <option *ngFor="let opt of status" value="{{ opt.value }}">
-            {{ opt.viewValue }}
-          </option>
-        </select>
-
-        <select name="" id="" formControlName="storeAllowRegister">
-          <option value="" disabled selected>Permitir Registro</option>
-          <option value="true">Sim</option>
-          <option value="false">Não</option>
-        </select>
-
-        <select name="" id="" formControlName="storeProtectedRegister">
-          <option value="" disabled selected>Registro protegido</option>
-          <option value="true">Sim</option>
-          <option value="false">Não</option>
-        </select>
-
-        <select name="" id="" formControlName="storeComissionType">
-          <option value="" disabled selected>Tipo de comissão</option>
-          <option value="1">Procentagem</option>
-          <option value="2">Valor Fixo</option>
-        </select>
-
-        <input placeholder="Valor da comissão" type="text" formControlName="storeComissionValue"/>
+        <div class="row justify-content-between">
+          <div class="col-5-5">
+            <select formControlName="storeEnv" [(ngModel)]="store.enviroment_id">
+              <option value="undefined" disabled selected>Ambiente</option>
+              <option *ngFor="let opt of enviroments" value="{{ opt.id }}">
+                {{ opt.name }}
+              </option>
+            </select>
+            <label for="storeAllowRegister">
+              <input type="checkbox" [(ngModel)]="store.allow_register" id="storeAllowRegister" formControlName="storeAllowRegister">
+              Permitir Registro
+            </label>
+            <select name="" id="" formControlName="storeComissionType" [(ngModel)]="store.comission_type">
+              <option value="undefined" disabled selected>Tipo de comissão</option>
+              <option value="1">Procentagem</option>
+              <option value="2">Valor Fixo</option>
+            </select>
+          </div>
+          <div class="col-5-5">
+            <select formControlName="storeStatus" [(ngModel)]="store.status">
+              <option value="undefined" disabled selected>Status</option>
+              <option *ngFor="let opt of status" value="{{ opt.value }}">
+                {{ opt.viewValue }}
+              </option>
+            </select>
+            <label for="storeProtectedRegister">
+              <input type="checkbox" id="storeProtectedRegister" [(ngModel)]="store.protected_register" formControlName="storeProtectedRegister">
+              Cadastro protegido
+            </label>
+            <input placeholder="Valor da comissão" type="text" [(ngModel)]="store.comission_value" formControlName="storeComissionValue"/>
+          </div>
+        </div>
       </div>
       <div class="input-section status">
         <h3>Status de venda</h3>
-        <input type="number" placeholder="recebido" formControlName="saleReceived" />
-        <input type="number" placeholder="completed" formControlName="saleCompleted" />
-        <input type="number" placeholder="canceled" formControlName="saleCanceled" />
+        <input type="number" placeholder="recebido" [ngModel]="sale.received" formControlName="saleReceived" />
+        <input type="number" placeholder="completed" [ngModel]="sale.complete" formControlName="saleCompleted" />
+        <input type="number" placeholder="canceled" [ngModel]="sale.canceled" formControlName="saleCanceled" />
       </div>
     </div>
     <div class="col-4">
@@ -59,130 +58,129 @@
         <div class="row">
           <div class="col-6">
             <label for="reqPhone1">
-              <input type="checkbox" id="reqPhone1" formControlName="reqPhone1" value="true">
+              <input type="checkbox" id="reqPhone1" [(ngModel)]="requirements.phone_1" formControlName="reqPhone1" value="true">
               Telefone 1
             </label>
 
             <label for="reqPhone2">
-              <input type="checkbox" id="reqPhone2" formControlName="reqPhone2" value="true">
+              <input type="checkbox" id="reqPhone2" [(ngModel)]="requirements.phone_2" formControlName="reqPhone2" value="true">
               Telefone 2
             </label>
 
             <label for="reqCpfCnpj">
-              <input type="checkbox" id="reqCpfCnpj" formControlName="reqCpfCnpj" value="true">
+              <input type="checkbox" id="reqCpfCnpj" [(ngModel)]="requirements.cpf_cnpj" formControlName="reqCpfCnpj" value="true">
               CPF OU CPNJ
             </label>
 
             <label for="reqPis">
-              <input type="checkbox" id="reqPis" formControlName="reqPis" value="true">
+              <input type="checkbox" id="reqPis" [(ngModel)]="requirements.pis" formControlName="reqPis" value="true">
               Pis
             </label>
 
             <label for="reqRg">
-              <input type="checkbox" id="reqRg" formControlName="reqRg" value="true">
+              <input type="checkbox" id="reqRg" [(ngModel)]="requirements.rg" formControlName="reqRg" value="true">
               Rg
             </label>
             <label for="reqBirthDate">
-              <input type="checkbox" id="reqBirthDate" formControlName="reqBirthDate" value="true">
+              <input type="checkbox" id="reqBirthDate" [(ngModel)]="requirements.birthdate" formControlName="reqBirthDate" value="true">
               Data de Aniversário
             </label>
 
             <label for="reqNationality">
-              <input type="checkbox" id="reqNationality" formControlName="reqNationality" value="true">
+              <input type="checkbox" id="reqNationality" [(ngModel)]="requirements.nationality" formControlName="reqNationality" value="true">
               Nacionalidade
             </label>
 
             <label for="reqBirthLocation">
-              <input type="checkbox" id="reqBirthLocation" formControlName="reqBirthLocation" value="true">
+              <input type="checkbox" id="reqBirthLocation" [(ngModel)]="requirements.birth_location" formControlName="reqBirthLocation" value="true">
               Local de Nascimento
             </label>
             <label for="reqMaritalStatus">
-              <input type="checkbox" id="reqMaritalStatus" formControlName="reqMaritalStatus" value="true">
+              <input type="checkbox" id="reqMaritalStatus" [(ngModel)]="requirements.marital_status" formControlName="reqMaritalStatus" value="true">
               Estado civil
             </label>
 
             <label for="reqGender">
-              <input type="checkbox" id="reqGender" formControlName="reqGender" value="true">
+              <input type="checkbox" id="reqGender" [(ngModel)]="requirements.gender" formControlName="reqGender" value="true">
               Gênero
             </label>
 
             <label for="reqLiteracy">
-              <input type="checkbox" id="reqLiteracy" formControlName="reqLiteracy" value="true">
+              <input type="checkbox" id="reqLiteracy" [(ngModel)]="requirements.literacy" formControlName="reqLiteracy" value="true">
               Literacy
             </label>
           </div>
           <div class="col-6">
             <label for="reqCep">
-              <input type="checkbox" id="reqCep" formControlName="reqCep" value="true">
+              <input type="checkbox" id="reqCep" [(ngModel)]="requirements.cep" formControlName="reqCep" value="true">
               Cep
             </label>
 
             <label for="reqAdress">
-              <input type="checkbox" id="reqAdress" formControlName="reqAdress" value="true">
+              <input type="checkbox" id="reqAdress" [(ngModel)]="requirements.adress" formControlName="reqAdress" value="true">
               Endereço
             </label>
 
             <label for="reqAdressNumber">
-              <input type="checkbox" id="reqAdressNumber" formControlName="reqAdressNumber" value="true">
+              <input type="checkbox" id="reqAdressNumber" [(ngModel)]="requirements.adress_number" formControlName="reqAdressNumber" value="true">
               Número da residencia
             </label>
 
             <label for="reqNeighborhood">
-              <input type="checkbox" id="reqNeighborhood" formControlName="reqNeighborhood" value="true">
+              <input type="checkbox" id="reqNeighborhood" [(ngModel)]="requirements.neighborhood" formControlName="reqNeighborhood" value="true">
               Bairro
             </label>
 
             <label for="reqCity">
-              <input type="checkbox" id="reqCity" formControlName="reqCity" value="true">
+              <input type="checkbox" id="reqCity" [(ngModel)]="requirements.city" formControlName="reqCity" value="true">
               Cidade
             </label>
 
             <label for="reqState">
-              <input type="checkbox" id="reqState" formControlName="reqState" value="true">
+              <input type="checkbox" id="reqState" [(ngModel)]="requirements.state" formControlName="reqState" value="true">
               Estado
             </label>
 
             <label for="reqBank">
-              <input type="checkbox" id="reqBank" formControlName="reqBank" value="true">
+              <input type="checkbox" id="reqBank" [(ngModel)]="requirements.bank" formControlName="reqBank" value="true">
               Banco
             </label>
 
             <label for="reqAgency">
-              <input type="checkbox" id="reqAgency" formControlName="reqAgency" value="true">
+              <input type="checkbox" id="reqAgency" [(ngModel)]="requirements.agency" formControlName="reqAgency" value="true">
               Agência
             </label>
 
             <label for="reqAccount">
-              <input type="checkbox" id="reqAccount" formControlName="reqAccount" value="true">
+              <input type="checkbox" id="reqAccount" [(ngModel)]="requirements.account" formControlName="reqAccount" value="true">
               Conta
             </label>
 
             <label for="reqAccountOwner">
-              <input type="checkbox" id="reqAccountOwner" formControlName="reqAccountOwner" value="true">
+              <input type="checkbox" id="reqAccountOwner" [(ngModel)]="requirements.account_owner" formControlName="reqAccountOwner" value="true">
               Titular da Conta
             </label>
 
             <label for="reqAccountOwnerCpf">
-              <input type="checkbox" id="reqAccountOwnerCpf" formControlName="reqAccountOwnerCpf" value="true">
+              <input type="checkbox" id="reqAccountOwnerCpf" [(ngModel)]="requirements.account_ownerCpf" formControlName="reqAccountOwnerCpf" value="true">
               CPF do Titular da Conta
             </label>
           </div>
         </div>
       </div>
 
-
       <div class="input-section user">
         <h3>Usuário padrão</h3>
-        <input type="text" placeholder="nome do usuário" formControlName="userName" />
-        <input type="text" placeholder="email do usuário" formControlName="userEmail" />
-        <input type="text" placeholder="senha do usuário" formControlName="userPassword"/>
+        <input type="text" [(ngModel)]="user.name" placeholder="nome do usuário" formControlName="userName" />
+        <input type="text" [(ngModel)]="user.email" placeholder="email do usuário" formControlName="userEmail" />
+        <input type="text" [(ngModel)]="user.password" placeholder="senha do usuário" formControlName="userPassword"/>
       </div>
 
     </div>
     <div class="col-4">
       <div class="input-section contract">
         <h3>Contrato</h3>
-        <textarea type="text" placeholder="conteúdo" formControlName="contract"></textarea>
+        <textarea type="text" [(ngModel)]="contract.content" placeholder="conteúdo" formControlName="contract"></textarea>
       </div>
     </div>
   </div>
