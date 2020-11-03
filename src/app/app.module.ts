@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 // Comunity Modules
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -28,6 +29,15 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { RegisterEnviromentComponent } from './dashboard/register-enviroment/register-enviroment.component';
 import { RegisterStoreComponent } from './dashboard/register-store/register-store.component';
 
+export const CustomCurrencyMaskConfig: CurrencyMaskModule = {
+  align: 'left',
+  allowNegative: true,
+  decimal: ',',
+  precision: 2,
+  suffix: '',
+  thousands: '.',
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +59,7 @@ import { RegisterStoreComponent } from './dashboard/register-store/register-stor
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    CurrencyMaskModule,
   ],
   providers: [AuthGuard, Authentication, Ws],
   bootstrap: [AppComponent],
