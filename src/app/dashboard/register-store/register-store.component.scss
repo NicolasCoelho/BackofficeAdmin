@@ -6,6 +6,9 @@ form {
   }
   .input-section {
     padding: 10px 30px;
+    @media (max-width: 768px) {
+      padding: 10px 10px;
+    }
   }
   textarea {
     height: 510px;

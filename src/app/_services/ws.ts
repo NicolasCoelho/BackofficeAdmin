@@ -10,9 +10,8 @@ import { User } from '../_models/user';
 
 @Injectable()
 export class Ws {
-  public base_url =
-    'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
-  // public base_url = 'http://localhost:3000';
+  //public base_url = 'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
+  public base_url = 'http://localhost:3000';
   public store_id = '6c6455ece193d4d2';
 
   public headers: HttpHeaders;

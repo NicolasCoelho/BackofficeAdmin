@@ -59,28 +59,28 @@ export class RegisterStoreComponent implements OnInit {
       storeProtectedRegister: ['', Validators.required],
       storeComissionType: ['', Validators.required],
       storeComissionValue: ['', Validators.required],
-      reqPhone1: ['', Validators.required],
-      reqPhone2: ['', Validators.required],
-      reqCpfCnpj: ['', Validators.required],
-      reqPis: ['', Validators.required],
-      reqRg: ['', Validators.required],
-      reqBirthDate: ['', Validators.required],
-      reqNationality: ['', Validators.required],
-      reqBirthLocation: ['', Validators.required],
-      reqMaritalStatus: ['', Validators.required],
-      reqGender: ['', Validators.required],
-      reqLiteracy: ['', Validators.required],
-      reqCep: ['', Validators.required],
-      reqAdress: ['', Validators.required],
-      reqAdressNumber: ['', Validators.required],
-      reqNeighborhood: ['', Validators.required],
-      reqCity: ['', Validators.required],
-      reqState: ['', Validators.required],
-      reqBank: ['', Validators.required],
-      reqAgency: ['', Validators.required],
-      reqAccount: ['', Validators.required],
-      reqAccountOwner: ['', Validators.required],
-      reqAccountOwnerCpf: ['', Validators.required],
+      reqPhone1: ['', ],
+      reqPhone2: ['', ],
+      reqCpfCnpj: ['', ],
+      reqPis: ['', ],
+      reqRg: ['', ],
+      reqBirthDate: ['', ],
+      reqNationality: ['', ],
+      reqBirthLocation: ['', ],
+      reqMaritalStatus: ['', ],
+      reqGender: ['', ],
+      reqLiteracy: ['', ],
+      reqCep: ['', ],
+      reqAddress: ['', ],
+      reqAddressNumber: ['', ],
+      reqNeighborhood: ['', ],
+      reqCity: ['', ],
+      reqState: ['', ],
+      reqBank: ['', ],
+      reqAgency: ['', ],
+      reqAccount: ['', ],
+      reqAccountOwner: ['', ],
+      reqAccountOwnerCpf: ['', ],
       saleReceived: ['', Validators.required],
       saleCompleted: ['', Validators.required],
       saleCanceled: ['', Validators.required],
@@ -93,7 +93,7 @@ export class RegisterStoreComponent implements OnInit {
 
   register() {
     if (!this.storeForm.valid) {
-      alert('Dados incorretos');
+      alert('Dados invalidos. Revise o formulário e tente novamente');
       return;
     }
 
@@ -118,7 +118,6 @@ export class RegisterStoreComponent implements OnInit {
     }
 
     console.log(payload);
-    return;
     this.ws.createStoreFull(payload)
     .then(
       response => {

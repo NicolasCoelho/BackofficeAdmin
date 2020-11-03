@@ -4,21 +4,21 @@
   </button>
   <table>
     <thead>
-      <th>Name</th>
       <th>Id</th>
+      <th>Nome</th>
       <th>Status</th>
-      <th>Enviroment ID</th>
-      <th>url</th>
-      <th>updatedAt</th>
+      <th>Ambiente</th>
+      <th>Url</th>
+      <th>Data de registro</th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of stores">
-        <td>{{ item.name }}</td>
+      <tr *ngFor="let item of stores" (click)="edit(item.id)">
         <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
         <td>{{ item.status }}</td>
         <td>{{ item.enviroment_id }}</td>
         <td>{{ item.url }}</td>
-        <td>{{ item.updatedAt }}</td>
+        <td>{{ item.createdAt }}</td>
       </tr>
     </tbody>
   </table>

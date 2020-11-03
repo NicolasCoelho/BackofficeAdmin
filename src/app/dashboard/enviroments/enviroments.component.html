@@ -13,7 +13,7 @@
       <th>created_at</th>
     </thead>
     <tbody>
-      <tr *ngFor="let env of enviroments">
+      <tr *ngFor="let env of enviroments" (click)="edit(env.id)">
         <td>{{ env.id }}</td>
         <td>{{ env.name }}</td>
         <td>{{ env.type }}</td>

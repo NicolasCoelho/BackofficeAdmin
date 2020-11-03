@@ -24,10 +24,10 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'enviroments', component: EnviromentsComponent },
       { path: 'enviroments/register', component: RegisterEnviromentComponent },
+      { path: 'enviroments/edit/:id', component: RegisterEnviromentComponent },
       { path: 'stores', component: StoresComponent },
-
-      //Dizendo que quando acessar stores/register é para renderizar o componente RegisterStoreComponent
       { path: 'stores/register', component: RegisterStoreComponent },
+      { path: 'stores/edit/:id', component: RegisterStoreComponent },
       { path: 'users', component: UsersComponent },
     ],
   },
