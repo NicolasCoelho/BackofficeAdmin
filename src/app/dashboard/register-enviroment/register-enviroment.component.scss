@@ -1,8 +1,4 @@
 .registerEnviromentContainer {
-  // height: 91vh;
-  // background: #f5f6fa;
-  // padding: 0px 2%;
-
   .container {
     height: 60%;
     display: flex;
@@ -16,29 +12,12 @@
       outline: none;
       margin-top: 10px;
 
-      input {
-        padding: 15px;
-        margin-top: 10px;
-        border: none;
-      }
-
-      .alignSelect {
-        display: flex;
-        margin-top: 10px;
-
-        select {
-          padding: 5px;
-          border: none;
-        }
-        select:nth-child(2) {
-          margin-left: 10px;
-        }
-      }
-
       button {
-        background: green;
-        color: white;
         margin-top: 10px;
+      }
+
+      select {
+        width: 90%;
       }
     }
   }

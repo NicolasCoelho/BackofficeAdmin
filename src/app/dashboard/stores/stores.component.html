@@ -2,6 +2,8 @@
   <button class="btnCreate" (click)="goTo('register')">
     Criar loja
   </button>
+  &nbsp;
+  <app-loading [(isLoading)]="loading"></app-loading>
   <table>
     <thead>
       <th>Id</th>

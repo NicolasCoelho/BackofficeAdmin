@@ -2,24 +2,30 @@
   <div class="container alignForm">
     <h2>Preencha o Formulário e clique em Salvar!</h2>
     <form [formGroup]="enviromentForm" (ngSubmit)="register()">
-      <input placeholder="Nome" type="text" formControlName="name" />
+      <input placeholder="Nome" type="text" [(ngModel)]="enviroment.name" formControlName="name" />
       <div class="alignSelect">
-        <select formControlName="type">
-          <option value="" disabled selected>Tipo</option>
-          <option *ngFor="let opt of types" value="{{ opt.value }}">
-            {{ opt.viewValue }}
-          </option>
-        </select>
-        <select formControlName="status">
-          <option value="" disabled selected>Status</option>
-          <option *ngFor="let opt of status" value="{{ opt.value }}">
-            {{ opt.viewValue }}
-          </option>
-        </select>
+        <div class="row">
+          <div class="col-6">
+            <select formControlName="type" [(ngModel)]="enviroment.type">
+              <option value="undefined" disabled selected>Tipo</option>
+              <option *ngFor="let opt of types" value="{{ opt.value }}">
+                {{ opt.viewValue }}
+              </option>
+            </select>
+          </div>
+          <div class="col-6">
+            <select formControlName="status" [(ngModel)]="enviroment.status">
+              <option value="undefined" disabled selected>Status</option>
+              <option *ngFor="let opt of status" value="{{ opt.value }}">
+                {{ opt.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
-      <input placeholder="Url" type="text" formControlName="url" />
-      <input placeholder="Password" type="text" formControlName="password" />
-      <button type="submit">Salvar</button>
+      <input placeholder="Url" type="text" [(ngModel)]="enviroment.url" formControlName="url"/>
+      <input placeholder="Password" type="text" *ngIf="!isEdit" [(ngModel)]="enviroment.password" formControlName="password" />
+      <button type="submit" class="btnCreate">Salvar</button>
     </form>
   </div>
 </div>

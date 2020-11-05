@@ -72,9 +72,16 @@ export class Ws {
       });
   }
 
-  /**
-   * Get Enviroments
-   */
+  // Enviroments
+  getEnviroment(id:number):Promise<Enviroment> {
+    return this.http
+      .get(`${this.base_url}/enviroment/${id}`, this.options)
+      .toPromise()
+      .then(
+        (e:Enviroment) => e
+      )
+  }
+
   getEnviroments(): Promise<Enviroment[]> {
     return this.http
       .get(`${this.base_url}/enviroments`, this.options)
@@ -92,7 +99,7 @@ export class Ws {
   }
 
   /**
-   * Get Stores
+   * Stores
    */
   getStores(): Promise<Store[]> {
     return this.http
@@ -117,10 +124,7 @@ export class Ws {
   }
 
   /**
-   * Get Users
-   *
-   * é uma função tipada que retorna uma Promise no escopo de User em forma de Array
-   * e se retornar algo ele pega o then e retorna
+   * Users
    */
   getUsers(): Promise<User[]> {
     return this.http
