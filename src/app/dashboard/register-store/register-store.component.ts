@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 //Importando Router para Instanciamento no Constructor
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 //Importando Ws para uso dos Metodos e acessar a API
 import { Ws } from 'src/app/_services/ws';
@@ -30,18 +30,33 @@ export class RegisterStoreComponent implements OnInit {
     { value: 3, viewValue: 'Desativado' },
   ];
   public enviroments: Array<Enviroment> = [];
-
   public store = new Store()
   public requirements = new UserRequirements()
   public sale = new SaleStatus()
   public contract = new Contract()
   public user = new User()
 
+  public isEdit: boolean = false;
+  public loading: boolean = false;
+
   constructor(
     private ws: Ws,
+    private currentRoute: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder
-  ) {}
+  ) {
+    if (this.router.url.indexOf('edit') > -1) {
+      this.isEdit = true;
+      this.loading = true;
+      this.currentRoute.params.subscribe( param => {
+        let promises: Array<any> = [
+          this.ws.getStore(param.id).then(response=> Object.assign(this.store, response)),
+          this.ws.getContractByStore(param.id).then(response => Object.assign(this.contract, response))
+        ]
+        Promise.all(promises).catch(e => alert(e)).finally(()=>this.loading = false)
+      })
+    }
+  }
 
   ngOnInit(): void {
     this.ws
@@ -89,6 +104,11 @@ export class RegisterStoreComponent implements OnInit {
       userPassword: ['', Validators.required],
       userEmail: ['', Validators.required],
     });
+    if (this.isEdit) {
+      this.storeForm.get('userName').disable()
+      this.storeForm.get('userPassword').disable()
+      this.storeForm.get('userEmail').disable()
+    }
   }
 
   register() {

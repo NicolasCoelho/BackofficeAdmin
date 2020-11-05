@@ -7,6 +7,7 @@ import { Health } from '../_models/health';
 import { Enviroment } from '../_models/enviroments';
 import { Store } from '../_models/stores';
 import { User } from '../_models/user';
+import { Contract } from '../_models/contract';
 
 @Injectable()
 export class Ws {
@@ -29,9 +30,7 @@ export class Ws {
     this.options = { headers: this.headers };
   }
 
-  /**
-   * Get infos about system health
-   */
+  // Info
   getHealth(): Promise<Health> {
     return this.http
       .get(`${this.base_url}/systemhealth`)
@@ -39,9 +38,7 @@ export class Ws {
       .then((response: Health) => response);
   }
 
-  /**
-   * Get a simple token to verify origin
-   */
+  // Token
   getToken(): Promise<any> {
     const id = this.store_id;
     return this.http
@@ -54,9 +51,7 @@ export class Ws {
       });
   }
 
-  /**
-   * Authenticate user
-   */
+  // Authentication
   authenticate(user, pass): Promise<any> {
     return this.http
       .post(
@@ -78,7 +73,7 @@ export class Ws {
       .get(`${this.base_url}/enviroment/${id}`, this.options)
       .toPromise()
       .then(
-        (e:Enviroment) => e
+        (response:Enviroment) => response
       )
   }
 
@@ -98,9 +93,22 @@ export class Ws {
       .then((response: Enviroment) => response);
   }
 
-  /**
-   * Stores
-   */
+  changeEnviroment(payload: Enviroment): Promise<any> {
+    return this.http
+      .put(`${this.base_url}/enviroment/${payload.id}`, payload, this.options)
+      .toPromise()
+  }
+
+  // Store
+  getStore(id: string): Promise<Store> {
+    return this.http
+    .get(`${this.base_url}/store/${id}`, this.options)
+    .toPromise()
+    .then(
+      (response: Store) => response
+    )
+  }
+
   getStores(): Promise<Store[]> {
     return this.http
       .get(`${this.base_url}/stores`, this.options)
@@ -110,7 +118,7 @@ export class Ws {
       });
   }
 
-  createStore(payload): Promise<Store> {
+  createStore(payload: Store): Promise<Store> {
     return this.http
       .post(`${this.base_url}/store`, payload, this.options)
       .toPromise()
@@ -123,9 +131,13 @@ export class Ws {
       .toPromise()
   }
 
-  /**
-   * Users
-   */
+  changeStore(payload: Store): Promise<any> {
+    return this.http
+      .post(`${this.base_url}/store/${payload.id}`, payload, this.options)
+      .toPromise()
+  }
+
+  // Users
   getUsers(): Promise<User[]> {
     return this.http
       .get(`${this.base_url}/users`, this.options)
@@ -133,5 +145,15 @@ export class Ws {
       .then((response: User[]) => {
         return response;
       });
+  }
+
+  // Contract
+  getContractByStore(id: string):Promise<Contract> {
+    return this.http
+      .get(`${this.base_url}/contract/${id}/store`, this.options)
+      .toPromise()
+      .then(
+        (response: Contract) => response
+      )
   }
 }
