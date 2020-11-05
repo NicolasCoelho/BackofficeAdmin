@@ -8,6 +8,8 @@ import { Enviroment } from '../_models/enviroments';
 import { Store } from '../_models/stores';
 import { User } from '../_models/user';
 import { Contract } from '../_models/contract';
+import { UserRequirements } from '../_models/user_requirements';
+import { SaleStatus } from '../_models/sales_status';
 
 @Injectable()
 export class Ws {
@@ -148,12 +150,32 @@ export class Ws {
   }
 
   // Contract
-  getContractByStore(id: string):Promise<Contract> {
+  getContractByStore(id: string): Promise<Contract> {
     return this.http
       .get(`${this.base_url}/contract/${id}/store`, this.options)
       .toPromise()
       .then(
         (response: Contract) => response
       )
+  }
+
+  // UserRequiremets
+  getUserRequirementsByStore(id: string): Promise<UserRequirements> {
+    return this.http
+    .get(`${this.base_url}/userRequirements/${id}/store`, this.options)
+    .toPromise()
+    .then(
+      (response: UserRequirements) => response
+    )
+  }
+
+  // SalesStatus
+  getSalesStatusByStore(id: string): Promise<SaleStatus> {
+    return this.http
+    .get(`${this.base_url}/saleStatus/${id}/store`, this.options)
+    .toPromise()
+    .then(
+      (response: SaleStatus) => response
+    )
   }
 }

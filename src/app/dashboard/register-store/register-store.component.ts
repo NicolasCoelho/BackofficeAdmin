@@ -49,9 +49,11 @@ export class RegisterStoreComponent implements OnInit {
       this.isEdit = true;
       this.loading = true;
       this.currentRoute.params.subscribe( param => {
+        const id = param.id
         let promises: Array<any> = [
-          this.ws.getStore(param.id).then(response=> Object.assign(this.store, response)),
-          this.ws.getContractByStore(param.id).then(response => Object.assign(this.contract, response))
+          this.ws.getStore(id).then(response=> Object.assign(this.store, response)),
+          this.ws.getContractByStore(id).then(response => Object.assign(this.contract, response)),
+          this.ws.getUserRequirementsByStore(id).then(response => Object.assign(this.requirements, response))
         ]
         Promise.all(promises).catch(e => alert(e)).finally(()=>this.loading = false)
       })
