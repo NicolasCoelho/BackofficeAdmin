@@ -61,6 +61,7 @@ export class RegisterEnviromentComponent implements OnInit {
       return;
     }
 
+    this.loading = true;
     if (this.isEdit) {
       alert("Salvo")
     } else {

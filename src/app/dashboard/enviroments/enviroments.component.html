@@ -7,12 +7,12 @@
   <table>
     <thead>
       <th>Id</th>
-      <th>Name</th>
-      <th>type</th>
-      <th>status</th>
-      <th>url</th>
-      <th>password</th>
-      <th>created_at</th>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>Status</th>
+      <th>Url</th>
+      <th>Criado em</th>
+      <th>Alterado em</th>
     </thead>
     <tbody>
       <tr *ngFor="let env of enviroments" (click)="edit(env.id)">
@@ -21,8 +21,8 @@
         <td>{{ env.type }}</td>
         <td>{{ env.status }}</td>
         <td>{{ env.url }}</td>
-        <td>{{ env.password }}</td>
-        <td>{{ env.created_at | date: "dd/MM/yyyy" }}</td>
+        <td>{{ env.createdAt | date: "dd/MM/yyyy" }}</td>
+        <td>{{ env.updatedAt | date: "dd/MM/yyyy" }}</td>
       </tr>
     </tbody>
   </table>

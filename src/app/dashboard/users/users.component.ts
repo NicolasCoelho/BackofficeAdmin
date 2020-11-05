@@ -15,12 +15,14 @@ export class UsersComponent implements OnInit {
     // this.ws.getUsers().then((data) => {
     //   Object.assign(this.users, data);
     // });
-    let teste = new User();
+  }
 
-      teste.id = 2;
-      teste.name = 'Moisés Vilas Boas';
-      teste.status = 1;
-      teste.createdAt = '2020-10-20T16:56:33.000Z';
-      this.users.push(teste);
+  mockUser() {
+    let teste = new User();
+    teste.id = 2;
+    teste.name = 'Moisés Vilas Boas';
+    teste.status = 1;
+    teste.createdAt = '2020-10-20T16:56:33.000Z';
+    this.users.push(teste);
   }
 }

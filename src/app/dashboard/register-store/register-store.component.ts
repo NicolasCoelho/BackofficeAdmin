@@ -131,7 +131,6 @@ export class RegisterStoreComponent implements OnInit {
       }
     )
 
-
     let payload = {
       store: this.store,
       user_requirements: this.requirements,
@@ -140,8 +139,9 @@ export class RegisterStoreComponent implements OnInit {
       default_user: this.user
     }
 
+    this.loading = true;
     if (this.isEdit) {
-
+      alert("salvo")
     } else {
       this.ws.createStoreFull(payload)
       .then(

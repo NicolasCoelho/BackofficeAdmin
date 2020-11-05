@@ -1,6 +1,8 @@
 <form [formGroup]="storeForm" (ngSubmit)="register()">
   <div class="submit-container">
     <button type="submit" class="btnCreate">Salvar</button>
+    &nbsp;
+    <app-loading [(isLoading)]="loading"></app-loading>
   </div>
   <div class="row">
     <div class="col-12 col-md-12 col-lg-4">
