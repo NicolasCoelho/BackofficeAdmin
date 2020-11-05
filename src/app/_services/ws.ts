@@ -172,7 +172,7 @@ export class Ws {
   // SalesStatus
   getSalesStatusByStore(id: string): Promise<SaleStatus> {
     return this.http
-    .get(`${this.base_url}/saleStatus/${id}/store`, this.options)
+    .get(`${this.base_url}/salesStatus/${id}/store`, this.options)
     .toPromise()
     .then(
       (response: SaleStatus) => response

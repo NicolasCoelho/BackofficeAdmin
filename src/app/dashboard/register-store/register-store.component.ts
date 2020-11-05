@@ -53,7 +53,8 @@ export class RegisterStoreComponent implements OnInit {
         let promises: Array<any> = [
           this.ws.getStore(id).then(response=> Object.assign(this.store, response)),
           this.ws.getContractByStore(id).then(response => Object.assign(this.contract, response)),
-          this.ws.getUserRequirementsByStore(id).then(response => Object.assign(this.requirements, response))
+          this.ws.getUserRequirementsByStore(id).then(response => Object.assign(this.requirements, response)),
+          this.ws.getSalesStatusByStore(id).then(response => Object.assign(this.sale, response))
         ]
         Promise.all(promises).catch(e => alert(e)).finally(()=>this.loading = false)
       })
@@ -139,14 +140,17 @@ export class RegisterStoreComponent implements OnInit {
       default_user: this.user
     }
 
-    console.log(payload);
-    this.ws.createStoreFull(payload)
-    .then(
-      response => {
-        alert("Loja criada com sucesso")
-        this.router.navigate(['dashboard', 'stores'])
-      }
-    )
+    if (this.isEdit) {
+
+    } else {
+      this.ws.createStoreFull(payload)
+      .then(
+        response => {
+          alert("Loja criada com sucesso")
+          this.router.navigate(['dashboard', 'stores'])
+        }
+      )
+    }
 
   }
 }
