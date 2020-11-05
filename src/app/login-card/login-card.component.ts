@@ -14,6 +14,10 @@ export class LoginCardComponent implements OnInit {
 
   public loginFormGroup: FormGroup;
 
+  public error: boolean = false;
+
+  public isLoading: boolean = false;
+
   constructor(private ws: Ws, private auth: Authentication, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -39,16 +43,20 @@ export class LoginCardComponent implements OnInit {
   login() {
     const username = this.loginFormGroup.get('username').value;
     const password = this.loginFormGroup.get('password').value;
-
+    this.isLoading = true
     this.ws.authenticate(username,password).then(
       r => {
         this.router.navigate(['dashboard'])
       }
     ).catch(
       err => {
-        console.log(err)
+        if (err.status === 401) {
+          this.error = true
+        } else {
+          alert("Erro interno. Tente novamente mais tarde")
+        }
       }
-    )
+    ).finally(() => this.isLoading = false)
   }
 
 }

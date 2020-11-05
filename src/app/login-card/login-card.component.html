@@ -17,6 +17,8 @@
       required="true"
       id="inputPassword"
     />
-    <button type="submit">Enviar</button>
+    <span *ngIf="error" class="error">Usuário ou senha inválidos</span>
+    <button type="submit">Entrar</button>
+    <app-loading [(isLoading)]="isLoading"></app-loading>
   </form>
 </div>

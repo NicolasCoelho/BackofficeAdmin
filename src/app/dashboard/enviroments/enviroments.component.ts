@@ -11,13 +11,14 @@ import { Router } from '@angular/router';
 })
 export class EnviromentsComponent implements OnInit {
   public enviroments: Array<Enviroment> = [];
+  public loading: boolean = true;
 
   constructor(private ws: Ws, private router: Router) {}
 
   ngOnInit(): void {
     this.ws.getEnviroments().then((response) => {
       Object.assign(this.enviroments, response);
-    });
+    }).finally( () => this.loading = false)
   }
 
   goTo(target) {

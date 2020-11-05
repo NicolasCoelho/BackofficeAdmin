@@ -28,6 +28,7 @@ import { UsersComponent } from './dashboard/users/users.component';
 import { HomeComponent } from './dashboard/home/home.component';
 import { RegisterEnviromentComponent } from './dashboard/register-enviroment/register-enviroment.component';
 import { RegisterStoreComponent } from './dashboard/register-store/register-store.component';
+import { LoadingComponent } from './loading/loading.component';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskModule = {
   align: 'left',
@@ -51,6 +52,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskModule = {
     HomeComponent,
     RegisterEnviromentComponent,
     RegisterStoreComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

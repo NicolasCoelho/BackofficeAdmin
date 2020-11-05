@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
 })
 export class StoresComponent implements OnInit {
   public stores: Array<Store> = [];
+  public loading: boolean = true
   constructor(private ws: Ws, private router: Router) {}
 
   ngOnInit(): void {
     this.ws.getStores().then((data) => {
       Object.assign(this.stores, data);
-    });
+    }).finally( () => this.loading = false )
   }
 
   goTo(target) {

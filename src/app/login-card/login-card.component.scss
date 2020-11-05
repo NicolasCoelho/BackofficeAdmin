@@ -1,3 +1,5 @@
+@import '../../styles/colors.scss';
+
 .loginCardWrapper {
   display: flex;
   justify-content: center;
@@ -27,7 +29,7 @@
 
     button {
       padding: 20px;
-      background: #00ab39;
+      background: $primary;
       color: white;
       border: none;
       border-radius: 4px;
