@@ -74,6 +74,8 @@ export class RegisterStoreComponent implements OnInit {
       storeUrl: ['', Validators.required],
       storeWebsite: ['', Validators.required],
       storeAllowRegister: ['', Validators.required],
+      storePaymentTime: ['', Validators.required],
+      storeMinimumValue: ['', Validators.required],
       storeProtectedRegister: ['', Validators.required],
       storeComissionType: ['', Validators.required],
       storeComissionValue: ['', Validators.required],
