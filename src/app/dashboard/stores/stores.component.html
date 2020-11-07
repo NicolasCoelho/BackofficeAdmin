@@ -4,7 +4,8 @@
   </button>
   &nbsp;
   <app-loading [(isLoading)]="loading"></app-loading>
-  <table>
+  <h2 *ngIf="stores.length == 0" style="text-align: center;">Nenhuma loja cadastrada</h2>
+  <table *ngIf="stores.length > 1">
     <thead>
       <th>ID</th>
       <th>Nome</th>

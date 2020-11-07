@@ -4,7 +4,8 @@
   </button>
   &nbsp;
   <app-loading [(isLoading)]="loading"></app-loading>
-  <table>
+  <h2 *ngIf="enviroments.length == 0" style="text-align: center;">Nenhum ambiente cadastrado</h2>
+  <table *ngIf="enviroments.length > 0">
     <thead>
       <th>Id</th>
       <th>Nome</th>
