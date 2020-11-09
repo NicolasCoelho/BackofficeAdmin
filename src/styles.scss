@@ -108,4 +108,10 @@ body {
   .error {
     color: $primary;
   }
+  .paginationInput {
+    border: none;
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+  }
 }

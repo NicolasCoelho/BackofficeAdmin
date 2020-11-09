@@ -6,15 +6,15 @@ import { Authentication } from './authentication';
 import { Health } from '../_models/health';
 import { Enviroment } from '../_models/enviroments';
 import { Store } from '../_models/stores';
-import { User } from '../_models/user';
+import { User, UserPaginated } from '../_models/user';
 import { Contract } from '../_models/contract';
 import { UserRequirements } from '../_models/user_requirements';
 import { SaleStatus } from '../_models/sales_status';
 
 @Injectable()
 export class Ws {
-  public base_url = 'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
-  //public base_url = 'http://localhost:3000';
+  //public base_url = 'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
+  public base_url = 'http://localhost:3000';
   public store_id = '6c6455ece193d4d2';
 
   public headers: HttpHeaders;
@@ -140,11 +140,11 @@ export class Ws {
   }
 
   // Users
-  getUsers(): Promise<User[]> {
+  getUsers(params=""): Promise<UserPaginated> {
     return this.http
-      .get(`${this.base_url}/users`, this.options)
+      .get(`${this.base_url}/users${params}`, this.options)
       .toPromise()
-      .then((response: User[]) => {
+      .then((response: UserPaginated) => {
         return response;
       });
   }

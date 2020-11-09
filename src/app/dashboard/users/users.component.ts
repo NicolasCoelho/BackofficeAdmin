@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ws } from '../../_services/ws';
-import { User } from '../../_models/user';
+import { User, UserPaginated } from '../../_models/user';
 
 @Component({
   selector: 'app-users',
@@ -8,21 +8,22 @@ import { User } from '../../_models/user';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  public users: Array<User> = [];
+  public paginatedUsers: UserPaginated = new UserPaginated();
   constructor(private ws: Ws) {}
 
   ngOnInit(): void {
-    // this.ws.getUsers().then((data) => {
-    //   Object.assign(this.users, data);
-    // });
+    this.getContent()
   }
 
-  mockUser() {
-    let teste = new User();
-    teste.id = 2;
-    teste.name = 'Moisés Vilas Boas';
-    teste.status = 1;
-    teste.createdAt = '2020-10-20T16:56:33.000Z';
-    this.users.push(teste);
+  getContent(params="") {
+    this.ws.getUsers(params).then((response) => {
+      Object.assign(this.paginatedUsers, response)
+    });
+  }
+
+  changePage(next) {
+    next ? this.paginatedUsers.currentPage++ : this.paginatedUsers.currentPage-- ;
+    let query = `?page=${this.paginatedUsers.currentPage}`;
+    this.getContent(query)
   }
 }
