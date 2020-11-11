@@ -56,6 +56,7 @@ export class RegisterEnviromentComponent implements OnInit {
 
   register() {
     if (this.isEdit) this.enviromentForm.get('password').disable()
+
     if (!this.enviromentForm.valid) {
       alert('Dados incorretos');
       return;
@@ -63,7 +64,16 @@ export class RegisterEnviromentComponent implements OnInit {
 
     this.loading = true;
     if (this.isEdit) {
-      alert("Salvo")
+      delete this.enviroment.createdAt
+      delete this.enviroment.updatedAt
+      const id = this.enviroment.id
+      delete this.enviroment.id
+      this.ws.changeEnviroment(id, this.enviroment)
+        .catch((e)=> alert("Erro inesperado") )
+        .finally(()=>{
+          this.loading = false;
+          alert("Ambiente editado com sucesso!");
+        })
     } else {
       this.ws
       .createEnviroment(this.enviroment)

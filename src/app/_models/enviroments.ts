@@ -5,6 +5,6 @@ export class Enviroment {
   public status: number;
   public url: string;
   public password: string;
-  public created_at: string;
-  public updated_at: string;
+  public createdAt: string;
+  public updatedAt: string;
 }

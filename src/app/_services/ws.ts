@@ -95,9 +95,9 @@ export class Ws {
       .then((response: Enviroment) => response);
   }
 
-  changeEnviroment(payload: Enviroment): Promise<any> {
+  changeEnviroment(id: number, payload: Enviroment): Promise<any> {
     return this.http
-      .put(`${this.base_url}/enviroment/${payload.id}`, payload, this.options)
+      .put(`${this.base_url}/enviroment/${id}`, payload, this.options)
       .toPromise()
   }
 
