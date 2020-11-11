@@ -73,10 +73,10 @@ export class RegisterStoreComponent implements OnInit {
       storeStatus: ['', Validators.required],
       storeUrl: ['', Validators.required],
       storeWebsite: ['', Validators.required],
-      storeAllowRegister: ['', Validators.required],
+      storeAllowRegister: [''],
       storePaymentTime: ['', Validators.required],
       storeMinimumValue: ['', Validators.required],
-      storeProtectedRegister: ['', Validators.required],
+      storeProtectedRegister: [''],
       storeComissionType: ['', Validators.required],
       storeComissionValue: ['', Validators.required],
       reqPhone1: ['', ],
@@ -132,6 +132,8 @@ export class RegisterStoreComponent implements OnInit {
         if(this.requirements[key] === undefined) this.requirements[key] = false
       }
     )
+    this.store.protected_register === undefined ? this.store.protected_register = false : null
+    this.store.allow_register === undefined ? this.store.allow_register = false : true
 
     let payload = {
       store: this.store,

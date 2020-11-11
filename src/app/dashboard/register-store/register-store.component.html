@@ -65,7 +65,12 @@
               <option value="1">Procentagem</option>
               <option value="2">Valor Fixo</option>
             </select>
-            <input type="number" [(ngModel)]="store.payment_time" formControlName="storePaymentTime" >
+            <input
+              type="number"
+              placeholder="Dias para pagamento"
+              [(ngModel)]="store.payment_time"
+              formControlName="storePaymentTime"
+            >
           </div>
           <div class="col-5-5">
             <select formControlName="storeStatus" [(ngModel)]="store.status">
@@ -92,7 +97,11 @@
               formControlName="storeComissionValue"
               required="true"
             />
-            <input type="number" [(ngModel)]="store.minimum_value" formControlName="storeMinimumValue">
+            <input
+              currencyMask
+              placeholder="Valor para pagamento"
+              [(ngModel)]="store.minimum_value"
+              formControlName="storeMinimumValue">
           </div>
         </div>
       </div>
