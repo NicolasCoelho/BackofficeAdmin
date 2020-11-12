@@ -17,6 +17,7 @@ import { SaleStatus } from 'src/app/_models/salesStatus';
 import { Contract } from 'src/app/_models/contract';
 import { User } from 'src/app/_models/user';
 import { SystemStatusAndTypes } from 'src/app/_models/systemStatus';
+import { promise } from 'protractor';
 
 @Component({
   selector: 'app-register-store',
@@ -25,7 +26,9 @@ import { SystemStatusAndTypes } from 'src/app/_models/systemStatus';
 })
 export class RegisterStoreComponent implements OnInit {
   public storeForm: FormGroup;
+
   public status: Array<SystemStatusAndTypes> = [];
+
   public enviroments: Array<Enviroment> = [];
   public store = new Store()
   public requirements = new UserRequirements()
@@ -35,6 +38,12 @@ export class RegisterStoreComponent implements OnInit {
 
   public isEdit: boolean = false;
   public loading: boolean = false;
+  public editController = {
+    store: {touched: false, changed: false},
+    salesStatus: {touched: false, changed: false},
+    requirements: {touched: false, changed: false},
+    contract: {touched: false, changed: false}
+  }
 
   constructor(
     private ws: Ws,
@@ -151,7 +160,20 @@ export class RegisterStoreComponent implements OnInit {
 
     this.loading = true;
     if (this.isEdit) {
-      alert("salvo")
+      let promises = [
+        this.editController.store.changed ? this.ws.changeStore(this.store) : new Promise(r => r()),
+        this.editController.salesStatus.changed ? this.ws.changeSalesStatus(this.sale) : new Promise(r => r()),
+        this.editController.requirements.changed ? this.ws.changeUserRequirements(this.requirements): new Promise(r => r()),
+        this.editController.contract.changed ? this.ws.changeContract(this.contract) : new Promise(r=>r())
+      ]
+      Promise.all(promises).then(
+        () => {
+          alert("Loja cadastrada com sucesso!")
+          this.router.navigate(['dashboard', 'stores']);
+        }
+      ).catch(
+        () => alert("Erro ao cadastrar loja")
+      )
     } else {
       this.ws.createStoreFull(payload)
       .then(
@@ -161,6 +183,13 @@ export class RegisterStoreComponent implements OnInit {
         }
       )
     }
+  }
 
+  public setUnsave(target) {
+    if (this.editController[target].touched) this.editController[target].changed = true
+  }
+
+  public setTouched(target) {
+    this.editController[target].touched = true
   }
 }

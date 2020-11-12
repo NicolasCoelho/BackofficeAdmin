@@ -124,7 +124,11 @@ export class Ws {
       .then((response: Enviroment) => response);
   }
 
-  changeEnviroment(id: number, payload: Enviroment): Promise<any> {
+  changeEnviroment(payload: Enviroment): Promise<any> {
+    const id = payload.id
+    delete payload.id
+    delete payload.createdAt
+    delete payload.updatedAt
     return this.http
       .put(`${this.baseUrl}/enviroment/${id}`, payload, this.options)
       .toPromise()
@@ -163,8 +167,12 @@ export class Ws {
   }
 
   changeStore(payload: Store): Promise<any> {
+    const id = payload.id
+    delete payload.id
+    delete payload.createdAt
+    delete payload.updatedAt
     return this.http
-      .post(`${this.baseUrl}/store/${payload.id}`, payload, this.options)
+      .post(`${this.baseUrl}/store/${id}`, payload, this.options)
       .toPromise()
   }
 
@@ -188,6 +196,16 @@ export class Ws {
       )
   }
 
+  changeContract(payload: Contract): Promise<any> {
+    const id = payload.id
+    delete payload.id
+    delete payload.createdAt
+    delete payload.updatedAt
+    return this.http
+      .put(`${this.baseUrl}/contract/${id}`, payload, this.options)
+      .toPromise()
+  }
+
   // UserRequiremets
   getUserRequirementsByStore(id: string): Promise<UserRequirements> {
     return this.http
@@ -198,6 +216,16 @@ export class Ws {
     )
   }
 
+  changeUserRequirements(payload: UserRequirements): Promise<any> {
+    const id = payload.id
+    delete payload.id
+    delete payload.createdAt
+    delete payload.updatedAt
+    return this.http
+      .put(`${this.baseUrl}/userRequirements/${id}`, payload, this.options)
+      .toPromise()
+  }
+
   // SalesStatus
   getSalesStatusByStore(id: string): Promise<SaleStatus> {
     return this.http
@@ -206,5 +234,15 @@ export class Ws {
     .then(
       (response: SaleStatus) => response
     )
+  }
+
+  changeSalesStatus(payload: SaleStatus): Promise<any> {
+    const id = payload.id
+    delete payload.id
+    delete payload.createdAt
+    delete payload.updatedAt
+    return this.http
+      .put(`${this.baseUrl}/salesStatus/${id}`, payload, this.options)
+      .toPromise()
   }
 }

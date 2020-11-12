@@ -12,6 +12,8 @@
           maxlength="30"
           placeholder="Nome"
           [(ngModel)]="store.name"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
           type="text"
           formControlName="storeName"
           required="true"
@@ -20,6 +22,8 @@
         <input
           placeholder="Url"
           [(ngModel)]="store.url"
+          (ngModelChange)="setUnsave(store)"
+          (focus)="setTouched('store')"
           type="text"
           formControlName="storeUrl"
           required="true"
@@ -28,6 +32,8 @@
         <input
           placeholder="ID do Site"
           [(ngModel)]="store.websiteId"
+          (ngModelChange)="setUnsave(store)"
+          (focus)="setTouched('store')"
           type="number"
           formControlName="storeWebsite"
           required="true"
@@ -38,6 +44,8 @@
             <select
               formControlName="storeEnv"
               [(ngModel)]="store.enviromentId"
+              (ngModelChange)="setUnsave(store)"
+              (focus)="setTouched('store')"
             >
               <option value="undefined" disabled selected>Ambiente</option>
               <option *ngFor="let opt of enviroments" value="{{ opt.id }}">
@@ -48,6 +56,8 @@
               <input
                 type="checkbox"
                 [(ngModel)]="store.allowRegister"
+                (ngModelChange)="setUnsave(store)"
+                (focus)="setTouched('store')"
                 id="storeAllowRegister"
                 formControlName="storeAllowRegister"
               />
@@ -58,6 +68,8 @@
               id=""
               formControlName="storeComissionType"
               [(ngModel)]="store.comissionType"
+              (ngModelChange)="setUnsave(store)"
+              (focus)="setTouched('store')"
             >
               <option value="undefined" disabled selected>
                 Tipo de comissão
@@ -69,11 +81,15 @@
               type="number"
               placeholder="Dias para pagamento"
               [(ngModel)]="store.paymentTime"
+              (ngModelChange)="setUnsave(store)"
+              (focus)="setTouched('store')"
               formControlName="storePaymentTime"
             >
           </div>
           <div class="col-5-5">
-            <select formControlName="storeStatus" [(ngModel)]="store.status">
+            <select formControlName="storeStatus" [(ngModel)]="store.status"
+            (ngModelChange)="setUnsave(store)"
+            (focus)="setTouched('store')">
               <option value="undefined" disabled selected>Status</option>
               <option *ngFor="let opt of status" value="{{ opt.value }}">
                 {{ opt.viewValue }}
@@ -84,6 +100,8 @@
                 type="checkbox"
                 id="storeProtectedRegister"
                 [(ngModel)]="store.protectedRegister"
+                (ngModelChange)="setUnsave(store)"
+                (focus)="setTouched('store')"
                 formControlName="storeProtectedRegister"
                 required="true"
               />
@@ -94,6 +112,8 @@
               placeholder="Valor da comissão"
               type="text"
               [(ngModel)]="store.comissionValue"
+              (ngModelChange)="setUnsave(store)"
+              (focus)="setTouched('store')"
               formControlName="storeComissionValue"
               required="true"
             />
@@ -101,6 +121,8 @@
               currencyMask
               placeholder="Valor para pagamento"
               [(ngModel)]="store.minimumValue"
+              (ngModelChange)="setUnsave(store)"
+              (focus)="setTouched('store')"
               formControlName="storeMinimumValue">
           </div>
         </div>
@@ -113,6 +135,8 @@
           max="3"
           placeholder="recebido"
           [(ngModel)]="sale.received"
+          (ngModelChange)="setUnsave('salesStatus')"
+          (focus)="setTouched('salesStatus')"
           formControlName="saleReceived"
           required="true"
         />
@@ -122,6 +146,8 @@
           max="3"
           placeholder="completed"
           [(ngModel)]="sale.completed"
+          (ngModelChange)="setUnsave('salesStatus')"
+          (focus)="setTouched('salesStatus')"
           formControlName="saleCompleted"
           required="true"
         />
@@ -131,6 +157,8 @@
           max="3"
           placeholder="canceled"
           [(ngModel)]="sale.canceled"
+          (ngModelChange)="setUnsave('salesStatus')"
+          (focus)="setTouched('salesStatus')"
           formControlName="saleCanceled"
           required="true"
         />
@@ -146,6 +174,8 @@
                 type="checkbox"
                 id="reqPhone1"
                 [(ngModel)]="requirements.phone1"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqPhone1"
                 value="true"
               />
@@ -157,6 +187,8 @@
                 type="checkbox"
                 id="reqPhone2"
                 [(ngModel)]="requirements.phone2"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqPhone2"
                 value="true"
               />
@@ -168,6 +200,8 @@
                 type="checkbox"
                 id="reqCpfCnpj"
                 [(ngModel)]="requirements.cpfCnpj"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqCpfCnpj"
                 value="true"
               />
@@ -179,6 +213,8 @@
                 type="checkbox"
                 id="reqPis"
                 [(ngModel)]="requirements.pis"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqPis"
                 value="true"
               />
@@ -190,6 +226,8 @@
                 type="checkbox"
                 id="reqRg"
                 [(ngModel)]="requirements.rg"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqRg"
                 value="true"
               />
@@ -200,6 +238,8 @@
                 type="checkbox"
                 id="reqBirthDate"
                 [(ngModel)]="requirements.birthdate"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqBirthDate"
                 value="true"
               />
@@ -211,6 +251,8 @@
                 type="checkbox"
                 id="reqNationality"
                 [(ngModel)]="requirements.nationality"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqNationality"
                 value="true"
               />
@@ -222,6 +264,8 @@
                 type="checkbox"
                 id="reqBirthLocation"
                 [(ngModel)]="requirements.birthLocation"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqBirthLocation"
                 value="true"
               />
@@ -232,6 +276,8 @@
                 type="checkbox"
                 id="reqMaritalStatus"
                 [(ngModel)]="requirements.maritalStatus"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqMaritalStatus"
                 value="true"
               />
@@ -243,6 +289,8 @@
                 type="checkbox"
                 id="reqGender"
                 [(ngModel)]="requirements.gender"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqGender"
                 value="true"
               />
@@ -254,6 +302,8 @@
                 type="checkbox"
                 id="reqLiteracy"
                 [(ngModel)]="requirements.literacy"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqLiteracy"
                 value="true"
               />
@@ -266,6 +316,8 @@
                 type="checkbox"
                 id="reqCep"
                 [(ngModel)]="requirements.cep"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqCep"
                 value="true"
               />
@@ -277,6 +329,8 @@
                 type="checkbox"
                 id="reqAddress"
                 [(ngModel)]="requirements.address"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqAddress"
                 value="true"
               />
@@ -288,6 +342,8 @@
                 type="checkbox"
                 id="reqAddressNumber"
                 [(ngModel)]="requirements.addressNumber"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqAddressNumber"
                 value="true"
               />
@@ -299,6 +355,8 @@
                 type="checkbox"
                 id="reqNeighborhood"
                 [(ngModel)]="requirements.neighborhood"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqNeighborhood"
                 value="true"
               />
@@ -310,6 +368,8 @@
                 type="checkbox"
                 id="reqCity"
                 [(ngModel)]="requirements.city"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqCity"
                 value="true"
               />
@@ -321,6 +381,8 @@
                 type="checkbox"
                 id="reqState"
                 [(ngModel)]="requirements.state"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqState"
                 value="true"
               />
@@ -332,6 +394,8 @@
                 type="checkbox"
                 id="reqBank"
                 [(ngModel)]="requirements.bank"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqBank"
                 value="true"
               />
@@ -343,6 +407,8 @@
                 type="checkbox"
                 id="reqAgency"
                 [(ngModel)]="requirements.agency"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqAgency"
                 value="true"
               />
@@ -354,6 +420,8 @@
                 type="checkbox"
                 id="reqAccount"
                 [(ngModel)]="requirements.account"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqAccount"
                 value="true"
               />
@@ -365,6 +433,8 @@
                 type="checkbox"
                 id="reqAccountOwner"
                 [(ngModel)]="requirements.accountOwner"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqAccountOwner"
                 value="true"
               />
@@ -376,6 +446,8 @@
                 type="checkbox"
                 id="reqAccountOwnerCpf"
                 [(ngModel)]="requirements.accountOwnerCpf"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
                 formControlName="reqAccountOwnerCpf"
                 value="true"
               />
@@ -416,6 +488,8 @@
         <textarea
           type="text"
           [(ngModel)]="contract.content"
+          (ngModelChange)="setUnsave('contract')"
+          (focus)="setTouched('contract')"
           placeholder="conteúdo"
           formControlName="contract"
         ></textarea>

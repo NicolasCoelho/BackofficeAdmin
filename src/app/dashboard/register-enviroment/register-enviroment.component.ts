@@ -79,11 +79,7 @@ export class RegisterEnviromentComponent implements OnInit {
 
     this.loading = true;
     if (this.isEdit) {
-      delete this.enviroment.createdAt
-      delete this.enviroment.updatedAt
-      const id = this.enviroment.id
-      delete this.enviroment.id
-      this.ws.changeEnviroment(id, this.enviroment)
+      this.ws.changeEnviroment(this.enviroment)
         .catch((e)=> alert("Erro inesperado") )
         .finally(()=>{
           this.loading = false;
@@ -94,7 +90,7 @@ export class RegisterEnviromentComponent implements OnInit {
       .createEnviroment(this.enviroment)
       .then((response) => {
         alert('Cadastro realizado com sucesso');
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard', 'enviroments']);
       })
       .catch((e) => console.log(e));
     }
