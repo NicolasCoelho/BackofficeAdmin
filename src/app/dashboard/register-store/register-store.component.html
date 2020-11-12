@@ -27,7 +27,7 @@
 
         <input
           placeholder="ID do Site"
-          [(ngModel)]="store.website_id"
+          [(ngModel)]="store.websiteId"
           type="number"
           formControlName="storeWebsite"
           required="true"
@@ -37,7 +37,7 @@
           <div class="col-5-5">
             <select
               formControlName="storeEnv"
-              [(ngModel)]="store.enviroment_id"
+              [(ngModel)]="store.enviromentId"
             >
               <option value="undefined" disabled selected>Ambiente</option>
               <option *ngFor="let opt of enviroments" value="{{ opt.id }}">
@@ -47,7 +47,7 @@
             <label for="storeAllowRegister">
               <input
                 type="checkbox"
-                [(ngModel)]="store.allow_register"
+                [(ngModel)]="store.allowRegister"
                 id="storeAllowRegister"
                 formControlName="storeAllowRegister"
               />
@@ -57,7 +57,7 @@
               name=""
               id=""
               formControlName="storeComissionType"
-              [(ngModel)]="store.comission_type"
+              [(ngModel)]="store.comissionType"
             >
               <option value="undefined" disabled selected>
                 Tipo de comissão
@@ -68,7 +68,7 @@
             <input
               type="number"
               placeholder="Dias para pagamento"
-              [(ngModel)]="store.payment_time"
+              [(ngModel)]="store.paymentTime"
               formControlName="storePaymentTime"
             >
           </div>
@@ -83,7 +83,7 @@
               <input
                 type="checkbox"
                 id="storeProtectedRegister"
-                [(ngModel)]="store.protected_register"
+                [(ngModel)]="store.protectedRegister"
                 formControlName="storeProtectedRegister"
                 required="true"
               />
@@ -93,14 +93,14 @@
               currencyMask
               placeholder="Valor da comissão"
               type="text"
-              [(ngModel)]="store.comission_value"
+              [(ngModel)]="store.comissionValue"
               formControlName="storeComissionValue"
               required="true"
             />
             <input
               currencyMask
               placeholder="Valor para pagamento"
-              [(ngModel)]="store.minimum_value"
+              [(ngModel)]="store.minimumValue"
               formControlName="storeMinimumValue">
           </div>
         </div>
@@ -145,7 +145,7 @@
               <input
                 type="checkbox"
                 id="reqPhone1"
-                [(ngModel)]="requirements.phone_1"
+                [(ngModel)]="requirements.phone1"
                 formControlName="reqPhone1"
                 value="true"
               />
@@ -156,7 +156,7 @@
               <input
                 type="checkbox"
                 id="reqPhone2"
-                [(ngModel)]="requirements.phone_2"
+                [(ngModel)]="requirements.phone2"
                 formControlName="reqPhone2"
                 value="true"
               />
@@ -167,7 +167,7 @@
               <input
                 type="checkbox"
                 id="reqCpfCnpj"
-                [(ngModel)]="requirements.cpf_cnpj"
+                [(ngModel)]="requirements.cpfCnpj"
                 formControlName="reqCpfCnpj"
                 value="true"
               />
@@ -221,7 +221,7 @@
               <input
                 type="checkbox"
                 id="reqBirthLocation"
-                [(ngModel)]="requirements.birth_location"
+                [(ngModel)]="requirements.birthLocation"
                 formControlName="reqBirthLocation"
                 value="true"
               />
@@ -231,7 +231,7 @@
               <input
                 type="checkbox"
                 id="reqMaritalStatus"
-                [(ngModel)]="requirements.marital_status"
+                [(ngModel)]="requirements.maritalStatus"
                 formControlName="reqMaritalStatus"
                 value="true"
               />
@@ -287,7 +287,7 @@
               <input
                 type="checkbox"
                 id="reqAddressNumber"
-                [(ngModel)]="requirements.address_number"
+                [(ngModel)]="requirements.addressNumber"
                 formControlName="reqAddressNumber"
                 value="true"
               />
@@ -364,7 +364,7 @@
               <input
                 type="checkbox"
                 id="reqAccountOwner"
-                [(ngModel)]="requirements.account_owner"
+                [(ngModel)]="requirements.accountOwner"
                 formControlName="reqAccountOwner"
                 value="true"
               />
@@ -375,7 +375,7 @@
               <input
                 type="checkbox"
                 id="reqAccountOwnerCpf"
-                [(ngModel)]="requirements.account_owner_cpf"
+                [(ngModel)]="requirements.accountOwnerCpf"
                 formControlName="reqAccountOwnerCpf"
                 value="true"
               />

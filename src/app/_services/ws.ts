@@ -8,14 +8,15 @@ import { Enviroment } from '../_models/enviroments';
 import { Store } from '../_models/stores';
 import { User, UserPaginated } from '../_models/user';
 import { Contract } from '../_models/contract';
-import { UserRequirements } from '../_models/user_requirements';
-import { SaleStatus } from '../_models/sales_status';
+import { UserRequirements } from '../_models/userRequirements';
+import { SaleStatus } from '../_models/salesStatus';
+import { SystemStatusAndTypes } from '../_models/systemStatus';
 
 @Injectable()
 export class Ws {
   //public base_url = 'http://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
-  public base_url = 'http://localhost:3000';
-  public store_id = '6c6455ece193d4d2';
+  public baseUrl = 'http://localhost:3000';
+  public storeId = '6c6455ece193d4d2';
 
   public headers: HttpHeaders;
   public options: Object;
@@ -35,16 +36,44 @@ export class Ws {
   // Info
   getHealth(): Promise<Health> {
     return this.http
-      .get(`${this.base_url}/systemhealth`)
+      .get(`${this.baseUrl}/systemhealth`)
       .toPromise()
       .then((response: Health) => response);
   }
 
+  getSystemStatus(): Promise<SystemStatusAndTypes[]> {
+    return this.http
+      .get(`${this.baseUrl}/systemStatus`, this.options)
+      .toPromise()
+      .then((response: SystemStatusAndTypes[]) => response)
+  }
+
+  getSystemStatusByType(type:string): Promise<SystemStatusAndTypes[]> {
+    return this.http
+      .get(`${this.baseUrl}/systemStatus/${type}`, this.options)
+      .toPromise()
+      .then((response: SystemStatusAndTypes[]) => response)
+  }
+
+  getSystemTypes(): Promise<SystemStatusAndTypes[]> {
+    return this.http
+      .get(`${this.baseUrl}/systemTypes`, this.options)
+      .toPromise()
+      .then((response: SystemStatusAndTypes[]) => response)
+  }
+
+  getSystemTypesByType(type:string): Promise<SystemStatusAndTypes[]> {
+    return this.http
+      .get(`${this.baseUrl}/systemTypes/${type}`, this.options)
+      .toPromise()
+      .then((response: SystemStatusAndTypes[]) => response)
+  }
+
   // Token
   getToken(): Promise<any> {
-    const id = this.store_id;
+    const id = this.storeId;
     return this.http
-      .post(`${this.base_url}/token`, { store_id: id })
+      .post(`${this.baseUrl}/token`, { storeId: id })
       .toPromise()
       .then((response: any) => {
         this.auth.setToken(response.token);
@@ -57,7 +86,7 @@ export class Ws {
   authenticate(user, pass): Promise<any> {
     return this.http
       .post(
-        `${this.base_url}/auth`,
+        `${this.baseUrl}/auth`,
         { username: user, password: pass },
         this.options
       )
@@ -72,7 +101,7 @@ export class Ws {
   // Enviroments
   getEnviroment(id:number):Promise<Enviroment> {
     return this.http
-      .get(`${this.base_url}/enviroment/${id}`, this.options)
+      .get(`${this.baseUrl}/enviroment/${id}`, this.options)
       .toPromise()
       .then(
         (response:Enviroment) => response
@@ -81,7 +110,7 @@ export class Ws {
 
   getEnviroments(): Promise<Enviroment[]> {
     return this.http
-      .get(`${this.base_url}/enviroments`, this.options)
+      .get(`${this.baseUrl}/enviroments`, this.options)
       .toPromise()
       .then((response: Enviroment[]) => {
         return response;
@@ -90,21 +119,21 @@ export class Ws {
 
   createEnviroment(payload): Promise<Enviroment> {
     return this.http
-      .post(`${this.base_url}/enviroment`, payload, this.options)
+      .post(`${this.baseUrl}/enviroment`, payload, this.options)
       .toPromise()
       .then((response: Enviroment) => response);
   }
 
   changeEnviroment(id: number, payload: Enviroment): Promise<any> {
     return this.http
-      .put(`${this.base_url}/enviroment/${id}`, payload, this.options)
+      .put(`${this.baseUrl}/enviroment/${id}`, payload, this.options)
       .toPromise()
   }
 
   // Store
   getStore(id: string): Promise<Store> {
     return this.http
-    .get(`${this.base_url}/store/${id}`, this.options)
+    .get(`${this.baseUrl}/store/${id}`, this.options)
     .toPromise()
     .then(
       (response: Store) => response
@@ -113,7 +142,7 @@ export class Ws {
 
   getStores(): Promise<Store[]> {
     return this.http
-      .get(`${this.base_url}/stores`, this.options)
+      .get(`${this.baseUrl}/stores`, this.options)
       .toPromise()
       .then((response: Store[]) => {
         return response;
@@ -122,27 +151,27 @@ export class Ws {
 
   createStore(payload: Store): Promise<Store> {
     return this.http
-      .post(`${this.base_url}/store`, payload, this.options)
+      .post(`${this.baseUrl}/store`, payload, this.options)
       .toPromise()
       .then((response: Store) => response);
   }
 
   createStoreFull(payload): Promise<any> {
     return this.http
-      .post(`${this.base_url}/store/full`, payload, this.options)
+      .post(`${this.baseUrl}/store/full`, payload, this.options)
       .toPromise()
   }
 
   changeStore(payload: Store): Promise<any> {
     return this.http
-      .post(`${this.base_url}/store/${payload.id}`, payload, this.options)
+      .post(`${this.baseUrl}/store/${payload.id}`, payload, this.options)
       .toPromise()
   }
 
   // Users
   getUsers(params=""): Promise<UserPaginated> {
     return this.http
-      .get(`${this.base_url}/users${params}`, this.options)
+      .get(`${this.baseUrl}/users${params}`, this.options)
       .toPromise()
       .then((response: UserPaginated) => {
         return response;
@@ -152,7 +181,7 @@ export class Ws {
   // Contract
   getContractByStore(id: string): Promise<Contract> {
     return this.http
-      .get(`${this.base_url}/contract/${id}/store`, this.options)
+      .get(`${this.baseUrl}/contract/${id}/store`, this.options)
       .toPromise()
       .then(
         (response: Contract) => response
@@ -162,7 +191,7 @@ export class Ws {
   // UserRequiremets
   getUserRequirementsByStore(id: string): Promise<UserRequirements> {
     return this.http
-    .get(`${this.base_url}/userRequirements/${id}/store`, this.options)
+    .get(`${this.baseUrl}/userRequirements/${id}/store`, this.options)
     .toPromise()
     .then(
       (response: UserRequirements) => response
@@ -172,7 +201,7 @@ export class Ws {
   // SalesStatus
   getSalesStatusByStore(id: string): Promise<SaleStatus> {
     return this.http
-    .get(`${this.base_url}/salesStatus/${id}/store`, this.options)
+    .get(`${this.baseUrl}/salesStatus/${id}/store`, this.options)
     .toPromise()
     .then(
       (response: SaleStatus) => response

@@ -12,10 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //Importando o modelo Store para instanciamento;
 import { Store } from '../../_models/stores';
 import { Enviroment } from 'src/app/_models/enviroments';
-import { UserRequirements } from 'src/app/_models/user_requirements';
-import { SaleStatus } from 'src/app/_models/sales_status';
+import { UserRequirements } from 'src/app/_models/userRequirements';
+import { SaleStatus } from 'src/app/_models/salesStatus';
 import { Contract } from 'src/app/_models/contract';
 import { User } from 'src/app/_models/user';
+import { SystemStatusAndTypes } from 'src/app/_models/systemStatus';
 
 @Component({
   selector: 'app-register-store',
@@ -24,11 +25,7 @@ import { User } from 'src/app/_models/user';
 })
 export class RegisterStoreComponent implements OnInit {
   public storeForm: FormGroup;
-  public status = [
-    { value: 1, viewValue: 'Ativo' },
-    { value: 2, viewValue: 'Manutenção' },
-    { value: 3, viewValue: 'Desativado' },
-  ];
+  public status: Array<SystemStatusAndTypes> = [];
   public enviroments: Array<Enviroment> = [];
   public store = new Store()
   public requirements = new UserRequirements()
@@ -45,6 +42,7 @@ export class RegisterStoreComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder
   ) {
+    this.getStatus()
     if (this.router.url.indexOf('edit') > -1) {
       this.isEdit = true;
       this.loading = true;
@@ -59,6 +57,14 @@ export class RegisterStoreComponent implements OnInit {
         Promise.all(promises).catch(e => alert(e)).finally(()=>this.loading = false)
       })
     }
+  }
+
+  getStatus() {
+    this.ws.getSystemStatusByType('STORE').then(
+      response => {
+        Object.assign(this.status, response)
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -132,15 +138,15 @@ export class RegisterStoreComponent implements OnInit {
         if(this.requirements[key] === undefined) this.requirements[key] = false
       }
     )
-    this.store.protected_register === undefined ? this.store.protected_register = false : null
-    this.store.allow_register === undefined ? this.store.allow_register = false : true
+    this.store.protectedRegister === undefined ? this.store.protectedRegister = false : null
+    this.store.allowRegister === undefined ? this.store.allowRegister = false : true
 
     let payload = {
       store: this.store,
-      user_requirements: this.requirements,
-      sales_status: this.sale,
+      userRequirements: this.requirements,
+      salesStatus: this.sale,
       contract: this.contract,
-      default_user: this.user
+      defaultUser: this.user
     }
 
     this.loading = true;

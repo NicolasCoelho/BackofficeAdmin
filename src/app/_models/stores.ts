@@ -1,16 +1,16 @@
 export class Store {
   public id: string;
-  public enviroment_id: number;
-  public website_id: number;
+  public enviromentId: number;
+  public websiteId: number;
   public name: string;
   public url: string;
   public status: number;
-  public allow_register: boolean;
-  public payment_time: number;
-  public minimum_value: number;
-  public protected_register: boolean;
-  public comission_type: number;
-  public comission_value: number;
+  public allowRegister: boolean;
+  public paymentTime: number;
+  public minimumValue: number;
+  public protectedRegister: boolean;
+  public comissionType: number;
+  public comissionValue: number;
   public createdAt: string;
   public updatedAt: string;
 }

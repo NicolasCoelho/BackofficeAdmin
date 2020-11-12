@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SystemStatusAndTypes } from 'src/app/_models/systemStatus';
 import { Ws } from 'src/app/_services/ws';
 
 import { Enviroment } from '../../_models/enviroments';
@@ -16,11 +17,7 @@ export class RegisterEnviromentComponent implements OnInit {
   public enviromentForm: FormGroup;
 
   public types = [{ value: 1, viewValue: 'Core' }];
-  public status = [
-    { value: 1, viewValue: 'Ativo' },
-    { value: 2, viewValue: 'Manutenção' },
-    { value: 3, viewValue: 'Desativado' },
-  ];
+  public status: Array<SystemStatusAndTypes> = [];
   public enviroment: Enviroment = new Enviroment()
   public isEdit: boolean = false;
   public loading: boolean = false;
@@ -31,6 +28,8 @@ export class RegisterEnviromentComponent implements OnInit {
     private currentRoute: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {
+    this.getStatus()
+    this.getTypes()
     if (this.router.url.indexOf('edit') > -1) {
       this.isEdit = true;
       this.loading = true
@@ -52,6 +51,22 @@ export class RegisterEnviromentComponent implements OnInit {
       url: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+
+  getStatus() {
+    this.ws.getSystemStatusByType('ENVIROMENT').then(
+      response => {
+        Object.assign(this.status, response)
+      }
+    )
+  }
+
+  getTypes() {
+    this.ws.getSystemTypesByType('ENVIROMENT').then(
+      response => {
+        Object.assign(this.types, response)
+      }
+    )
   }
 
   register() {
