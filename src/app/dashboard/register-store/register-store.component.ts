@@ -168,12 +168,12 @@ export class RegisterStoreComponent implements OnInit {
       ]
       Promise.all(promises).then(
         () => {
-          alert("Loja cadastrada com sucesso!")
+          alert("Loja alterada com sucesso!")
           this.router.navigate(['dashboard', 'stores']);
         }
       ).catch(
-        () => alert("Erro ao cadastrar loja")
-      )
+        () => alert("Erro ao alterar loja")
+      ).finally( () => this.loading = false )
     } else {
       this.ws.createStoreFull(payload)
       .then(
@@ -181,7 +181,9 @@ export class RegisterStoreComponent implements OnInit {
           alert("Loja criada com sucesso")
           this.router.navigate(['dashboard', 'stores'])
         }
-      )
+      ).catch(
+        () => alert('Erro ao cadastras loja')
+      ).finally()
     }
   }
 

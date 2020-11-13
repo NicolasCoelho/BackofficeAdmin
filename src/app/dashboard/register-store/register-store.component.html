@@ -22,7 +22,7 @@
         <input
           placeholder="Url"
           [(ngModel)]="store.url"
-          (ngModelChange)="setUnsave(store)"
+          (ngModelChange)="setUnsave('store')"
           (focus)="setTouched('store')"
           type="text"
           formControlName="storeUrl"
@@ -32,7 +32,7 @@
         <input
           placeholder="ID do Site"
           [(ngModel)]="store.websiteId"
-          (ngModelChange)="setUnsave(store)"
+          (ngModelChange)="setUnsave('store')"
           (focus)="setTouched('store')"
           type="number"
           formControlName="storeWebsite"
@@ -44,7 +44,7 @@
             <select
               formControlName="storeEnv"
               [(ngModel)]="store.enviromentId"
-              (ngModelChange)="setUnsave(store)"
+              (ngModelChange)="setUnsave('store')"
               (focus)="setTouched('store')"
             >
               <option value="undefined" disabled selected>Ambiente</option>
@@ -56,7 +56,7 @@
               <input
                 type="checkbox"
                 [(ngModel)]="store.allowRegister"
-                (ngModelChange)="setUnsave(store)"
+                (ngModelChange)="setUnsave('store')"
                 (focus)="setTouched('store')"
                 id="storeAllowRegister"
                 formControlName="storeAllowRegister"
@@ -68,7 +68,7 @@
               id=""
               formControlName="storeComissionType"
               [(ngModel)]="store.comissionType"
-              (ngModelChange)="setUnsave(store)"
+              (ngModelChange)="setUnsave('store')"
               (focus)="setTouched('store')"
             >
               <option value="undefined" disabled selected>
@@ -81,14 +81,14 @@
               type="number"
               placeholder="Dias para pagamento"
               [(ngModel)]="store.paymentTime"
-              (ngModelChange)="setUnsave(store)"
+              (ngModelChange)="setUnsave('store')"
               (focus)="setTouched('store')"
               formControlName="storePaymentTime"
             >
           </div>
           <div class="col-5-5">
             <select formControlName="storeStatus" [(ngModel)]="store.status"
-            (ngModelChange)="setUnsave(store)"
+            (ngModelChange)="setUnsave('store')"
             (focus)="setTouched('store')">
               <option value="undefined" disabled selected>Status</option>
               <option *ngFor="let opt of status" value="{{ opt.value }}">
@@ -100,7 +100,7 @@
                 type="checkbox"
                 id="storeProtectedRegister"
                 [(ngModel)]="store.protectedRegister"
-                (ngModelChange)="setUnsave(store)"
+                (ngModelChange)="setUnsave('store')"
                 (focus)="setTouched('store')"
                 formControlName="storeProtectedRegister"
                 required="true"
@@ -112,7 +112,7 @@
               placeholder="Valor da comissão"
               type="text"
               [(ngModel)]="store.comissionValue"
-              (ngModelChange)="setUnsave(store)"
+              (ngModelChange)="setUnsave('store')"
               (focus)="setTouched('store')"
               formControlName="storeComissionValue"
               required="true"
@@ -121,7 +121,7 @@
               currencyMask
               placeholder="Valor para pagamento"
               [(ngModel)]="store.minimumValue"
-              (ngModelChange)="setUnsave(store)"
+              (ngModelChange)="setUnsave('store')"
               (focus)="setTouched('store')"
               formControlName="storeMinimumValue">
           </div>

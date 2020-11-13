@@ -172,7 +172,7 @@ export class Ws {
     delete payload.createdAt
     delete payload.updatedAt
     return this.http
-      .post(`${this.baseUrl}/store/${id}`, payload, this.options)
+      .put(`${this.baseUrl}/store/${id}`, payload, this.options)
       .toPromise()
   }
 
@@ -201,6 +201,7 @@ export class Ws {
     delete payload.id
     delete payload.createdAt
     delete payload.updatedAt
+    delete payload['storeId']
     return this.http
       .put(`${this.baseUrl}/contract/${id}`, payload, this.options)
       .toPromise()
@@ -221,6 +222,7 @@ export class Ws {
     delete payload.id
     delete payload.createdAt
     delete payload.updatedAt
+    delete payload['storeId']
     return this.http
       .put(`${this.baseUrl}/userRequirements/${id}`, payload, this.options)
       .toPromise()
@@ -241,6 +243,7 @@ export class Ws {
     delete payload.id
     delete payload.createdAt
     delete payload.updatedAt
+    delete payload['storeId']
     return this.http
       .put(`${this.baseUrl}/salesStatus/${id}`, payload, this.options)
       .toPromise()
