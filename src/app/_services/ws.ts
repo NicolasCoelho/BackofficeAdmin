@@ -15,7 +15,7 @@ import { SystemStatusAndTypes } from '../_models/systemStatus';
 @Injectable()
 export class Ws {
 
-  public baseUrl = 'https://wshlg.divulgadores.app.br/';
+  public baseUrl = 'https://wshlg.divulgadores.app.br';
   //public baseUrl = 'http://localhost:3000';
   public storeId = '6c6455ece193d4d2';
 
