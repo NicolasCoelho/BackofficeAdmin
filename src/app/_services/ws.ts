@@ -14,7 +14,7 @@ import { SystemStatusAndTypes } from '../_models/systemStatus';
 
 @Injectable()
 export class Ws {
-  public base_url = 'https://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
+  public baseUrl = 'https://divulgadoresdevelopment-env.eba-pnvfbnm3.sa-east-1.elasticbeanstalk.com';
   //public baseUrl = 'http://localhost:3000';
   public storeId = '6c6455ece193d4d2';
 
