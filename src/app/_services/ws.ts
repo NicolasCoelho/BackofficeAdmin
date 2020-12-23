@@ -29,7 +29,7 @@ export class Ws {
   setHeaders(token = null) {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      authorization: token === null ? '' : token,
+      Authorization: token === null ? '' : `Basic ${token}`,
     });
     this.options = { headers: this.headers };
   }
