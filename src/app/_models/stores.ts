@@ -1,5 +1,6 @@
 export class Store {
-  public id: string;
+  public id: number;
+  public publicId: string;
   public enviromentId: number;
   public websiteId: number;
   public name: string;

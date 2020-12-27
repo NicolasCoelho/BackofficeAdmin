@@ -3,6 +3,7 @@
     <button type="submit" class="btnCreate">Salvar</button>
     &nbsp;
     <app-loading [(isLoading)]="loading"></app-loading>
+    <div *ngIf="store.publicId" style="text-align: center;"><strong>ID público:</strong>&nbsp;<span>{{ store.publicId }}</span></div>
   </div>
   <div class="row">
     <div class="col-12 col-md-12 col-lg-4">
@@ -103,7 +104,6 @@
                 (ngModelChange)="setUnsave('store')"
                 (focus)="setTouched('store')"
                 formControlName="storeProtectedRegister"
-                required="true"
               />
               Cadastro protegido
             </label>
