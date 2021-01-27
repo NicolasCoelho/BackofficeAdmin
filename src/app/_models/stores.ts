@@ -4,6 +4,15 @@ export class Store {
   public enviromentId: number;
   public websiteId: number;
   public name: string;
+  public appTitle: string;
+  public faviconLink: string;
+  public homeTemplate: string;
+  public logoSrc: string;
+  public logoWidth: string;
+  public logoHeight: string;
+  public stylePath: string;
+  public fontsLink: string;
+  public storeUrl: string;
   public url: string;
   public status: number;
   public allowRegister: boolean;

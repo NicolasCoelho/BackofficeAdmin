@@ -21,12 +21,72 @@
         />
 
         <input
-          placeholder="Url"
+          placeholder="Url de origem"
           [(ngModel)]="store.url"
           (ngModelChange)="setUnsave('store')"
           (focus)="setTouched('store')"
           type="text"
           formControlName="storeUrl"
+          required="true"
+        />
+
+        <input
+          placeholder="Título da página"
+          [(ngModel)]="store.appTitle"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storeAppTitle"
+          required="true"
+        />
+
+        <input
+          placeholder="Favicon"
+          [(ngModel)]="store.faviconLink"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storeFaviconLink"
+          required="true"
+        />
+
+        <input
+          placeholder="Url da Página inicial"
+          [(ngModel)]="store.homeTemplate"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storeHomeTemplate"
+          required="true"
+        />
+
+        <input
+          placeholder="Folha de estilos padrão"
+          [(ngModel)]="store.stylePath"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storeStylePath"
+          required="true"
+        />
+
+        <input
+          placeholder="Fonte padrão"
+          [(ngModel)]="store.fontsLink"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storeFontsLink"
+          required="true"
+        />
+
+        <input
+          placeholder="Url da loja"
+          [(ngModel)]="store.storeUrl"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storeStoreUrl"
           required="true"
         />
 
@@ -39,6 +99,42 @@
           formControlName="storeWebsite"
           required="true"
         />
+
+        <div class="row justify-content-between">
+          <div class="col">
+            <input
+              placeholder="Logo"
+              [(ngModel)]="store.logoSrc"
+              (ngModelChange)="setUnsave('store')"
+              (focus)="setTouched('store')"
+              type="text"
+              formControlName="storeLogoSrc"
+              required="true"
+            />
+          </div>
+          <div class="col">
+            <input
+              placeholder="Tamanho"
+              [(ngModel)]="store.logoWidth"
+              (ngModelChange)="setUnsave('store')"
+              (focus)="setTouched('store')"
+              type="text"
+              formControlName="storeLogoWidth"
+              required="true"
+            />
+          </div>
+          <div class="col">
+            <input
+              placeholder="Altura"
+              [(ngModel)]="store.logoHeight"
+              (ngModelChange)="setUnsave('store')"
+              (focus)="setTouched('store')"
+              type="text"
+              formControlName="storeLogoHeight"
+              required="true"
+            />
+          </div>
+        </div>
 
         <div class="row justify-content-between">
           <div class="col-5-5">
@@ -75,7 +171,7 @@
               <option value="undefined" disabled selected>
                 Tipo de comissão
               </option>
-              <option value="1">Procentagem</option>
+              <option value="1">Porcentagem</option>
               <option value="2">Valor Fixo</option>
             </select>
             <input
@@ -126,42 +222,6 @@
               formControlName="storeMinimumValue">
           </div>
         </div>
-      </div>
-      <div class="input-section status">
-        <h3>Status de venda</h3>
-        <input
-          type="number"
-          min="1"
-          max="3"
-          placeholder="recebido"
-          [(ngModel)]="sale.received"
-          (ngModelChange)="setUnsave('salesStatus')"
-          (focus)="setTouched('salesStatus')"
-          formControlName="saleReceived"
-          required="true"
-        />
-        <input
-          type="number"
-          min="1"
-          max="3"
-          placeholder="completed"
-          [(ngModel)]="sale.completed"
-          (ngModelChange)="setUnsave('salesStatus')"
-          (focus)="setTouched('salesStatus')"
-          formControlName="saleCompleted"
-          required="true"
-        />
-        <input
-          type="number"
-          min="1"
-          max="3"
-          placeholder="canceled"
-          [(ngModel)]="sale.canceled"
-          (ngModelChange)="setUnsave('salesStatus')"
-          (focus)="setTouched('salesStatus')"
-          formControlName="saleCanceled"
-          required="true"
-        />
       </div>
     </div>
     <div class="col-12 col-md-12 col-lg-4">
@@ -457,6 +517,43 @@
         </div>
       </div>
 
+      <div class="input-section status">
+        <h3>Status de venda</h3>
+        <input
+          type="number"
+          min="1"
+          max="3"
+          placeholder="recebido"
+          [(ngModel)]="sale.received"
+          (ngModelChange)="setUnsave('salesStatus')"
+          (focus)="setTouched('salesStatus')"
+          formControlName="saleReceived"
+          required="true"
+        />
+        <input
+          type="number"
+          min="1"
+          max="3"
+          placeholder="completed"
+          [(ngModel)]="sale.completed"
+          (ngModelChange)="setUnsave('salesStatus')"
+          (focus)="setTouched('salesStatus')"
+          formControlName="saleCompleted"
+          required="true"
+        />
+        <input
+          type="number"
+          min="1"
+          max="3"
+          placeholder="canceled"
+          [(ngModel)]="sale.canceled"
+          (ngModelChange)="setUnsave('salesStatus')"
+          (focus)="setTouched('salesStatus')"
+          formControlName="saleCanceled"
+          required="true"
+        />
+      </div>
+
       <div class="input-section user" *ngIf="!isEdit">
         <h3>Usuário padrão</h3>
         <input
@@ -481,6 +578,584 @@
           formControlName="userPassword"
         />
       </div>
+      <div class="input-section user">
+        <h3>Cores do sistema</h3>
+        <div class="row justify-content-between">
+          <div class="col-5-5">
+            <label for="stylesFontFamily">
+              Fonte padrão
+              <input
+                type="text"
+                [(ngModel)]="styles.fontFamily"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Fonte"
+                formControlName="stylesFontFamily"
+              />
+            </label>
+
+            <label for="stylesPrimary">
+              Cor primária
+              <input
+                id="stylesPrimary"
+                type="text"
+                [(ngModel)]="styles.primary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor Principal"
+                formControlName="stylesPrimary"
+              />
+            </label>
+
+            <label for="stylesSecondary">
+              Cor secundária
+              <input
+                id="stylesSecondary"
+                [(ngModel)]="styles.secondary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor secundária"
+                formControlName="stylesSecondary"
+              />
+            </label>
+
+            <label for="stylesTextPrimary">
+              Cor do texto primário
+              <input
+                id="stylesTextPrimary"
+                [(ngModel)]="styles.textPrimary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do texto primário"
+                formControlName="stylesTextPrimary"
+              />
+            </label>
+
+            <label for="stylesLinksColor">
+              Cor dos links (tag a)
+              <input
+                id="stylesLinksColor"
+                [(ngModel)]="styles.linksColor"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor dos links (tag a)"
+                formControlName="stylesLinksColor"
+              />
+            </label>
+
+            <label for="stylesLinksWeight">
+              Peso das fontes dos links
+              <input
+                id="stylesLinksWeight"
+                [(ngModel)]="styles.linksWeight"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Peso das fontes dos links"
+                formControlName="stylesLinksWeight"
+              />
+            </label>
+
+
+            <label for="stylesTextSecondary">
+              Cor do texto secundária
+              <input
+                id="stylesTextSecondary"
+                [(ngModel)]="styles.textSecondary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do texto secundária"
+                formControlName="stylesTextSecondary"
+              />
+            </label>
+
+            <label for="stylesBorderRadius">
+              Arredondamento das bordas
+              <input
+                id="stylesBorderRadius"
+                [(ngModel)]="styles.borderRadius"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Arredondamento das bordas"
+                formControlName="stylesBorderRadius"
+              />
+            </label>
+
+            <label for="stylesIconsColor">
+              Arredondamento das bordas
+              <input
+                id="stylesIconsColor"
+                [(ngModel)]="styles.iconsColor"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do ícones"
+                formControlName="stylesIconsColor"
+              />
+            </label>
+
+            <label for="stylesTableHeaderBg">
+              Cor de fundo do header das tabelas
+              <input
+                id="stylesTableHeaderBg"
+                [(ngModel)]="styles.tableHeaderBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo do header das tabelas"
+                formControlName="stylesTableHeaderBg"
+              />
+            </label>
+            <label for="stylesTableHeaderColor">
+              Cor do texto do header das tabelas
+              <input
+                id="stylesTableHeaderColor"
+                [(ngModel)]="styles.tableHeaderColor"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do texto do header das tabelas"
+                formControlName="stylesTableHeaderColor"
+              />
+            </label>
+
+            <label for="stylesTableVariation">
+              Cor da variação das linhas das tabelas
+              <input
+                id="stylesTableVariation"
+                [(ngModel)]="styles.tableVariation"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor da variação das linhas das tabelas"
+                formControlName="stylesTableVariation"
+              />
+            </label>
+
+            <label for="stylesTableFontSize">
+              Tamanhos das fontes das tabelas
+              <input
+                id="stylesTableFontSize"
+                [(ngModel)]="styles.tableFontSize"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Tamanhos das fontes das tabelas"
+                formControlName="stylesTableFontSize"
+              />
+            </label>
+            <label for="stylesTablePadding">
+              Espaçamento das tabelas
+              <input
+                id="stylesTablePadding"
+                [(ngModel)]="styles.tablePadding"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Espaçamento das tabelas"
+                formControlName="stylesTablePadding"
+              />
+            </label>
+            <label for="stylesTableTextAlign">
+              Alinhamento das tabelas
+              <input
+                id="stylesTableTextAlign"
+                [(ngModel)]="styles.tableTextAlign"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Alinhamento das tabelas"
+                formControlName="stylesTableTextAlign"
+              />
+            </label>
+
+            <label for="stylesButtonColorPrimary">
+              Cor primaria dos botões
+              <input
+                id="stylesButtonColorPrimary"
+                [(ngModel)]="styles.buttonColorPrimary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor primaria dos botões"
+                formControlName="stylesButtonColorPrimary"
+              />
+            </label>
+
+            <label for="stylesButtonBgPrimary">
+              Cor de fundo primaria dos botões
+              <input
+                id="stylesButtonBgPrimary"
+                [(ngModel)]="styles.buttonBgPrimary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo primaria dos botões"
+                formControlName="stylesButtonBgPrimary"
+              />
+            </label>
+
+            <label for="stylesButtonBgDisabledPrimary">
+              Cor de fundo primaria dos botões desabilitados
+              <input
+                id="stylesButtonBgDisabledPrimary"
+                [(ngModel)]="styles.buttonBgDisabledPrimary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo primaria dos botões desabilitados"
+                formControlName="stylesButtonBgDisabledPrimary"
+              />
+            </label>
+
+            <label for="stylesButtonColorSecondary">
+              Cor secundária dos botões
+              <input
+                id="stylesButtonColorSecondary"
+                [(ngModel)]="styles.buttonColorSecondary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor secundária dos botões"
+                formControlName="stylesButtonColorSecondary"
+              />
+            </label>
+
+            <label for="stylesButtonBgSecondary">
+              Cor secundária dos botões
+              <input
+                id="stylesButtonBgSecondary"
+                [(ngModel)]="styles.buttonBgSecondary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo primaria dos botões desabilitados"
+                formControlName="stylesButtonBgSecondary"
+              />
+            </label>
+
+            <label for="stylesButtonBgDisabledSecondary">
+              Cor de fundo secundária dos botões desabilitados
+              <input
+                id="stylesButtonBgDisabledSecondary"
+                [(ngModel)]="styles.buttonBgDisabledSecondary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo primaria dos botões desabilitados"
+                formControlName="stylesButtonBgDisabledSecondary"
+              />
+            </label>
+
+            <label for="stylesButtonFontWeight">
+              Peso da fonte dos botões
+              <input
+                id="stylesButtonFontWeight"
+                [(ngModel)]="styles.buttonFontWeight"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Peso da fonte dos botões"
+                formControlName="stylesButtonFontWeight"
+              />
+            </label>
+
+            <label for="stylesButtonBorderRadius">
+              Arredondamento da borda dos botões
+              <input
+                id="stylesButtonBorderRadius"
+                [(ngModel)]="styles.buttonBorderRadius"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Arredondamento da borda dos botões"
+                formControlName="stylesButtonBorderRadius"
+              />
+            </label>
+
+            <label for="stylesButtonColorActivePrimary">
+              Cor primária ativa do botão
+              <input
+                id="stylesButtonColorActivePrimary"
+                [(ngModel)]="styles.buttonColorActivePrimary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor primária ativa do botão"
+                formControlName="stylesButtonColorActivePrimary"
+              />
+            </label>
+
+            <label for="stylesButtonColorActiveSecondary">
+              Cor secundária ativa do botão
+              <input
+                id="stylesButtonColorActiveSecondary"
+                [(ngModel)]="styles.buttonColorActiveSecondary"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor secundária ativa do botão"
+                formControlName="stylesButtonColorActiveSecondary"
+              />
+            </label>
+
+            <label for="stylesButtonPadding">
+              Espaçamento do botão
+              <input
+                id="stylesButtonPadding"
+                [(ngModel)]="styles.buttonPadding"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Espaçamento do botão"
+                formControlName="stylesButtonPadding"
+              />
+            </label>
+
+            <label for="stylesButtonFontSize">
+              Tamanho da fonte do botão
+              <input
+                id="stylesButtonFontSize"
+                [(ngModel)]="styles.buttonFontSize"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Tamanho da fonte do botão"
+                formControlName="stylesButtonFontSize"
+              />
+            </label>
+          </div>
+          <div class="col-5-5">
+            <label for="stylesHeaderBg">
+              Cor de fundo do header
+              <input
+                id="stylesHeaderBg"
+                [(ngModel)]="styles.headerBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo do header"
+                formControlName="stylesHeaderBg"
+              />
+            </label>
+
+            <label for="stylesSecondary">
+              Cor de fundo geral
+              <input
+                id="stylesContentBg"
+                [(ngModel)]="styles.contentBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo do header"
+                formControlName="stylesContentBg"
+              />
+            </label>
+
+            <label for="stylesCardBg">
+              Cor de fundo do cartão
+              <input
+                id="stylesCardBg"
+                [(ngModel)]="styles.cardBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo do header"
+                formControlName="stylesCardBg"
+              />
+            </label>
+
+            <label for="stylesLoginPageBg">
+              Background da página de login
+              <input
+                id="stylesLoginPageBg"
+                [(ngModel)]="styles.loginPageBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Background da página de login"
+                formControlName="stylesLoginPageBg"
+              />
+            </label>
+
+            <label for="stylesLoginPageBg">
+              Cor do cartão de login
+              <input
+                id="stylesLoginBoxBg"
+                [(ngModel)]="styles.loginBoxBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do cartão de login"
+                formControlName="stylesLoginBoxBg"
+              />
+            </label>
+
+            <label for="stylesMenuBg">
+              Cor de fundo do menu
+              <input
+                id="stylesMenuBg"
+                [(ngModel)]="styles.menuBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo do menu"
+                formControlName="stylesMenuBg"
+              />
+            </label>
+
+            <label for="stylesMenuButtonBgHover">
+              Cor do Hover do botão do menu
+              <input
+                id="stylesMenuButtonBgHover"
+                [(ngModel)]="styles.menuButtonBgHover"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do Hover do botão do menu"
+                formControlName="stylesMenuButtonBgHover"
+              />
+            </label>
+
+            <label for="stylesMenuText">
+              Cor do texto do menu
+              <input
+                id="stylesMenuText"
+                [(ngModel)]="styles.menuText"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do texto do menu"
+                formControlName="stylesMenuText"
+              />
+            </label>
+            <label for="stylesMenuTextHover">
+              Cor hover do texto no menu
+              <input
+                id="stylesMenuTextHover"
+                [(ngModel)]="styles.menuTextHover"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor hover do texto no menu"
+                formControlName="stylesMenuTextHover"
+              />
+            </label>
+
+            <label for="stylesMenuBorderHover">
+              Borda do menu hover
+              <input
+                id="stylesMenuBorderHover"
+                [(ngModel)]="styles.menuBorderHover"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Borda do menu hover"
+                formControlName="stylesMenuBorderHover"
+              />
+            </label>
+            <label for="stylesInputBg">
+              Cor de fundo dos inputs
+              <input
+                id="stylesInputBg"
+                [(ngModel)]="styles.inputBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo dos inputs"
+                formControlName="stylesInputBg"
+              />
+            </label>
+            <label for="stylesInputBorder">
+              Borda dos inputs
+              <input
+                id="stylesInputBorder"
+                [(ngModel)]="styles.inputBorder"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Borda do menu hover"
+                formControlName="stylesInputBorder"
+              />
+            </label>
+
+            <label for="stylesInputPadding">
+              Espaçamento dos inputs
+              <input
+                id="stylesInputPadding"
+                [(ngModel)]="styles.inputPadding"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Borda do menu hover"
+                formControlName="stylesInputPadding"
+              />
+            </label>
+
+            <label for="stylesInputFontSize">
+              Tamanho da fonte dos inputs
+              <input
+                id="stylesInputFontSize"
+                [(ngModel)]="styles.inputFontSize"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Tamanho da fonte dos inputs"
+                formControlName="stylesInputFontSize"
+              />
+            </label>
+
+            <label for="stylesInputBorderRadius">
+              Arredondamento das bordas dos inputs
+              <input
+                id="stylesInputBorderRadius"
+                [(ngModel)]="styles.inputBorderRadius"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Arredondamento das bordas dos inputs"
+                formControlName="stylesInputBorderRadius"
+              />
+            </label>
+
+            <label for="stylesInputColor">
+              Cor do texto de input
+              <input
+                id="stylesInputColor"
+                [(ngModel)]="styles.inputColor"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do texto de input"
+                formControlName="stylesInputColor"
+              />
+            </label>
+
+            <label for="stylesInputErrorColor">
+              Cor de erro dos inputs
+              <input
+                id="stylesInputErrorColor"
+                [(ngModel)]="styles.inputErrorColor"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de erro dos inputs"
+                formControlName="stylesInputErrorColor"
+              />
+            </label>
+            <label for="stylesLoadingIcon">
+              Cor do ícone de loading
+              <input
+                id="stylesLoadingIcon"
+                [(ngModel)]="styles.loadingIcon"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do ícone de loading"
+                formControlName="stylesLoadingIcon"
+              />
+            </label>
+
+            <label for="stylesLoadingSpinner">
+              Cor do spinner de loading
+              <input
+                id="stylesLoadingSpinner"
+                [(ngModel)]="styles.loadingSpinner"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do spinner de loading"
+                formControlName="stylesLoadingSpinner"
+              />
+            </label>
+
+            <label for="stylesLoadingSpinnerBorder">
+              Cor do da borda de loading
+              <input
+                id="stylesLoadingSpinnerBorder"
+                [(ngModel)]="styles.loadingSpinnerBorder"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor do ícone de loading"
+                formControlName="stylesLoadingSpinnerBorder"
+              />
+            </label>
+
+            <label for="stylesModalBg">
+              Cor de fundo do pop up
+              <input
+                id="stylesModalBg"
+                [(ngModel)]="styles.modalBg"
+                (ngModelChange)="setUnsave('styles')"
+                (focus)="setTouched('styles')"
+                placeholder="Cor de fundo do pop up"
+                formControlName="stylesModalBg"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-12 col-md-12 col-lg-4">
       <div class="input-section contract">
@@ -492,6 +1167,28 @@
           (focus)="setTouched('contract')"
           placeholder="conteúdo"
           formControlName="contract"
+        ></textarea>
+      </div>
+      <div class="input-section contract">
+        <h3>Template Página inicial</h3>
+        <textarea
+          type="text"
+          [(ngModel)]="styles.homeTemplate"
+          (ngModelChange)="setUnsave('contract')"
+          (focus)="setTouched('styles')"
+          placeholder="conteúdo"
+          formControlName="stylesHomeTemplate"
+        ></textarea>
+      </div>
+      <div class="input-section contract">
+        <h3>CSS</h3>
+        <textarea
+          type="text"
+          [(ngModel)]="styles.css"
+          (ngModelChange)="setUnsave('contract')"
+          (focus)="setTouched('styles')"
+          placeholder="conteúdo"
+          formControlName="stylesCss"
         ></textarea>
       </div>
     </div>

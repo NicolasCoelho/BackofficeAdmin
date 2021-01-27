@@ -11,6 +11,7 @@ import { Contract } from '../_models/contract';
 import { UserRequirements } from '../_models/userRequirements';
 import { SaleStatus } from '../_models/salesStatus';
 import { SystemStatusAndTypes } from '../_models/systemStatus';
+import { Styles } from '../_models/styles';
 
 @Injectable()
 export class Ws {
@@ -205,6 +206,27 @@ export class Ws {
     delete payload['storeId']
     return this.http
       .put(`${this.baseUrl}/contract/${id}`, payload, this.options)
+      .toPromise()
+  }
+
+  // Styles
+  getStylesByStore(id: string): Promise<Styles> {
+    return this.http
+      .get(`${this.baseUrl}/styles/${id}/store`, this.options)
+      .toPromise()
+      .then(
+        (response: Styles) => response
+      )
+  }
+
+  changeStyles(payload: Styles): Promise<any> {
+    const id = payload.id
+    delete payload.id
+    delete payload.createdAt
+    delete payload.updatedAt
+    delete payload['storeId']
+    return this.http
+      .put(`${this.baseUrl}/styles/${id}`, payload, this.options)
       .toPromise()
   }
 

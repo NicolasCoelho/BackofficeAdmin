@@ -17,7 +17,7 @@ import { SaleStatus } from 'src/app/_models/salesStatus';
 import { Contract } from 'src/app/_models/contract';
 import { User } from 'src/app/_models/user';
 import { SystemStatusAndTypes } from 'src/app/_models/systemStatus';
-import { promise } from 'protractor';
+import { Styles } from 'src/app/_models/styles';
 
 @Component({
   selector: 'app-register-store',
@@ -34,6 +34,7 @@ export class RegisterStoreComponent implements OnInit {
   public requirements = new UserRequirements()
   public sale = new SaleStatus()
   public contract = new Contract()
+  public styles = new Styles()
   public user = new User()
 
   public isEdit: boolean = false;
@@ -42,7 +43,8 @@ export class RegisterStoreComponent implements OnInit {
     store: {touched: false, changed: false},
     salesStatus: {touched: false, changed: false},
     requirements: {touched: false, changed: false},
-    contract: {touched: false, changed: false}
+    contract: {touched: false, changed: false},
+    styles: {touched: false, changed: false}
   }
 
   constructor(
@@ -60,6 +62,7 @@ export class RegisterStoreComponent implements OnInit {
         let promises: Array<any> = [
           this.ws.getStore(id).then(response=> Object.assign(this.store, response)),
           this.ws.getContractByStore(id).then(response => Object.assign(this.contract, response)),
+          this.ws.getStylesByStore(id).then(response => Object.assign(this.styles, response)),
           this.ws.getUserRequirementsByStore(id).then(response => Object.assign(this.requirements, response)),
           this.ws.getSalesStatusByStore(id).then(response => Object.assign(this.sale, response))
         ]
@@ -87,6 +90,15 @@ export class RegisterStoreComponent implements OnInit {
       storeEnv: ['', Validators.required],
       storeStatus: ['', Validators.required],
       storeUrl: ['', Validators.required],
+      storeAppTitle: ['', Validators.required],
+      storeFaviconLink: ['', Validators.required],
+      storeHomeTemplate: ['', Validators.required],
+      storeLogoSrc: ['', Validators.required],
+      storeLogoWidth: ['', Validators.required],
+      storeLogoHeight: ['', Validators.required],
+      storeStylePath: ['', Validators.required],
+      storeFontsLink: ['', Validators.required],
+      storeStoreUrl: ['', Validators.required],
       storeWebsite: ['', Validators.required],
       storeAllowRegister: [''],
       storePaymentTime: ['', Validators.required],
@@ -94,28 +106,28 @@ export class RegisterStoreComponent implements OnInit {
       storeProtectedRegister: [''],
       storeComissionType: ['', Validators.required],
       storeComissionValue: ['', Validators.required],
-      reqPhone1: ['', ],
-      reqPhone2: ['', ],
-      reqCpfCnpj: ['', ],
-      reqPis: ['', ],
-      reqRg: ['', ],
-      reqBirthDate: ['', ],
-      reqNationality: ['', ],
-      reqBirthLocation: ['', ],
-      reqMaritalStatus: ['', ],
-      reqGender: ['', ],
-      reqLiteracy: ['', ],
-      reqCep: ['', ],
-      reqAddress: ['', ],
-      reqAddressNumber: ['', ],
-      reqNeighborhood: ['', ],
-      reqCity: ['', ],
-      reqState: ['', ],
-      reqBank: ['', ],
-      reqAgency: ['', ],
-      reqAccount: ['', ],
-      reqAccountOwner: ['', ],
-      reqAccountOwnerCpf: ['', ],
+      reqPhone1: [''],
+      reqPhone2: [''],
+      reqCpfCnpj: ['',  Validators.required],
+      reqPis: [''],
+      reqRg: [''],
+      reqBirthDate: [''],
+      reqNationality: [''],
+      reqBirthLocation: [''],
+      reqMaritalStatus: [''],
+      reqGender: [''],
+      reqLiteracy: [''],
+      reqCep: [''],
+      reqAddress: [''],
+      reqAddressNumber: [''],
+      reqNeighborhood: [''],
+      reqCity: [''],
+      reqState: [''],
+      reqBank: [''],
+      reqAgency: [''],
+      reqAccount: [''],
+      reqAccountOwner: [''],
+      reqAccountOwnerCpf: [''],
       saleReceived: ['', Validators.required],
       saleCompleted: ['', Validators.required],
       saleCanceled: ['', Validators.required],
@@ -123,6 +135,56 @@ export class RegisterStoreComponent implements OnInit {
       userName: ['', Validators.required],
       userPassword: ['', Validators.required],
       userEmail: ['', Validators.required],
+      stylesCss: ['', Validators.required],
+      stylesHomeTemplate: ['', Validators.required],
+      stylesFontFamily: [''],
+      stylesPrimary: [''],
+      stylesSecondary: [''],
+      stylesHeaderBg: [''],
+      stylesContentBg: [''],
+      stylesCardBg: [''],
+      stylesLoginPageBg: [''],
+      stylesLoginBoxBg: [''],
+      stylesTextPrimary: [''],
+      stylesLinksColor: [''],
+      stylesLinksWeight: [''],
+      stylesTextSecondary: [''],
+      stylesBorderRadius: [''],
+      stylesIconsColor: [''],
+      stylesMenuBg: [''],
+      stylesMenuButtonBgHover: [''],
+      stylesMenuText: [''],
+      stylesMenuTextHover: [''],
+      stylesMenuBorderHover: [''],
+      stylesTableHeaderBg: [''],
+      stylesTableHeaderColor: [''],
+      stylesTableVariation: [''],
+      stylesTableFontSize: [''],
+      stylesTablePadding: [''],
+      stylesTableTextAlign: [''],
+      stylesInputBg: [''],
+      stylesInputBorder: [''],
+      stylesInputPadding: [''],
+      stylesInputFontSize: [''],
+      stylesInputBorderRadius: [''],
+      stylesInputColor: [''],
+      stylesInputErrorColor: [''],
+      stylesButtonColorPrimary: [''],
+      stylesButtonBgPrimary: [''],
+      stylesButtonBgDisabledPrimary: [''],
+      stylesButtonColorSecondary: [''],
+      stylesButtonBgSecondary: [''],
+      stylesButtonBgDisabledSecondary: [''],
+      stylesButtonFontWeight: [''],
+      stylesButtonBorderRadius: [''],
+      stylesButtonColorActivePrimary: [''],
+      stylesButtonColorActiveSecondary: [''],
+      stylesButtonPadding: [''],
+      stylesButtonFontSize: [''],
+      stylesLoadingIcon: [''],
+      stylesLoadingSpinner: [''],
+      stylesLoadingSpinnerBorder: [''],
+      stylesModalBg: [''],
     });
     if (this.isEdit) {
       this.storeForm.get('userName').disable()
@@ -155,16 +217,18 @@ export class RegisterStoreComponent implements OnInit {
       userRequirements: this.requirements,
       salesStatus: this.sale,
       contract: this.contract,
+      styles: this.styles,
       defaultUser: this.user
     }
 
     this.loading = true;
     if (this.isEdit) {
       let promises = [
-        this.editController.store.changed ? this.ws.changeStore(this.store) : new Promise(r => r()),
-        this.editController.salesStatus.changed ? this.ws.changeSalesStatus(this.sale) : new Promise(r => r()),
-        this.editController.requirements.changed ? this.ws.changeUserRequirements(this.requirements): new Promise(r => r()),
-        this.editController.contract.changed ? this.ws.changeContract(this.contract) : new Promise(r=>r())
+        this.editController.store.changed ? this.ws.changeStore(this.store) : new Promise(r => r(null)),
+        this.editController.salesStatus.changed ? this.ws.changeSalesStatus(this.sale) : new Promise(r => r(null)),
+        this.editController.requirements.changed ? this.ws.changeUserRequirements(this.requirements): new Promise(r => r(null)),
+        this.editController.contract.changed ? this.ws.changeContract(this.contract) : new Promise(r => r(null)),
+        this.editController.styles.changed ? this.ws.changeStyles(this.styles) : new Promise(r => r(null)),
       ]
       Promise.all(promises).then(
         () => {
