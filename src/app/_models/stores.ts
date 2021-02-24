@@ -4,6 +4,7 @@ export class Store {
   public enviromentId: number;
   public websiteId: number;
   public name: string;
+  public email: string;
   public appTitle: string;
   public faviconLink: string;
   public homeTemplate: string;

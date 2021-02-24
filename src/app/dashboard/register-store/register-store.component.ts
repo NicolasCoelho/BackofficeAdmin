@@ -87,6 +87,7 @@ export class RegisterStoreComponent implements OnInit {
 
     this.storeForm = this.formBuilder.group({
       storeName: ['', Validators.required],
+      storeEmail: ['', Validators.required],
       storeEnv: ['', Validators.required],
       storeStatus: ['', Validators.required],
       storeUrl: ['', Validators.required],

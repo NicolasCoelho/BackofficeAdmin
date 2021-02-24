@@ -19,6 +19,16 @@
           formControlName="storeName"
           required="true"
         />
+        <input
+          maxlength="30"
+          placeholder="Email"
+          [(ngModel)]="store.email"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storeEmail"
+          required="true"
+        />
 
         <input
           placeholder="Url de origem"
