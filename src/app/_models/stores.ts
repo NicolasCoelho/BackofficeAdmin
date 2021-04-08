@@ -15,9 +15,11 @@ export class Store {
   public fontsLink: string;
   public storeUrl: string;
   public url: string;
+  public painelUrl: string;
   public status: number;
   public allowRegister: boolean;
   public paymentTime: number;
+  public paymentTrigger: number;
   public minimumValue: number;
   public protectedRegister: boolean;
   public comissionType: number;

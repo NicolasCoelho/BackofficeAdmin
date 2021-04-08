@@ -24,7 +24,8 @@
         </div>
       </div>
       <input placeholder="Url" type="text" [(ngModel)]="enviroment.url" formControlName="url"/>
-      <input placeholder="Password" type="text" *ngIf="!isEdit" [(ngModel)]="enviroment.password" formControlName="password" />
+      <input placeholder="Usuário" type="text" [(ngModel)]="enviroment.user" formControlName="user" />
+      <input placeholder="Senha" type="text" *ngIf="!isEdit" [(ngModel)]="enviroment.password" formControlName="password" />
       <button type="submit" class="btnCreate">Salvar</button>
       &nbsp;
       <app-loading [(isLoading)]="loading"></app-loading>

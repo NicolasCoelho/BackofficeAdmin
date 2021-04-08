@@ -13,11 +13,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '../../_models/stores';
 import { Enviroment } from 'src/app/_models/enviroments';
 import { UserRequirements } from 'src/app/_models/userRequirements';
-import { SaleStatus } from 'src/app/_models/salesStatus';
 import { Contract } from 'src/app/_models/contract';
 import { User } from 'src/app/_models/user';
 import { SystemStatusAndTypes } from 'src/app/_models/systemStatus';
 import { Styles } from 'src/app/_models/styles';
+import { SystemType } from 'src/app/_models/systemType';
 
 @Component({
   selector: 'app-register-store',
@@ -30,9 +30,10 @@ export class RegisterStoreComponent implements OnInit {
   public status: Array<SystemStatusAndTypes> = [];
 
   public enviroments: Array<Enviroment> = [];
+  public paymentTriggers: Array<SystemType> = [];
+
   public store = new Store()
   public requirements = new UserRequirements()
-  public sale = new SaleStatus()
   public contract = new Contract()
   public styles = new Styles()
   public user = new User()
@@ -41,7 +42,6 @@ export class RegisterStoreComponent implements OnInit {
   public loading: boolean = false;
   public editController = {
     store: {touched: false, changed: false},
-    salesStatus: {touched: false, changed: false},
     requirements: {touched: false, changed: false},
     contract: {touched: false, changed: false},
     styles: {touched: false, changed: false}
@@ -54,6 +54,7 @@ export class RegisterStoreComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.getStatus()
+    this.getTypes()
     if (this.router.url.indexOf('edit') > -1) {
       this.isEdit = true;
       this.loading = true;
@@ -64,7 +65,6 @@ export class RegisterStoreComponent implements OnInit {
           this.ws.getContractByStore(id).then(response => Object.assign(this.contract, response)),
           this.ws.getStylesByStore(id).then(response => Object.assign(this.styles, response)),
           this.ws.getUserRequirementsByStore(id).then(response => Object.assign(this.requirements, response)),
-          this.ws.getSalesStatusByStore(id).then(response => Object.assign(this.sale, response))
         ]
         Promise.all(promises).catch(e => alert(e)).finally(()=>this.loading = false)
       })
@@ -75,6 +75,14 @@ export class RegisterStoreComponent implements OnInit {
     this.ws.getSystemStatusByType('STORE').then(
       response => {
         Object.assign(this.status, response)
+      }
+    )
+  }
+
+  getTypes() {
+    this.ws.getSystemTypesByType('PAYMENT_TRIGGER').then(
+      response => {
+        Object.assign(this.paymentTriggers, response)
       }
     )
   }
@@ -91,6 +99,7 @@ export class RegisterStoreComponent implements OnInit {
       storeEnv: ['', Validators.required],
       storeStatus: ['', Validators.required],
       storeUrl: ['', Validators.required],
+      storePainelUrl: ['', Validators.required],
       storeAppTitle: ['', Validators.required],
       storeFaviconLink: ['', Validators.required],
       storeHomeTemplate: ['', Validators.required],
@@ -102,6 +111,7 @@ export class RegisterStoreComponent implements OnInit {
       storeStoreUrl: ['', Validators.required],
       storeWebsite: ['', Validators.required],
       storeAllowRegister: [''],
+      storePaymentTrigger: ['', Validators.required],
       storePaymentTime: ['', Validators.required],
       storeMinimumValue: ['', Validators.required],
       storeProtectedRegister: [''],
@@ -125,13 +135,11 @@ export class RegisterStoreComponent implements OnInit {
       reqCity: [''],
       reqState: [''],
       reqBank: [''],
+      reqPix: [''],
       reqAgency: [''],
       reqAccount: [''],
       reqAccountOwner: [''],
       reqAccountOwnerCpf: [''],
-      saleReceived: ['', Validators.required],
-      saleCompleted: ['', Validators.required],
-      saleCanceled: ['', Validators.required],
       contract: ['', Validators.required],
       userName: ['', Validators.required],
       userPassword: ['', Validators.required],
@@ -216,7 +224,6 @@ export class RegisterStoreComponent implements OnInit {
     let payload = {
       store: this.store,
       userRequirements: this.requirements,
-      salesStatus: this.sale,
       contract: this.contract,
       styles: this.styles,
       defaultUser: this.user
@@ -226,7 +233,6 @@ export class RegisterStoreComponent implements OnInit {
     if (this.isEdit) {
       let promises = [
         this.editController.store.changed ? this.ws.changeStore(this.store) : new Promise(r => r(null)),
-        this.editController.salesStatus.changed ? this.ws.changeSalesStatus(this.sale) : new Promise(r => r(null)),
         this.editController.requirements.changed ? this.ws.changeUserRequirements(this.requirements): new Promise(r => r(null)),
         this.editController.contract.changed ? this.ws.changeContract(this.contract) : new Promise(r => r(null)),
         this.editController.styles.changed ? this.ws.changeStyles(this.styles) : new Promise(r => r(null)),

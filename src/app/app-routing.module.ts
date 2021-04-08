@@ -9,6 +9,8 @@ import { EnviromentsComponent } from './dashboard/enviroments/enviroments.compon
 import { StoresComponent } from './dashboard/stores/stores.component';
 import { UsersComponent } from './dashboard/users/users.component';
 import { HomeComponent } from './dashboard/home/home.component';
+import { SalesComponent } from './dashboard/sales/sales.component';
+import { PaymentsComponent } from './dashboard/payments/payments.component';
 import { RegisterEnviromentComponent } from './dashboard/register-enviroment/register-enviroment.component';
 
 //Importando RegisterStoreComponent para referenciar no parametro da URL
@@ -29,6 +31,8 @@ const routes: Routes = [
       { path: 'stores/register', component: RegisterStoreComponent },
       { path: 'stores/edit/:id', component: RegisterStoreComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'sales', component: SalesComponent },
+      { path: 'payments', component: PaymentsComponent },
     ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },

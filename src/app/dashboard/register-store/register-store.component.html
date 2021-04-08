@@ -20,7 +20,7 @@
           required="true"
         />
         <input
-          maxlength="30"
+          maxlength="60"
           placeholder="Email"
           [(ngModel)]="store.email"
           (ngModelChange)="setUnsave('store')"
@@ -37,6 +37,16 @@
           (focus)="setTouched('store')"
           type="text"
           formControlName="storeUrl"
+          required="true"
+        />
+
+        <input
+          placeholder="Url do painel"
+          [(ngModel)]="store.painelUrl"
+          (ngModelChange)="setUnsave('store')"
+          (focus)="setTouched('store')"
+          type="text"
+          formControlName="storePainelUrl"
           required="true"
         />
 
@@ -61,7 +71,7 @@
         />
 
         <input
-          placeholder="Url da Página inicial"
+          placeholder="Template da home Page"
           [(ngModel)]="store.homeTemplate"
           (ngModelChange)="setUnsave('store')"
           (focus)="setTouched('store')"
@@ -192,6 +202,17 @@
               (focus)="setTouched('store')"
               formControlName="storePaymentTime"
             >
+            <select
+              formControlName="storePaymentTrigger"
+              [(ngModel)]="store.paymentTrigger"
+              (ngModelChange)="setUnsave('store')"
+              (focus)="setTouched('store')"
+            >
+              <option value="undefined" disabled selected>Gatilho de pagamento</option>
+              <option *ngFor="let opt of paymentTriggers" value="{{ opt.value }}">
+                {{ opt.viewValue }}
+              </option>
+            </select>
           </div>
           <div class="col-5-5">
             <select formControlName="storeStatus" [(ngModel)]="store.status"
@@ -471,7 +492,18 @@
               />
               Banco
             </label>
-
+            <label for="reqPix">
+              <input
+                type="checkbox"
+                id="reqPix"
+                [(ngModel)]="requirements.pix"
+                (ngModelChange)="setUnsave('requirements')"
+                (focus)="setTouched('requirements')"
+                formControlName="reqPix"
+                value="true"
+              />
+              Pix
+            </label>
             <label for="reqAgency">
               <input
                 type="checkbox"
@@ -525,43 +557,6 @@
             </label>
           </div>
         </div>
-      </div>
-
-      <div class="input-section status">
-        <h3>Status de venda</h3>
-        <input
-          type="number"
-          min="1"
-          max="3"
-          placeholder="recebido"
-          [(ngModel)]="sale.received"
-          (ngModelChange)="setUnsave('salesStatus')"
-          (focus)="setTouched('salesStatus')"
-          formControlName="saleReceived"
-          required="true"
-        />
-        <input
-          type="number"
-          min="1"
-          max="3"
-          placeholder="completed"
-          [(ngModel)]="sale.completed"
-          (ngModelChange)="setUnsave('salesStatus')"
-          (focus)="setTouched('salesStatus')"
-          formControlName="saleCompleted"
-          required="true"
-        />
-        <input
-          type="number"
-          min="1"
-          max="3"
-          placeholder="canceled"
-          [(ngModel)]="sale.canceled"
-          (ngModelChange)="setUnsave('salesStatus')"
-          (focus)="setTouched('salesStatus')"
-          formControlName="saleCanceled"
-          required="true"
-        />
       </div>
 
       <div class="input-section user" *ngIf="!isEdit">

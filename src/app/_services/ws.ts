@@ -9,7 +9,6 @@ import { Store } from '../_models/stores';
 import { User, UserPaginated } from '../_models/user';
 import { Contract } from '../_models/contract';
 import { UserRequirements } from '../_models/userRequirements';
-import { SaleStatus } from '../_models/salesStatus';
 import { SystemStatusAndTypes } from '../_models/systemStatus';
 import { Styles } from '../_models/styles';
 
@@ -248,27 +247,6 @@ export class Ws {
     delete payload['storeId']
     return this.http
       .put(`${this.baseUrl}/userRequirements/${id}`, payload, this.options)
-      .toPromise()
-  }
-
-  // SalesStatus
-  getSalesStatusByStore(id: string): Promise<SaleStatus> {
-    return this.http
-    .get(`${this.baseUrl}/salesStatus/${id}/store`, this.options)
-    .toPromise()
-    .then(
-      (response: SaleStatus) => response
-    )
-  }
-
-  changeSalesStatus(payload: SaleStatus): Promise<any> {
-    const id = payload.id
-    delete payload.id
-    delete payload.createdAt
-    delete payload.updatedAt
-    delete payload['storeId']
-    return this.http
-      .put(`${this.baseUrl}/salesStatus/${id}`, payload, this.options)
       .toPromise()
   }
 }

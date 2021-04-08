@@ -49,6 +49,7 @@ export class RegisterEnviromentComponent implements OnInit {
       type: ['', Validators.required],
       status: ['', Validators.required],
       url: ['', Validators.required],
+      user: ['', Validators.required],
       password: ['', Validators.required],
     });
   }

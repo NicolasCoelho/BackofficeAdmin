@@ -18,6 +18,7 @@ export class UserRequirements {
   public city: boolean;
   public state: boolean;
   public bank: boolean;
+  public pix: boolean;
   public agency: boolean;
   public account: boolean;
   public accountOwner: boolean;
