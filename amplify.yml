@@ -1,8 +1,8 @@
 version: 1
 env:
   variables:
-      URL_WS_PROD: https://ws.divulgadores.app.br
-      URL_WS_TST: https://ws.tst.divulgadores.app.br
+      URL_WS_PROD: ws.divulgadores.app.br
+      URL_WS_TST: ws.tst.divulgadores.app.br
 frontend:
   phases:
     preBuild:
@@ -11,8 +11,8 @@ frontend:
     build:
       commands:
         - echo "Pointing to respective server"
-        - if [ "${AWS_BRANCH}" = "main" ]; then sed -i 's/localhost:3000/${URL_WS_TST}/g' ./src/app/_services/ws.ts; fi
-        - if [ "${AWS_BRANCH}" = "dev" ]; then sed -i 's/localhost:3000/${URL_WS_PROD}/g' ./src/app/_services/ws.ts; fi
+        - if [ "${AWS_BRANCH}" = "development" ]; then sed -i 's/localhost:3000/${URL_WS_TST}/g' ./src/app/_services/ws.ts; fi
+        - if [ "${AWS_BRANCH}" = "master" ]; then sed -i 's/localhost:3000/${URL_WS_PROD}/g' ./src/app/_services/ws.ts; fi
         - sed -i 's/= "http:/= "https:/g' ./src/app/_services/ws.ts
         - npm run build
   artifacts:
