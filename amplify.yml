@@ -14,7 +14,6 @@ frontend:
         - echo "Pointing to respective server"
         - if [ "${AWS_BRANCH}" = "development" ]; then sed -i 's/$ORIGINAL_WS_URL/$URL_WS_TST/g' ./src/app/_services/ws.ts; echo $URL_WS_TST ; fi
         - if [ "${AWS_BRANCH}" = "master" ]; then sed -i 's/$ORIGINAL_WS_URL/$URL_WS_PROD/g' ./src/app/_services/ws.ts; echo $URL_WS_PROD ; fi
-        - sed -i 's/= "http:/= "https:/g' ./src/app/_services/ws.ts
         - npm run build
   artifacts:
     baseDirectory: dist/backoffice-admin
