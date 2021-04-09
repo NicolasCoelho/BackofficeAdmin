@@ -13,6 +13,7 @@ frontend:
       commands:
         - echo "Pointing to respective server"
         - chmod 777 src/app/_services/ws.ts
+        - cat amplify.sh
         - if [ "${AWS_BRANCH}" = "development" ]; then sed -i 's/$ORIGINAL_WS_URL/$URL_WS_TST/g' src/app/_services/ws.ts; fi
         - if [ "${AWS_BRANCH}" = "master" ]; then sed -i 's/$ORIGINAL_WS_URL/$URL_WS_PROD/g' src/app/_services/ws.ts; fi
         - npm run build
