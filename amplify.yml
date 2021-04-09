@@ -12,11 +12,9 @@ frontend:
     build:
       commands:
         - echo "Pointing to respective server"
-        - ls -ltra
-        - sudo sed -i 's/$ORIGINAL_WS_URL/$URL_WS_TST/g' src/app/_services/ws.ts
-        - if [ "${AWS_BRANCH}" = "master" ]; then sudo sed -i 's/$ORIGINAL_WS_URL/$URL_WS_PROD/g' src/app/_services/ws.ts; echo $URL_WS_PROD ; fi
-        - cat src/app/_services/ws.ts
         - npm run build
+        - if [ "${AWS_BRANCH}" = "development" ]; then sed -i 's/$ORIGINAL_WS_URL/$URL_WS_TST/g' dist/backoffice-admin/*.js; fi
+        - if [ "${AWS_BRANCH}" = "master" ]; then sed -i 's/$ORIGINAL_WS_URL/$URL_WS_PROD/g' dist/backoffice-admin/*.js; fi
   artifacts:
     baseDirectory: dist/backoffice-admin
     files:
