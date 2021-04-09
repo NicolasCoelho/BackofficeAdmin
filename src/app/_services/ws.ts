@@ -15,7 +15,7 @@ import { Styles } from '../_models/styles';
 @Injectable()
 export class Ws {
 
-  public baseUrl = "http://ws.tst.divulgadores.app.br";
+  public baseUrl = "http://localhost:3000";
   public storeId = '6c6455ece193d4d2';
 
   public headers: HttpHeaders;
