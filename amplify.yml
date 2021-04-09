@@ -1,9 +1,9 @@
 version: 1
 env:
   variables:
-      ORIGINAL_WS_URL: localhost:3000
-      URL_WS_PROD: ws.divulgadores.app.br
-      URL_WS_TST: ws.tst.divulgadores.app.br
+      ORIGINAL_WS_URL: localhost:3000";
+      URL_WS_PROD: ws.divulgadores.app.br";
+      URL_WS_TST: ws.tst.divulgadores.app.br";
 frontend:
   phases:
     preBuild:
