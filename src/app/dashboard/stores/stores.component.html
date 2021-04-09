@@ -1,0 +1,30 @@
+<div class="storesContainer">
+  <button class="btnCreate" (click)="goTo('register')">
+    Criar loja
+  </button>
+  &nbsp;
+  <app-loading [(isLoading)]="loading"></app-loading>
+  <h2 *ngIf="stores.length == 0" style="text-align: center;">Nenhuma loja cadastrada</h2>
+  <table *ngIf="stores.length >= 1">
+    <thead>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Status</th>
+      <th>Ambiente</th>
+      <th>Url</th>
+      <th>Criado em</th>
+      <th>Alterado em</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of stores; let i = index" (click)="edit(item.id)">
+        <td>{{ i+1 }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.enviromentId }}</td>
+        <td>{{ item.url }}</td>
+        <td>{{ item.createdAt | date: "dd/MM/yyyy" }}</td>
+        <td>{{ item.updatedAt | date: "dd/MM/yyyy" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

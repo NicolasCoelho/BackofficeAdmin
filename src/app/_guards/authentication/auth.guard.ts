@@ -15,7 +15,10 @@ export class AuthGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(!this.auth.isAuthenticaded()) {
-      this.router.navigate(['login'])
+      if (window.location.pathname !== '/') {
+        alert('Sua sessão expirou')
+        this.router.navigate(['login'])
+      }
       return false
     }
     return true

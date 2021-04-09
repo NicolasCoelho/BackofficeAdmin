@@ -1,0 +1,37 @@
+header {
+  padding: 10px 20px;
+  // box-shadow: 0px 1px 1px 0px;
+  background: #ffff;
+  button {
+    margin: 0px 5px;
+    outline: none;
+  }
+
+  .msgBox {
+    top: 46px;
+    left: -60px;
+    width: 164px;
+    height: 92px;
+    position: absolute;
+    border-radius: 4px;
+    background: #fff !important;
+    padding: 0px 20px;
+    font-style: italic;
+    font-size: 12px;
+    text-align: center;
+    p {
+      color: #000 !important;
+      padding-top: 10px;
+    }
+  }
+
+  .btnInfoDispNone {
+    display: none;
+  }
+
+  nav {
+    .profile {
+      text-align: right;
+    }
+  }
+}

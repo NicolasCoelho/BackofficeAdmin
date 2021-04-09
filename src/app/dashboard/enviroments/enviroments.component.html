@@ -1,0 +1,30 @@
+<div class="enviromentsContainer">
+  <button class="btnCreate" (click)="goTo('register')">
+    Criar ambiente
+  </button>
+  &nbsp;
+  <app-loading [(isLoading)]="loading"></app-loading>
+  <h2 *ngIf="enviroments.length == 0" style="text-align: center;">Nenhum ambiente cadastrado</h2>
+  <table *ngIf="enviroments.length > 0">
+    <thead>
+      <th>Id</th>
+      <th>Nome</th>
+      <th>Tipo</th>
+      <th>Status</th>
+      <th>Url</th>
+      <th>Criado em</th>
+      <th>Alterado em</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let env of enviroments" (click)="edit(env.id)">
+        <td>{{ env.id }}</td>
+        <td>{{ env.name }}</td>
+        <td>{{ env.type }}</td>
+        <td>{{ env.status }}</td>
+        <td>{{ env.url }}</td>
+        <td>{{ env.createdAt | date: "dd/MM/yyyy" }}</td>
+        <td>{{ env.updatedAt | date: "dd/MM/yyyy" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

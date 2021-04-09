@@ -1,0 +1,34 @@
+<div class="userContainer">
+  <table>
+    <thead>
+      <th>Nome</th>
+      <th>Status</th>
+      <th>Email</th>
+      <th>Tipo</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paginatedUsers.items">
+        <td>{{ item.name }}</td>
+        <td>{{ item.status }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.type }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" style="text-align: right;">
+          <span>Página</span>
+          &nbsp;
+          <input class="paginationInput" type="text" [(ngModel)]="paginatedUsers.currentPage">
+          &nbsp;
+          <span>de</span>
+          &nbsp;
+          <strong>{{ paginatedUsers.totalPages }}</strong>
+          <span>&nbsp;&nbsp;&nbsp;-&nbsp;</span>
+          <button (click)="changePage(false)" [disabled]="paginatedUsers.currentPage == 1">Anterior</button>
+          <button (click)="changePage(true)" [disabled]="paginatedUsers.currentPage == paginatedUsers.totalPages">Próxima</button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

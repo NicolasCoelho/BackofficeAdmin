@@ -1,1 +1,118 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/bootstrap-grid.scss";
+@import "./styles/colors.scss";
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  font-size: 14px;
+  text-decoration: none;
+  background-color: $background;
+
+  button {
+    border: none;
+    background: $buttonBg;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+
+    &:hover {
+      background: $primary;
+      cursor: pointer;
+      * {
+        color: #fff;
+      }
+    }
+    &:active {
+      background: $primaryActive;
+      cursor: pointer;
+      * {
+        color: #fff;
+      }
+    }
+  }
+
+  .btnCreate {
+    background: $primary;
+    color: white;
+    &:hover {
+      cursor: pointer;
+      background: $primaryActive;
+    }
+  }
+
+  .circlebutton {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+  }
+
+  table {
+    width: 100%;
+    border: none;
+    border-spacing: 0px;
+    border-collapse: collapse;
+
+    tr {
+      &:nth-child(odd) {
+        border: none;
+        background-color: #ededed;
+      }
+      &:hover {
+        td {
+          color: #fff;
+        }
+        background-color: #d91676;
+        cursor: pointer;
+      }
+    }
+    td, th {
+      padding: 10px;
+      border: none;
+      text-align: center;
+    }
+  }
+
+  form {
+    outline: none;
+
+    input:not([type=checkbox]), textarea {
+      width: 100%;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+    }
+
+    select {
+      padding: 15px;
+      border: none;
+      margin-top: 10px;
+    }
+
+  }
+
+  .submit-container {
+    width: 100%;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .error {
+    color: $primary;
+  }
+  .paginationInput {
+    border: none;
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+  }
+}

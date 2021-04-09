@@ -1,0 +1,34 @@
+<div class="registerEnviromentContainer">
+  <div class="container alignForm">
+    <h2>Preencha o Formulário e clique em Salvar!</h2>
+    <form [formGroup]="enviromentForm" (ngSubmit)="register()">
+      <input placeholder="Nome" type="text" [(ngModel)]="enviroment.name" formControlName="name" />
+      <div class="alignSelect">
+        <div class="row">
+          <div class="col-6">
+            <select formControlName="type" [(ngModel)]="enviroment.type">
+              <option value="undefined" disabled selected>Tipo</option>
+              <option *ngFor="let opt of types" value="{{ opt.value }}">
+                {{ opt.viewValue }}
+              </option>
+            </select>
+          </div>
+          <div class="col-6">
+            <select formControlName="status" [(ngModel)]="enviroment.status">
+              <option value="undefined" disabled selected>Status</option>
+              <option *ngFor="let opt of status" value="{{ opt.value }}">
+                {{ opt.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <input placeholder="Url" type="text" [(ngModel)]="enviroment.url" formControlName="url"/>
+      <input placeholder="Usuário" type="text" [(ngModel)]="enviroment.user" formControlName="user" />
+      <input placeholder="Senha" type="text" *ngIf="!isEdit" [(ngModel)]="enviroment.password" formControlName="password" />
+      <button type="submit" class="btnCreate">Salvar</button>
+      &nbsp;
+      <app-loading [(isLoading)]="loading"></app-loading>
+    </form>
+  </div>
+</div>
