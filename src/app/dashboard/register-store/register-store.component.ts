@@ -209,6 +209,8 @@ export class RegisterStoreComponent implements OnInit {
     }
 
     this.contract.status = 1;
+    this.contract.trainingPage = "";
+    this.contract.helpPape = "";
 
     this.user.type = 3;
     this.user.status = 1;
