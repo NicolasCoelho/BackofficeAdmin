@@ -1,4 +1,7 @@
 <div class="userContainer">
+  <div class="searchInput">
+    <input type="text" placeholder="Pesquisar" [(ngModel)]="search.name" (ngModelChange)="delayUpdate()">
+  </div>
   <table>
     <thead>
       <th>Nome</th>
@@ -17,9 +20,11 @@
     <tfoot>
       <tr>
         <td colspan="4" style="text-align: right;">
+          <span>Exibindo</span>
+          <input class="paginationInput" type="text" [(ngModel)]="paginatedUsers.pageSize" (ngModelChange)="delayUpdate()">
           <span>Página</span>
           &nbsp;
-          <input class="paginationInput" type="text" [(ngModel)]="paginatedUsers.currentPage">
+          <input class="paginationInput" type="text" [(ngModel)]="paginatedUsers.currentPage" (ngModelChange)="delayUpdate()">
           &nbsp;
           <span>de</span>
           &nbsp;
