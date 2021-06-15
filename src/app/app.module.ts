@@ -31,6 +31,7 @@ import { RegisterStoreComponent } from './dashboard/register-store/register-stor
 import { LoadingComponent } from './loading/loading.component';
 import { SalesComponent } from './dashboard/sales/sales.component';
 import { PaymentsComponent } from './dashboard/payments/payments.component';
+import { RegisterUserComponent } from './dashboard/register-user/register-user.component';
 
 export const CustomCurrencyMaskConfig: CurrencyMaskModule = {
   align: 'left',
@@ -57,6 +58,7 @@ export const CustomCurrencyMaskConfig: CurrencyMaskModule = {
     LoadingComponent,
     SalesComponent,
     PaymentsComponent,
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule,

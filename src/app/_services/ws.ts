@@ -187,6 +187,15 @@ export class Ws {
       });
   }
 
+  getUser(id: number): Promise<User> {
+    return this.http
+      .get(`${this.baseUrl}/user/${id}`, this.options)
+      .toPromise()
+      .then(
+        (response: User) => response
+      )
+  }
+
   // Contract
   getContractByStore(id: string): Promise<Contract> {
     return this.http

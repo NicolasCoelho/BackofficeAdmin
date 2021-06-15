@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ws } from '../../_services/ws';
 import { PaginetedList } from '../../_models/paginatedList';
 import { User } from '../../_models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -18,7 +19,7 @@ export class UsersComponent implements OnInit {
 
   public queryString: string;
 
-  constructor(private ws: Ws) {
+  constructor(private ws: Ws, private router: Router) {
     this.paginatedUsers.pageSize = 25;
     this.paginatedUsers.currentPage = 1;
   }
@@ -57,5 +58,13 @@ export class UsersComponent implements OnInit {
     this.search.timer = setTimeout(() => {
       this.updateTable();
     },700);
+  }
+
+  goTo(target) {
+    this.router.navigate(['dashboard', 'users', target]);
+  }
+
+  edit(id) {
+    this.router.navigate(['dashboard', 'users', 'edit', id])
   }
 }
