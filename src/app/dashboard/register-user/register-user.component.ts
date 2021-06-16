@@ -13,7 +13,10 @@ export class RegisterUserComponent implements OnInit {
 
   public user: User = new User();
   public userForm: FormGroup;
-  public formKeys: Array<any> = [];
+
+  public status: Array<any> = [];
+  public types: Array<any> = [];
+  public userType:string = "";
 
   public loading: boolean = false;
   public isEdit: boolean = false;
@@ -24,10 +27,11 @@ export class RegisterUserComponent implements OnInit {
     private currentRoute: ActivatedRoute,
     private formBuilder: FormBuilder
   ) {
+    this.getStatus();
     if (this.router.url.indexOf('edit') > -1) {
       this.isEdit = true;
-      this.loading = true
-      this.getUser()
+      this.loading = true;
+      this.getUser();
     }
   }
 
@@ -35,36 +39,32 @@ export class RegisterUserComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: [''],
       status: ['', Validators.required],
-      type: ['', Validators.required],
-      phone1: ['', Validators.required],
-      phone2: ['', Validators.required],
+      phone1: [''],
+      phone2: [''],
       cpfCnpj: ['', Validators.required],
-      pis: ['', Validators.required],
-      rg: ['', Validators.required],
-      birthdate: ['', Validators.required],
-      nationality: ['', Validators.required],
-      birthLocation: ['', Validators.required],
-      maritalStatus: ['', Validators.required],
-      gender: ['', Validators.required],
-      literacy: ['', Validators.required],
-      cep: ['', Validators.required],
-      address: ['', Validators.required],
-      addressNumber: ['', Validators.required],
-      neighborhood: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      bank: ['', Validators.required],
-      pix: ['', Validators.required],
-      agency: ['', Validators.required],
-      account: ['', Validators.required],
-      accountOwner: ['', Validators.required],
-      accountOwnerCpf: ['', Validators.required]
+      pis: [''],
+      rg: [''],
+      birthdate: [''],
+      nationality: [''],
+      birthLocation: [''],
+      maritalStatus: [''],
+      gender: [''],
+      literacy: [''],
+      cep: [''],
+      address: [''],
+      addressNumber: [''],
+      neighborhood: [''],
+      city: [''],
+      state: [''],
+      bank: [''],
+      pix: [''],
+      agency: [''],
+      account: [''],
+      accountOwner: [''],
+      accountOwnerCpf: ['']
     });
-
-    this.formKeys = Object.keys(this.userForm.controls)
-    console.log(this.userForm.controls)
   }
 
   getUser() {
@@ -72,15 +72,39 @@ export class RegisterUserComponent implements OnInit {
       this.ws.getUser(param.id).then(
         response => {
           Object.assign(this.user, response)
+          this.getTypes();
         }
       ).finally(() => this.loading = false)
     })
   }
 
+  getStatus() {
+    this.ws.getSystemStatusByType('USER').then(
+      response => {
+        Object.assign(this.status, response)
+      }
+    )
+  }
+
+  getTypes() {
+    this.ws.getSystemTypesByType('USER').then(
+      response => {
+        Object.assign(this.types, response)
+        this.types.forEach((type)=>{
+          if(type.value === this.user.type) {
+            this.userType = type.viewValue;
+          }
+        });
+      }
+    )
+  }
 
   register() {
-    if (this.isEdit) this.userForm.get('password').disable()
-
+    Object.keys(this.userForm.controls).forEach((control) => {
+      console.log(control)
+      console.log(this.userForm.get(control).errors)
+      console.log('-----------')
+    })
     if (!this.userForm.valid) {
       alert('Dados incorretos');
       return;
@@ -88,13 +112,13 @@ export class RegisterUserComponent implements OnInit {
 
     this.loading = true;
     if (this.isEdit) {
-      // TODO: Implements ws edit function
-      // this.ws.changeEnviroment(this.user)
-      //   .catch((e)=> alert("Erro inesperado") )
-      //   .finally(()=>{
-      //     this.loading = false;
-      //     alert("Ambiente editado com sucesso!");
-      //   })
+      this.ws.changeUser(this.user.id, this.user)
+        .catch((e)=> alert("Erro inesperado") )
+        .finally(()=>{
+          this.loading = false;
+          alert("Usuário editado com sucesso!");
+          this.router.navigate(['dashboard', 'users']);
+        })
     } else {
       // TODO: Implements ws create function
       // this.ws

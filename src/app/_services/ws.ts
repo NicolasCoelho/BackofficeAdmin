@@ -187,6 +187,15 @@ export class Ws {
       });
   }
 
+  changeUser(id:string|number, payload: User): Promise<User> {
+    return this.http
+      .put(`${this.baseUrl}/user/${id}`, payload, this.options)
+      .toPromise()
+      .then((response: User) => {
+        return response;
+      });
+  }
+
   getUser(id: number): Promise<User> {
     return this.http
       .get(`${this.baseUrl}/user/${id}`, this.options)

@@ -1,7 +1,7 @@
 <div class="userContainer">
   <div class="searchInput">
     <input type="text" placeholder="Pesquisar" [(ngModel)]="search.name" (ngModelChange)="delayUpdate()">
-    <button (click)="goTo('register')">Criar usuário</button>
+    <button (click)="goTo('register')" *ngIf="false">Criar usuário</button>
   </div>
   <table>
     <thead>
