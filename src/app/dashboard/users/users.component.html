@@ -1,4 +1,8 @@
 <div class="userContainer">
+  <div class="searchInput">
+    <input type="text" placeholder="Pesquisar" [(ngModel)]="search.name" (ngModelChange)="delayUpdate()">
+    <button (click)="goTo('register')" *ngIf="false">Criar usuário</button>
+  </div>
   <table>
     <thead>
       <th>Nome</th>
@@ -7,7 +11,7 @@
       <th>Tipo</th>
     </thead>
     <tbody>
-      <tr *ngFor="let item of paginatedUsers.items">
+      <tr *ngFor="let item of paginatedUsers.items" (click)="edit(item.id)">
         <td>{{ item.name }}</td>
         <td>{{ item.status }}</td>
         <td>{{ item.email }}</td>
@@ -17,9 +21,11 @@
     <tfoot>
       <tr>
         <td colspan="4" style="text-align: right;">
+          <span>Exibindo</span>
+          <input class="paginationInput" type="text" [(ngModel)]="paginatedUsers.pageSize" (ngModelChange)="delayUpdate()">
           <span>Página</span>
           &nbsp;
-          <input class="paginationInput" type="text" [(ngModel)]="paginatedUsers.currentPage">
+          <input class="paginationInput" type="text" [(ngModel)]="paginatedUsers.currentPage" (ngModelChange)="delayUpdate()">
           &nbsp;
           <span>de</span>
           &nbsp;

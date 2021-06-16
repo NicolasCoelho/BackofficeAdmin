@@ -12,9 +12,8 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { SalesComponent } from './dashboard/sales/sales.component';
 import { PaymentsComponent } from './dashboard/payments/payments.component';
 import { RegisterEnviromentComponent } from './dashboard/register-enviroment/register-enviroment.component';
-
-//Importando RegisterStoreComponent para referenciar no parametro da URL
 import { RegisterStoreComponent } from './dashboard/register-store/register-store.component';
+import { RegisterUserComponent } from './dashboard/register-user/register-user.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -31,6 +30,8 @@ const routes: Routes = [
       { path: 'stores/register', component: RegisterStoreComponent },
       { path: 'stores/edit/:id', component: RegisterStoreComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'users/register', component: RegisterUserComponent },
+      { path: 'users/edit/:id', component: RegisterUserComponent },
       { path: 'sales', component: SalesComponent },
       { path: 'payments', component: PaymentsComponent },
     ],

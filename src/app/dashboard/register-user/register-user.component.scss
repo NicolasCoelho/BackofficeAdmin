@@ -1,0 +1,19 @@
+form {
+  label {
+    width: 100%;
+    display: inline-block;
+    padding-top: 5px;
+  }
+  .input-section {
+    padding: 10px 30px;
+    @media (max-width: 768px) {
+      padding: 10px 10px;
+    }
+  }
+  textarea {
+    height: 510px;
+  }
+  select {
+    width: 100%;
+  }
+}

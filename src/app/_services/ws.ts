@@ -6,7 +6,8 @@ import { Authentication } from './authentication';
 import { Health } from '../_models/health';
 import { Enviroment } from '../_models/enviroments';
 import { Store } from '../_models/stores';
-import { User, UserPaginated } from '../_models/user';
+import { User } from '../_models/user';
+import { PaginetedList } from '../_models/paginatedList';
 import { Contract } from '../_models/contract';
 import { UserRequirements } from '../_models/userRequirements';
 import { SystemStatusAndTypes } from '../_models/systemStatus';
@@ -177,13 +178,31 @@ export class Ws {
   }
 
   // Users
-  getUsers(params=""): Promise<UserPaginated> {
+  getUsers(params=""): Promise<PaginetedList> {
     return this.http
       .get(`${this.baseUrl}/users${params}`, this.options)
       .toPromise()
-      .then((response: UserPaginated) => {
+      .then((response: PaginetedList) => {
         return response;
       });
+  }
+
+  changeUser(id:string|number, payload: User): Promise<User> {
+    return this.http
+      .put(`${this.baseUrl}/user/${id}`, payload, this.options)
+      .toPromise()
+      .then((response: User) => {
+        return response;
+      });
+  }
+
+  getUser(id: number): Promise<User> {
+    return this.http
+      .get(`${this.baseUrl}/user/${id}`, this.options)
+      .toPromise()
+      .then(
+        (response: User) => response
+      )
   }
 
   // Contract

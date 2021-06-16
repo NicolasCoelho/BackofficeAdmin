@@ -1,18 +1,34 @@
 export class User {
   public id: number;
+  public storeId: number;
   public name: string;
   public email: string;
   public password: string;
   public status: number;
   public type: number;
+  public phone1: string;
+  public phone2: string;
+  public cpfCnpj: string;
+  public pis: string;
+  public rg: string;
+  public birthdate: string;
+  public nationality: string;
+  public birthLocation: string;
+  public maritalStatus: string;
+  public gender: string;
+  public literacy: string;
+  public cep: string;
+  public address: string;
+  public addressNumber: string;
+  public neighborhood: string;
+  public city: string;
+  public state: string;
+  public bank: string;
+  public pix: string;
+  public agency: string;
+  public account: string;
+  public accountOwner: string;
+  public accountOwnerCpf: string;
   public createdAt: string;
   public updatedAt: string;
-}
-
-export class UserPaginated {
-  public totalItems: number;
-  public totalPages: number;
-  public pageSize: number;
-  public currentPage: number;
-  public items: Array<User>;
 }

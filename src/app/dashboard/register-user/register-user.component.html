@@ -1,0 +1,232 @@
+<form [formGroup]="userForm" (ngSubmit)="register()">
+  <div class="submit-container">
+    <button type="submit" class="btnCreate">Salvar</button>
+    &nbsp;
+    <app-loading [(isLoading)]="loading"></app-loading>
+    <div *ngIf="user.id" style="text-align: center;"><strong>ID:</strong>&nbsp;<span>{{ user.id }}</span></div>
+    <div *ngIf="user.type" style="text-align: center;"><strong>Tipo:</strong>&nbsp;<span>{{ userType }}</span></div>
+    <div *ngIf="user.storeId" style="text-align: center;"><strong>Loja:</strong>&nbsp;<span>{{ user.storeId }}</span></div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-12 col-lg-4">
+      <div class="input-section store">
+        <h3>Gerais</h3>
+        <input
+          maxlength="30"
+          placeholder="Nome"
+          [(ngModel)]="user.name"
+          type="text"
+          formControlName="name"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Email"
+          [(ngModel)]="user.email"
+          type="text"
+          formControlName="email"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Senha"
+          [(ngModel)]="user.password"
+          type="text"
+          formControlName="password"
+        />
+        <select
+          formControlName="status"
+          [(ngModel)]="user.status"
+        >
+          <option value="undefined" disabled selected>Status</option>
+          <option *ngFor="let opt of status" value="{{ opt.value }}">
+            {{ opt.viewValue }}
+          </option>
+        </select>
+        <input
+          maxlength="30"
+          placeholder="Celular"
+          [(ngModel)]="user.phone1"
+          type="text"
+          formControlName="phone1"
+        />
+        <input
+          maxlength="30"
+          placeholder="Telefone"
+          [(ngModel)]="user.phone2"
+          type="text"
+          formControlName="phone2"
+        />
+        <input
+          maxlength="30"
+          placeholder="CPF"
+          [(ngModel)]="user.cpfCnpj"
+          type="text"
+          formControlName="cpfCnpj"
+        />
+        <input
+          maxlength="30"
+          placeholder="Pis"
+          [(ngModel)]="user.pis"
+          type="text"
+          formControlName="pis"
+        />
+        <input
+          maxlength="30"
+          placeholder="RG"
+          [(ngModel)]="user.rg"
+          type="text"
+          formControlName="rg"
+        />
+        <input
+          maxlength="30"
+          placeholder="Data de nascimento"
+          [(ngModel)]="user.birthdate"
+          type="text"
+          formControlName="birthdate"
+        />
+        <input
+          maxlength="30"
+          placeholder="Nacionalidade"
+          [(ngModel)]="user.nationality"
+          type="text"
+          formControlName="nationality"
+        />
+        <input
+          maxlength="30"
+          placeholder="Local de origem"
+          [(ngModel)]="user.birthLocation"
+          type="text"
+          formControlName="birthLocation"
+        />
+        <input
+          maxlength="30"
+          placeholder="Estado civil"
+          [(ngModel)]="user.maritalStatus"
+          type="text"
+          formControlName="maritalStatus"
+        />
+        <input
+          maxlength="30"
+          placeholder="Gênero"
+          [(ngModel)]="user.gender"
+          type="text"
+          formControlName="gender"
+        />
+        <input
+          maxlength="30"
+          placeholder="Escolaridade"
+          [(ngModel)]="user.literacy"
+          type="text"
+          formControlName="literacy"
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-4">
+      <div class="input-section store">
+        <h3>Endereço</h3>
+        <input
+          maxlength="30"
+          placeholder="Cep"
+          [(ngModel)]="user.cep"
+          type="text"
+          formControlName="cep"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Rua"
+          [(ngModel)]="user.address"
+          type="text"
+          formControlName="address"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Número"
+          [(ngModel)]="user.addressNumber"
+          type="text"
+          formControlName="addressNumber"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Bairro"
+          [(ngModel)]="user.neighborhood"
+          type="text"
+          formControlName="neighborhood"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Cidade"
+          [(ngModel)]="user.city"
+          type="text"
+          formControlName="city"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Estado"
+          [(ngModel)]="user.state"
+          type="text"
+          formControlName="state"
+
+        />
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-4">
+      <div class="input-section store">
+        <h3>Financeiro</h3>
+        <input
+          maxlength="30"
+          placeholder="Banco"
+          [(ngModel)]="user.bank"
+          type="text"
+          formControlName="bank"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Pix"
+          [(ngModel)]="user.pix"
+          type="text"
+          formControlName="pix"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Agência"
+          [(ngModel)]="user.agency"
+          type="text"
+          formControlName="agency"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Conta"
+          [(ngModel)]="user.account"
+          type="text"
+          formControlName="account"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="Titular da conta"
+          [(ngModel)]="user.accountOwner"
+          type="text"
+          formControlName="accountOwner"
+
+        />
+        <input
+          maxlength="30"
+          placeholder="CPF do titular da conta"
+          [(ngModel)]="user.accountOwnerCpf"
+          type="text"
+          formControlName="accountOwnerCpf"
+
+        />
+      </div>
+    </div>
+  </div>
+</form>
